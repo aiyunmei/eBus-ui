@@ -1,0 +1,163 @@
+<template>
+  <div class="card-detail" v-if="visible">
+    <!--背景-->
+    <div class="card-detail-bg" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }"></div>
+
+    <!--卡片-->
+    <div class="card-detail-card-img">
+      <Card :cardImage="card.image"></Card>
+    </div>
+
+    <!--广告位-->
+    <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
+      <a :href="cardDetail.bannerConfig.href" target="_blank">
+        <img :src="cardDetail.bannerConfig.src" />
+      </a>
+    </div>
+
+    <!--菜单目录-->
+    <ul class="card-detail-menu">
+      <li class="menu-item">
+        <span class="label">卡号</span>
+        <span class="value">{{ cardInfo.alipayCardNo }}</span>
+      </li>
+      <li v-for="(item, index) in cardDetail.menuOptions" @click="bindMenuList(item)" class="menu-item" v-if="!item.visible">
+        <span class="label">{{ item.label }}</span>
+        <i class="fa fa-angle-right arrow"></i>
+        <img :src="item.icon" class="tips" v-if="item.icon" />
+      </li>
+    </ul>
+
+    <!--立即使用-->
+    <div class="card-detail-btn" v-if="useBtnVisible">
+      <a :href="useBtnHref" target="_blank">
+        <zButton :btnVal="cardDetail.useBtnVal"></zButton>
+      </a>
+    </div>
+
+    <!--领卡成功-->
+    <div class="card-detail-success" v-if="openCardSuccessVisible">
+      <div class="main">
+        <img :src="cardDetail.successAlertConfig.imgUrl" />
+        <div class="btn-list">
+          <span class="btn l" @click="openCardSuccessVisible = false">{{ cardDetail.successAlertConfig.leftBtnVal }}</span><span class="btn r" @click="bindUseSuccessAlertBtn(cardDetail.successAlertConfig.rightBtnVal)">{{ cardDetail.successAlertConfig.rightBtnVal }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!--预加载退卡弹窗图片-->
+    <img v-show="false" :src="cardDetail.cardCloseConfirm.image" style="width: 0;height: 0;opacity: 0; position: absolute;">
+
+
+  </div>
+</template>
+
+
+<script>
+  import Card from '../components/Card/Card.vue'
+  import zButton from '../components/Button/Button.vue'
+  import MessageBox from '../components/MessageBox/index'
+  import { checkNull, checkCardStatus, showToast, jsLink } from '../utils/public'
+  import { getCardInfo, applyCardClose } from '../utils/http'
+
+  const { onWhite, whiteList, linkOldUrl } = global.threeConfig.global
+  const { busCode } = global.threeConfig.alipayCardInfo
+
+  export default {
+    components: { Card, zButton },
+    computed: {
+      card () { return global.threeConfig.card },
+      cardDetail () { return global.threeConfig.cardDetail },
+      cardInfo () { return this.$store.state.alipayCardInfo }
+    },
+    data () {
+      return {
+        visible: false, // 容器页
+        openCardSuccessVisible: false, // 是否显示第一领卡成功弹窗
+        useBtnVisible: true, // 底部立即使用按钮
+        useBtnHref: '' // 乘车码链接
+      }
+    },
+    mounted () {
+      this.onReady()
+    },
+    methods: {
+      onReady () {
+        const { userId, buscode, successUrl } = this.$route.query
+        // 没有用户信息去授权
+        if (checkNull(sessionStorage.getItem('userId')) === 0 && userId === undefined) {
+          this.$router.replace('/Auth?redirectUrl=cardDetail')
+          return false
+        }
+        // 外部进入先缓存uid
+        if (userId) sessionStorage.setItem('userId', userId)
+        // 写入乘车码链接
+        if (successUrl) this.useBtnHref = successUrl
+        else this.useBtnHref = busCode
+        // 是否打开了灰度
+        if (onWhite) this.openWhite()
+        else this.commonReady()
+      },
+      openWhite () {
+        if (whiteList.indexOf(sessionStorage.getItem('userId')) === -1) this.outWhite() // 不在白名单执行事件
+        else this.commonReady() // 在白名单执行事件
+      },
+      outWhite () {
+        if (this.$route.query.buscode !== undefined) window.location.replace(linkOldUrl.buscode)
+        else window.location.replace(linkOldUrl.other)
+      },
+      commonReady () { // 默认渲染
+        const { buscode, successUrl } = this.$route.query
+        getCardInfo({
+          Vue: this,
+          cb: data => {
+            this.visible = true
+            if (buscode) this.useBtnVisible = false
+            else if (successUrl) {
+              if (!sessionStorage.getItem('isAlert')) this.openCardSuccessVisible = true
+              sessionStorage.setItem('isAlert', 'yes') // 防止重复弹出首次弹窗
+            }
+          }
+        })
+      },
+      bindMenuList (item) {
+        const { link, urlType } = item
+        const { alipayCardStatus } = this.cardInfo
+        const { okVal, cancelVal, content, image } = this.cardDetail.cardCloseConfirm
+        // 充值
+        if (link === '/recharge') {
+          if (checkCardStatus(alipayCardStatus) === 'no') {
+            showToast('您已申请退卡，暂时无法使用!')
+            return false
+          }
+        }
+        // 退卡
+        if (link === '/cardClose') {
+          if (checkCardStatus(alipayCardStatus) === 'yes') {
+            MessageBox({type: 'confirm', imgUrl: image, content: content, okVal: okVal, cancelVal: cancelVal, callback: (action) => {
+              if (action === 'ok') {
+                applyCardClose({
+                  status: alipayCardStatus,
+                  cb: () => { this.$router.replace('/cardClose?first=yes') }
+                })
+              }
+            }})
+          } else {
+            this.$router.replace('/cardClose?first=no')
+          }
+          return false
+        }
+        // 其他
+        urlType ? jsLink('href', link) : this.$router.push(link)
+      },
+      bindUseSuccessAlertBtn (val) {
+        this.openCardSuccessVisible = false
+        val === '立即充值' ? this.$router.push('/recharge') : jsLink('href', this.$router.query.successUrl)
+      }
+    }
+  }
+</script>
+
+<style lang="stylus" scoped>
+  @import '../assets/css/cardDetail.styl';
+</style>

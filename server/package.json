@@ -1,0 +1,20 @@
+{
+  "name": "xm-ebus-ui-server",
+  "version": "1.0.0",
+  "description": "xm-ebus-server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "start-back": "node appBack.js",
+    "pm2-app-start": "pm2 start app.js --name xm-ebus-ui-app-prot-3000",
+    "pm2-app-back-start": "pm2 start appBack.js --name xm-ebus-ui-app-back-port-8089"
+  },
+  "keywords": [
+    "vue",
+    "git",
+    "node",
+    "express"
+  ],
+  "author": "zc",
+  "license": "MIT"
+}
