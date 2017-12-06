@@ -38,10 +38,8 @@
     <!--底部弹窗-->
     <mt-popup position="bottom" v-model="popupVisible" class="open-card-popup">
       <ul>
-        <li v-for="(item, index) in openCard.popupList">
-          <a target="_blank" :href="item.href">
-            <span>{{ item.name }}</span>
-          </a>
+        <li v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item)">
+          <span>{{ item.name }}</span>
         </li>
         <li class="item-last" @click="popupVisible = false">取消</li>
       </ul>
@@ -53,7 +51,7 @@
 <script>
   import Card from '../components/Card/Card.vue'
   import zButton from '../components/Button/Button.vue'
-  import { alipayTransparent } from '../utils/alipayJsApi'
+  import { alipayTransparent, alipayPushWindow } from '../utils/alipayJsApi'
 
   export default {
     components: { Card, zButton },
@@ -73,6 +71,9 @@
     methods: {
       onReady () {
         alipayTransparent('auto')
+      },
+      alipayLinkTo ({ href }) {
+        alipayPushWindow(href)
       }
     }
   }

@@ -1,12 +1,30 @@
 <template>
   <div class="card-detail" v-if="visible">
-    <!--背景-->
-    <div class="card-detail-bg" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }"></div>
 
     <!--卡片-->
-    <div class="card-detail-card-img">
-      <Card :cardImage="card.image"></Card>
+    <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">
+      <div class="info">
+        <Card :cardImage="card.image"></Card>
+      </div>
+      <img src="../../static/img/wave_bg.png" class="wave" />
     </div>
+
+    <!--卡号-->
+    <div class="card-detail-card-no">
+      <i class="fa fa-credit-card-alt icon"></i>
+      <span>卡号 {{ cardInfo.alipayCardNo }}</span>
+    </div>
+
+    <ul class="card-detail-menu">
+      <li class="menu-item" v-for="(item, index) in cardDetail.menuOptions" v-if="!item.visible" @click="bindMenuList(item)">
+        <div class="info">
+          <div class="icon" v-if="item.icon">
+            <img :src="item.icon" />
+          </div>
+          <div class="label" v-if="item.label">{{ item.label }}</div>
+        </div>
+      </li>
+    </ul>
 
     <!--广告位-->
     <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
@@ -15,24 +33,13 @@
       </a>
     </div>
 
-    <!--菜单目录-->
-    <ul class="card-detail-menu">
-      <li class="menu-item">
-        <span class="label">卡号</span>
-        <span class="value">{{ cardInfo.alipayCardNo }}</span>
-      </li>
-      <li v-for="(item, index) in cardDetail.menuOptions" @click="bindMenuList(item)" class="menu-item" v-if="!item.visible">
-        <span class="label">{{ item.label }}</span>
-        <i class="fa fa-angle-right arrow"></i>
-        <img :src="item.icon" class="tips" v-if="item.icon" />
-      </li>
-    </ul>
-
     <!--立即使用-->
-    <div class="card-detail-btn" v-if="useBtnVisible">
-      <a :href="useBtnHref" target="_blank">
-        <zButton :btnVal="cardDetail.useBtnVal"></zButton>
-      </a>
+    <div class="card-detail-btn">
+      <div class="info">
+        <a :href="useBtnHref" target="_blank">
+          <zButton :btnVal="cardDetail.useBtnVal"></zButton>
+        </a>
+      </div>
     </div>
 
     <!--领卡成功-->
@@ -74,7 +81,6 @@
       return {
         visible: false, // 容器页
         openCardSuccessVisible: false, // 是否显示第一领卡成功弹窗
-        useBtnVisible: true, // 底部立即使用按钮
         useBtnHref: '' // 乘车码链接
       }
     },
@@ -83,7 +89,7 @@
     },
     methods: {
       onReady () {
-        const { userId, buscode, successUrl } = this.$route.query
+        const { userId, successUrl } = this.$route.query
         // 没有用户信息去授权
         if (checkNull(sessionStorage.getItem('userId')) === 0 && userId === undefined) {
           this.$router.replace('/Auth?redirectUrl=cardDetail')
@@ -112,8 +118,7 @@
           Vue: this,
           cb: data => {
             this.visible = true
-            if (buscode) this.useBtnVisible = false
-            else if (successUrl) {
+            if (successUrl) {
               if (!sessionStorage.getItem('isAlert')) this.openCardSuccessVisible = true
               sessionStorage.setItem('isAlert', 'yes') // 防止重复弹出首次弹窗
             }

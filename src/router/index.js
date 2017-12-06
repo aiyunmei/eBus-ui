@@ -12,6 +12,7 @@ import rechargeLog from '../views/rechargeLog.vue'
 import payResult from '../views/payResult.vue'
 import openLine from '../views/openLine.vue'
 import help from '../views/help.vue'
+import protocol from '../views/protocol.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,7 @@ export default new Router({
     { path: '/rechargeLog', component: rechargeLog }, // 充值记录
     { path: '/payResult/:userId/:type', component: payResult }, // 支付结果
     { path: '/openLine', component: openLine }, // 已开通线路
-    { path: '/help', component: help } // 使用帮助
+    { path: '/help', component: help }, // 使用帮助
+    { path: '/protocol', component: protocol } // 协议
   ]
 })

@@ -8,7 +8,7 @@
         <span>余额账户</span>
       </div>
       <div class="item cashBalance">
-        <h3>{{ cashBalance + rechargeUnitName }}</h3>
+        <h3>{{ cardInfo.cashBalance + rechargeUnitName }}</h3>
       </div>
       <div class="item flex">
         <Tag val="乘车8折" type="warning" size="mini" class="item-tag"></Tag>
@@ -46,8 +46,7 @@
     },
     data () {
       return {
-        visible: false,
-        cashBalance: null
+        visible: false
       }
     },
     methods: {
@@ -65,7 +64,6 @@
           Vue: this,
           cb: data => {
             this.visible = true
-            this.cashBalance = formatRMBYuanDecimal(this.cardInfo.cashBalance)
           }
         })
       }

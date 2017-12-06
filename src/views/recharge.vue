@@ -31,22 +31,35 @@
         <em>|</em>
         <span @click="linkTo('rechargeLog')">充值记录</span>
       </div>
-      <div class="item check">
+      <div class="item check" @click="rechargeProtocolVisible = true">
         <i class="fa fa-check-square-o"></i>
         <span>协议内容</span>
       </div>
     </div>
+
+    <!--充值协议-->
+    <transition name="recharge-protocol">
+      <div class="recharge-protocol" v-show="rechargeProtocolVisible">
+        <div class="main">
+          <div class="content" v-html="recharge.rechargeProtocol"></div>
+          <div class="submit">
+            <zButton btnVal="我知道了" type="transparent" class="btn" @click="rechargeProtocolVisible = false"></zButton>
+          </div>
+        </div>
+      </div>
+    </transition>
 
   </div>
 </template>
 
 <script>
   import Tag from '../components/Tag/Tag.vue'
+  import zButton from '../components/Button/Button'
   import { checkNull, showToast } from '../utils/public'
   import { getCardInfo, showAlipayStore } from '../utils/http'
 
   export default {
-    components: { Tag },
+    components: { Tag, zButton },
     computed: {
       cardInfo () { return this.$store.state.alipayCardInfo },
       recharge () { return global.threeConfig.recharge },
@@ -55,7 +68,8 @@
     data () {
       return {
         visible: false,
-        rechargeListIndex: null
+        rechargeListIndex: null,
+        rechargeProtocolVisible: false
       }
     },
     mounted () {

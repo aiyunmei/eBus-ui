@@ -1,9 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
 import { checkNull, enCodeString } from './public'
-import { serverError, netWorkError } from './helper'
+import { netWorkError } from './helper'
+import Spinner from '../components/Spinner/index'
 
-const FILE_HEADER = { 'Content-Type': 'multipart/form-data' }
 const async_timestamp = new Date().getTime()
 
 /*
@@ -35,10 +35,12 @@ class Axios {
   apiGet (url, params, isEncode) {
     return new Promise((resolve, reject) => {
       checkNull(isEncode) === 0 ? isEncode = false : isEncode
-
+      Spinner.open()
       this.instance.get(`${url}?async_timestamp=${async_timestamp}`, { params: isEncode === false ? params : enCodeString(params) }).then(res => {
+        Spinner.close()
         resolve(res.data)
       }).catch(err => {
+        Spinner.close()
         reject(err)
         netWorkError()
       })
@@ -48,10 +50,12 @@ class Axios {
   apiPost (url, params, isEncode) {
     return new Promise((resolve, reject) => {
       checkNull(isEncode) === 0 ? isEncode = false : isEncode
-
+      Spinner.open()
       this.instance.post(`${url}?async_timestamp=${async_timestamp}`, qs.stringify(isEncode === false ? params : enCodeString(params))).then(res => {
+        Spinner.close()
         resolve(res.data)
       }).catch(err => {
+        Spinner.close()
         reject(err)
         netWorkError()
       })
@@ -59,6 +63,6 @@ class Axios {
   }
 }
 
-export default new Axios
+export default new Axios()
 
 

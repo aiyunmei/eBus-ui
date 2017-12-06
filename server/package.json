@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "start-back": "node appBack.js",
-    "pm2-app-start": "pm2 start app.js --name xm-ebus-ui-app-prot-3000",
-    "pm2-app-back-start": "pm2 start appBack.js --name xm-ebus-ui-app-back-port-8089"
+    "appStart": "pm2 start app.js --name xm-ebus-ui-app-prot-3000",
+    "appBackStart": "pm2 start appBack.js --name xm-ebus-ui-app-back-port-8089"
   },
   "keywords": [
     "vue",
@@ -16,5 +16,11 @@
     "express"
   ],
   "author": "zc",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-history-api-fallback": "^1.3.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4"
+  }
 }

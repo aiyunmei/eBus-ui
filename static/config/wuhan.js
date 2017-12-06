@@ -1,42 +1,49 @@
 window.threeConfig = {
   "api": {
-    "baseUrl": "http://localhost:9000",
+    "baseUrl": "https://xiansubway.i-xiaoma.com.cn/2017022705927164",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
-    "alipayUserUrl": "https://xmbus.i-xiaoma.com.cn:8088/api",
-    "enjoyCardManagementUrl": "https://xmbus.i-xiaoma.com.cn:9191/api",
-    "rechargeCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
+    "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
+    "alipayUserUrl": "https://zf.wuhanbus.com:8443/api",
+    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2017072107839707",
+    "appId": "2017022705927164",
     "scope": "auth_base",
-    "sign": "RSA",
-    "cardType": "TESTXMLC",
+    "sign": "RSA2",
+    "cardType": "T0420100",
     "bizType": "MEMBER_CARD",
-    "templateId": "2017082915035002420195698",
+    "templateId": "2017031011054696772638984",
     "subScene": "420100",
     "scene": "TRANSIT",
-    "getCardAction": "sign",
+    "applyCardAction": "sign",
     "openCardAction": "use",
-    "getCardSource": "XMLC_TEST_CARD",
-    "openCardSource": "XMLC_TEST_CARD",
-    "useCardSource": "XMLC_TEST_CARD",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D420100%26cardType%3DTESTXMLC%26source%XMLC_TEST_CARD%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
+    "applyCardSource": "WUHAN_CARD_APPLY",
+    "openCardSource": "WUHAN_CARD_USE",
+    "useCardSource": "WUHAN_BUS_USE",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D420100%26cardType%3DT0420100%26source%3DWH_BUS_LIFE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "2017110209675937",
     "storeSign": "RSA"
   },
   "global": {
-    "cardName": "小码公交测试卡",
+    "cardName": "武汉电子公交卡",
     "cityName": "武汉",
     "cityCode": "420100",
     "showUrl": false,
-    "onWhite": false,
-    "whiteList": [],
+    "onWhite": true,
+    "whiteList": [
+      "2088302427608644",
+      "2088602245330764",
+      "2088702296152914",
+      "2088302170089488",
+      "2088002012673760",
+      "2088412651170155"
+    ],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",
-      "other": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=carddetail",
+      "other": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=carddetail"
     }
   },
   "card": {
@@ -45,7 +52,7 @@ window.threeConfig = {
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017072107839707&template_id=2017082915035002420195698&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=http://recharge.i-xiaoma.com.cn:8081/2017072107839707/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017022705927164&template_id=2017031011054696772638984&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=http://recharge.i-xiaoma.com.cn:8081/2017022705927164/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
@@ -59,7 +66,7 @@ window.threeConfig = {
     "popupList": [
       {
         "name": "《武汉电子公交卡协议》",
-        "href": "http://recharge.i-xiaoma.com.cn:8081/2017072107839707#/protocol"
+        "href": "https://xiansubway.i-xiaoma.com.cn/2017022705927164#/protocol"
       },
       {
         "name": "《芝麻服务及支付宝公交付款协议》",
@@ -70,10 +77,15 @@ window.threeConfig = {
   "openCardEnd": {
     "busyImage": "../../static/img/open_card_end_busy.png"
   },
+  "protocol": {
+    "company": "武汉公共交通有限",
+    "companyShort": "武汉公交",
+    "telephone": "xxxxx"
+  },
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
     "bannerConfig": {
-      "visible": false,
+      "visible": true,
       "href": "http://baidu.com",
       "src": "../../static/img/banner2.png"
     },
@@ -92,34 +104,40 @@ window.threeConfig = {
     "menuOptions": [
       {
         "label": "余额查询",
-        "link": "/balance"
+        "link": "/balance",
+        "icon": "../../static/img/balance_icon.png"
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "icon": "../../static/img/card_detail_recharge_icon.png"
+        "icon": "../../static/img/recharge_icon.png"
       },
       {
         "label": "自动充值",
         "link": "/rechargeAuto",
-        "visible": true
+        "visible": true,
+        "icon": ""
       },
       {
         "label": "乘车记录",
         "link": "alipays://platformapi/startapp?appId=20000076&returnHome=NO&bizSubType=75&showSearch=false&title=%E4%B9%98%E8%BD%A6%E8%AE%B0%E5%BD%95",
-        "urlType": "outside"
+        "urlType": "outside",
+        "icon": "../../static/img/trafficLog_icon.png"
       },
       {
         "label": "开通线路",
-        "link": "/openLine"
+        "link": "/openLine",
+        "icon": "../../static/img/trafficSearch_icon.png"
       },
       {
         "label": "使用帮助",
-        "link": "/help"
+        "link": "/help",
+        "icon": "../../static/img/userFeedBack_icon.png"
       },
       {
         "label": "退卡申请",
-        "link": "/cardClose"
+        "link": "/cardClose",
+        "icon": "../../static/img/cardClose_icon.png"
       }
     ]
   },
@@ -176,7 +194,8 @@ window.threeConfig = {
           "width": "1.6rem"
         }
       }
-    ]
+    ],
+    "rechargeProtocol": "<p>尊敬的客户，为保障您的合法权益，请您在点击“立即充值”按钮前，完整、仔细地阅读本充值协议。当您继续点击“立即充值”按钮，即视为您已阅读、理解本协议，并同意按本协议规定执行。</p><p><strong>1、充值方式</strong></p><p>本活动仅限市民对武汉电子公交卡充值；</p><p><strong>2、储值优惠</strong></p><p>储值用户可享受乘车8折优惠，及平台推出的不定时充值优惠活动，如，您充值100元，根据当时的充值优惠9折，则你实际付款90元，您的账户内显示的充值金额为100元，超出的10元即为充值赠送金额；</p><p>3、账户金额仅可用于武汉公交提供的支付宝公交刷码服务；</p><p>4、充值后，账户余额使用不设有效期，不能转移、转赠；</p><p>5、请您根据自己的消费情况充值，我们对充值次数不设限制，最高充值上限1000元；</p><p>6、如有疑问请咨询客服，客服热线027-84510000或QQ群523143023，反馈时间：周一至周五，AM9:00-PM17:00。</p>"
   },
   "balance": {
     "headerImage": "../../static/img/balance_header_bg.jpg"

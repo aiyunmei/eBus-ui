@@ -57,7 +57,7 @@
   }
   .snake .snake-info .snake-info-main{
     animation: snake-rotate 0.8s infinite linear;
-    border: 4px solid transparent;
+    border: 0.1rem solid transparent;
     border-radius: 50%;
     width: 1rem;
     height: 1rem;

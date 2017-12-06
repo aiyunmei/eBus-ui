@@ -42,3 +42,15 @@ export function alipayHideOptionMenu () {
     AlipayJSBridge.call('hideOptionMenu')
   })
 }
+
+/*
+* 支付宝端内部跳转
+* */
+export function alipayPushWindow (url) {
+  alipayOnReady(() => {
+    AlipayJSBridge.call('pushWindow', {
+      url: url,
+      param: { readTitle: true, showOptionMenu: false }
+    })
+  })
+}

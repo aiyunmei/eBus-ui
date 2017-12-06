@@ -37,6 +37,7 @@
     },
     mounted () {
       this.onReady()
+      // this.openCard('2088002177372531')
     },
     methods: {
       onReady () {
@@ -45,7 +46,8 @@
           const { auth_code, request_id } = userInfo
           localStorage.removeItem('userInfo')
           getCardComponentUid({
-            params: { auth_code: auth_code, request_id: request_id },
+            auth_code: auth_code,
+            request_id: request_id,
             cb: (msg, data) => {
               if (msg && msg.code === '20000') {
                 sessionStorage.setItem('userId', data.userId)
@@ -64,7 +66,6 @@
           cb: (msg, data) => {
             if (msg && msg.code === '20000') {
               const { cardNo } = data
-              sessionStorage.setItem('alipayCardNo', cardNo)
               this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
               const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
               this.$router.replace('/cardDetail?alipayCardNo=' + cardNo + '&successUrl=' + encodeURIComponent(alipayTransitCardEntry + toHash(getAlipayBusCodeParams)))
