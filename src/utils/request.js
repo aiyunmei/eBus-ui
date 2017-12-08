@@ -5,6 +5,7 @@ import { netWorkError } from './helper'
 import Spinner from '../components/Spinner/index'
 
 const async_timestamp = new Date().getTime()
+const { appId } = global.threeConfig.alipayCardInfo
 
 /*
 * @apiGet 公共get请求
@@ -36,7 +37,7 @@ class Axios {
     return new Promise((resolve, reject) => {
       checkNull(isEncode) === 0 ? isEncode = false : isEncode
       Spinner.open()
-      this.instance.get(`${url}?async_timestamp=${async_timestamp}`, { params: isEncode === false ? params : enCodeString(params) }).then(res => {
+      this.instance.get(`${url}?async_timestamp=${async_timestamp}&app_id=${appId}`, { params: isEncode === false ? params : enCodeString(params) }).then(res => {
         Spinner.close()
         resolve(res.data)
       }).catch(err => {
@@ -51,7 +52,7 @@ class Axios {
     return new Promise((resolve, reject) => {
       checkNull(isEncode) === 0 ? isEncode = false : isEncode
       Spinner.open()
-      this.instance.post(`${url}?async_timestamp=${async_timestamp}`, qs.stringify(isEncode === false ? params : enCodeString(params))).then(res => {
+      this.instance.post(`${url}?async_timestamp=${async_timestamp}&app_id=${appId}`, qs.stringify(isEncode === false ? params : enCodeString(params))).then(res => {
         Spinner.close()
         resolve(res.data)
       }).catch(err => {

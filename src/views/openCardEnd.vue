@@ -20,8 +20,9 @@
   import zButton from '../components/Button/Button.vue'
   import { toHash } from '../utils/public'
   import { getCardComponentUid, getEnjoyCardComponent } from '../utils/http'
+  import { alipayExitApp, alipayPostNotification } from '../utils/alipayJsApi'
 
-  const { cardType, scene, subScene, openCardAction, openCardSource } = global.threeConfig.alipayCardInfo
+  const { cardType, scene, subScene, openCardAction, openCardSource, postNotification } = global.threeConfig.alipayCardInfo
   const { alipayTransitCardEntry } = global.threeConfig.api
 
   export default {
@@ -65,6 +66,13 @@
           userId: uid,
           cb: (msg, data) => {
             if (msg && msg.code === '20000') {
+              // 有参数执行 需要app跳转执行
+              if (localStorage.getItem('insPassBack')) {
+                this.linkToApp('success')
+                localStorage.removeItem('insPassBack')
+                return false
+              }
+              // 正常流程
               const { cardNo } = data
               this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
               const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
@@ -74,6 +82,14 @@
               this.tryAgainVisible = true
             }
           }
+        })
+      },
+      linkToApp (result) {
+        alipayPostNotification({
+          name: postNotification.name,
+          isPassBack: localStorage.getItem('insPassBack'),
+          cardType: cardType,
+          result: result,
         })
       }
     }

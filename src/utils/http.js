@@ -205,3 +205,18 @@ export async function setRefund ({ cb }) {
 * */
 export async function getRechargeLog ({ pageSize, pageNum, cb }) {
 }
+
+/*
+* 阿里妈妈接入
+* @params ${adPid} 广告位id
+* @params ${clickThroughUrl} 跳转地址
+* @params ${imgUrl} 图片地址
+* */
+export async function getAlipayMon ({ adPid, cb }) {
+  const { contnet } = await request.apiPost(api.alipayMom, {
+    uid: sessionStorage.getItem('userId'),
+    adPid: adPid
+  })
+  const { clickThroughUrl, imgUrl } = content.seat.ad
+  cb(clickThroughUrl, imgUrl)
+}

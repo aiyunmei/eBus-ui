@@ -1,6 +1,7 @@
-html {
+html, body, #app {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  height: 100%;
   /*火狐*/
   /*关闭横屏自动调整文字大小的功能*/
 }

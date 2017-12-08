@@ -29,7 +29,7 @@ function doHttp (host, data, cb) {
   'use strict'
   const config = {
     host: host,
-    port: '8089',
+    port: '8081',
     path: '/changeJsonData',
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

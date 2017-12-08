@@ -8,5 +8,5 @@ export function codeError () {
 }
 
 export function netWorkError () {
-  showToast('网路异常')
+  showToast('网络异常')
 }

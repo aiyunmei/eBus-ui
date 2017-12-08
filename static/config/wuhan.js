@@ -31,7 +31,7 @@ window.threeConfig = {
     "cardName": "武汉电子公交卡",
     "cityName": "武汉",
     "cityCode": "420100",
-    "showUrl": false,
+    "showUrl": true,
     "onWhite": true,
     "whiteList": [
       "2088302427608644",
@@ -47,7 +47,8 @@ window.threeConfig = {
     }
   },
   "card": {
-    "image": "../../static/img/wuhan_card.png"
+    "image": "../../static/img/wuhan_card.png",
+    "tipsImage": "../../static/img/card_tips.png"
   },
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",
@@ -84,6 +85,10 @@ window.threeConfig = {
   },
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
+    "noticeConfig": {
+      "visible": true,
+      "content": "小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!小蚊子傻逼哈哈!"
+    },
     "bannerConfig": {
       "visible": true,
       "href": "http://baidu.com",
@@ -105,18 +110,30 @@ window.threeConfig = {
       {
         "label": "余额查询",
         "link": "/balance",
-        "icon": "../../static/img/balance_icon.png"
+        "icon": "../../static/img/balance_icon.png",
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "icon": "../../static/img/recharge_icon.png"
+        "icon": "../../static/img/recharge_icon.png",
       },
       {
         "label": "自动充值",
         "link": "/rechargeAuto",
-        "visible": true,
-        "icon": ""
+        "icon": "../../static/img/rechargeAuto_icon.png",
+        "visible": true
+      },
+      {
+        "label": "用户反馈",
+        "link": "/userFeedBack",
+        "icon": "../../static/img/userFeedBack_icon.png",
+        "visible": true
+      },
+      {
+        "label": "公交查询",
+        "link": "/trafficSearch",
+        "icon": "../../static/img/trafficSearch_icon.png",
+        "visible": true
       },
       {
         "label": "乘车记录",
@@ -127,12 +144,12 @@ window.threeConfig = {
       {
         "label": "开通线路",
         "link": "/openLine",
-        "icon": "../../static/img/trafficSearch_icon.png"
+        "icon": "../../static/img/openLine_icon.png"
       },
       {
         "label": "使用帮助",
         "link": "/help",
-        "icon": "../../static/img/userFeedBack_icon.png"
+        "icon": "../../static/img/help_icon.png"
       },
       {
         "label": "退卡申请",

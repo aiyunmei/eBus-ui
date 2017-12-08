@@ -10,6 +10,8 @@ const getMenuData = require('./controller/getMenu/index')
 const back = require('./controller/back/index')
 const allChangeJson = require('./controller/allChangeJsonData')
 
+const port = 8081
+
 /*
  * 设置跨域访问
  * */
@@ -95,6 +97,6 @@ app.get('*', function (req, res) {
 })
 
 // 构造server
-app.listen(8089, function () {
+app.listen(port, function () {
   console.log('server dev success back')
 })

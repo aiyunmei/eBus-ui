@@ -121,7 +121,7 @@
       plusBalanceEdit (cashBalance) { // 充值退卡正数渲染
         console.log(`用户余额负数`)
         this.timeImgVisible = true
-        this.contentVal = `检测到您当前账户处于欠费状态<br />欠费<font color="#FC8653">${formatRMBYuanDecimal(cashBalance)}</font>${rechargeUnitName}`
+        this.contentVal = `检测到您当前账户处于欠费状态<br />欠费<font color="#FC8653">${cashBalance}</font>${rechargeUnitName}`
         this.rechargeTipVal = `请先补缴后，才能退卡`
         this.rechargeExtraBtnVisible = true
         this.cancelBtnVisible = true
@@ -130,7 +130,7 @@
       minusBalanceEdit (cashBalance) { // 充值退卡负数渲染
         console.log(`用户余额正数或0`)
         this.timeImgVisible = true
-        this.contentVal = `检测到您当前账户还有余额<br /><font color="#108EE9">${formatRMBYuanDecimal(cashBalance)}</font>${rechargeUnitName}`
+        this.contentVal = `检测到您当前账户还有余额<br /><font color="#108EE9">${cashBalance}</font>${rechargeUnitName}`
         this.rechargeRefundBtnVisible = true
         this.cancelBtnVisible = true
         this.bodyHeaderVisible = false
@@ -180,8 +180,8 @@
       bindExtra () { // 补缴
         const { cashBalance } = this.cardInfo
         showAlipayStore({
-          label: `退卡欠款补缴${-1 * formatRMBYuan(cashBalance)}`,
-          RMB: -1 * formatRMBYuan(cashBalance),
+          label: `退卡欠款补缴${-1 * cashBalance}`,
+          RMB: -1 * cashBalance,
           syncCallBackUrl: `payResult/${sessionStorage.getItem('userId')}/extra`,
           cb: () => {}
         })

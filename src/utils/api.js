@@ -14,5 +14,5 @@ export default {
   alipayStore: `${alipayCardPayProviderUrl}/card/pay/store`, // 消费
   alipayRefund: `${alipayCardPayProviderUrl}/card/pay/refund`, // 退款
   rechargeLog: `/aliapy/card/recharge/record`, // 充值记录
-  alipayMomUrl: `${alipayMomUrl}/categoryService/adx/query` // 阿里妈妈广告接入
+  alipayMom: `${alipayMomUrl}/categoryService/adx/query` // 阿里妈妈广告接入
 }

@@ -54,3 +54,19 @@ export function alipayPushWindow (url) {
     })
   })
 }
+
+/*
+* 支付宝app跳转
+* */
+export function alipayPostNotification ({ name, insPassBack, cardType, result }) {
+  alipayOnReady(() => {
+    AlipayJSBridge.call('postNotification', {
+      name: name,
+      data: {
+        insPassBack: insPassBack,
+        cardType: cardType,
+        result: result
+      }
+    })
+  })
+}

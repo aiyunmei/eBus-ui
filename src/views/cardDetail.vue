@@ -1,45 +1,62 @@
 <template>
   <div class="card-detail" v-if="visible">
 
+    <NoticeBar
+      v-if="cardDetail.noticeConfig.visible"
+      :content="cardDetail.noticeConfig.content"
+      :width="cardDetail.noticeConfig.width">
+    </NoticeBar>
+
     <!--卡片-->
     <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">
       <div class="info">
-        <Card :cardImage="card.image"></Card>
+        <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
       </div>
+      <!--wave-->
       <img src="../../static/img/wave_bg.png" class="wave" />
     </div>
 
-    <!--卡号-->
-    <div class="card-detail-card-no">
-      <i class="fa fa-credit-card-alt icon"></i>
-      <span>卡号 {{ cardInfo.alipayCardNo }}</span>
-    </div>
+    <div class="body">
 
-    <ul class="card-detail-menu">
-      <li class="menu-item" v-for="(item, index) in cardDetail.menuOptions" v-if="!item.visible" @click="bindMenuList(item)">
-        <div class="info">
-          <div class="icon" v-if="item.icon">
-            <img :src="item.icon" />
+
+      <!--卡号-->
+      <div class="card-detail-card-no">
+        <img src="../../static/img/card_no_icon.png" class="icon" />
+        <span>卡号 {{ cardInfo.alipayCardNo }}</span>
+      </div>
+     <!--菜单-->
+      <ul class="card-detail-menu">
+        <li class="menu-item" v-for="(item, index) in cardDetail.menuOptions" v-if="!item.visible" @click="bindMenuList(item)">
+          <div class="info">
+            <div class="icon" v-if="item.icon">
+              <img :src="item.icon" />
+            </div>
+            <div class="label" v-if="item.label">{{ item.label }}</div>
           </div>
-          <div class="label" v-if="item.label">{{ item.label }}</div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
 
-    <!--广告位-->
-    <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
-      <a :href="cardDetail.bannerConfig.href" target="_blank">
-        <img :src="cardDetail.bannerConfig.src" />
-      </a>
     </div>
 
-    <!--立即使用-->
-    <div class="card-detail-btn">
-      <div class="info">
-        <a :href="useBtnHref" target="_blank">
-          <zButton :btnVal="cardDetail.useBtnVal"></zButton>
+
+    <div class="footer">
+
+      <!--广告位-->
+      <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
+        <a :href="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.href : cardDetail.bannerConfig.href" target="_blank">
+          <img :src="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
         </a>
       </div>
+
+      <!--立即使用-->
+      <div class="card-detail-btn">
+        <div class="info">
+          <a :href="useBtnHref" target="_blank">
+            <zButton :btnVal="cardDetail.useBtnVal"></zButton>
+          </a>
+        </div>
+      </div>
+
     </div>
 
     <!--领卡成功-->
@@ -64,14 +81,15 @@
   import Card from '../components/Card/Card.vue'
   import zButton from '../components/Button/Button.vue'
   import MessageBox from '../components/MessageBox/index'
+  import NoticeBar from '../components/Notice/Notice.vue'
   import { checkNull, checkCardStatus, showToast, jsLink } from '../utils/public'
-  import { getCardInfo, applyCardClose } from '../utils/http'
+  import { getCardInfo, applyCardClose, getAlipayMon } from '../utils/http'
 
   const { onWhite, whiteList, linkOldUrl } = global.threeConfig.global
   const { busCode } = global.threeConfig.alipayCardInfo
 
   export default {
-    components: { Card, zButton },
+    components: { Card, zButton, NoticeBar },
     computed: {
       card () { return global.threeConfig.card },
       cardDetail () { return global.threeConfig.cardDetail },
@@ -81,7 +99,11 @@
       return {
         visible: false, // 容器页
         openCardSuccessVisible: false, // 是否显示第一领卡成功弹窗
-        useBtnHref: '' // 乘车码链接
+        useBtnHref: '', // 乘车码链接
+        alipayMomBanner: { // 阿里妈妈接入信息
+          href: null,
+          src: null
+        }
       }
     },
     mounted () {
@@ -90,16 +112,31 @@
     methods: {
       onReady () {
         const { userId, successUrl } = this.$route.query
+
         // 没有用户信息去授权
         if (checkNull(sessionStorage.getItem('userId')) === 0 && userId === undefined) {
           this.$router.replace('/Auth?redirectUrl=cardDetail')
           return false
         }
+
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
+
         // 写入乘车码链接
         if (successUrl) this.useBtnHref = successUrl
         else this.useBtnHref = busCode
+
+        // 接入阿里妈妈
+        if (this.cardDetail.bannerConfig.isAlipayMon) {
+          getAlipayMon({
+            adPid: this.cardDetail.bannerConfig.adPid,
+            cb: (href, src) => {
+              this.alipayMomBanner.href = href
+              this.alipayMomBanner.src = src
+            }
+          })
+        }
+
         // 是否打开了灰度
         if (onWhite) this.openWhite()
         else this.commonReady()
@@ -113,7 +150,7 @@
         else window.location.replace(linkOldUrl.other)
       },
       commonReady () { // 默认渲染
-        const { buscode, successUrl } = this.$route.query
+        const { successUrl } = this.$route.query
         getCardInfo({
           Vue: this,
           cb: data => {
@@ -129,6 +166,7 @@
         const { link, urlType } = item
         const { alipayCardStatus } = this.cardInfo
         const { okVal, cancelVal, content, image } = this.cardDetail.cardCloseConfirm
+
         // 充值
         if (link === '/recharge') {
           if (checkCardStatus(alipayCardStatus) === 'no') {
@@ -136,6 +174,7 @@
             return false
           }
         }
+
         // 退卡
         if (link === '/cardClose') {
           if (checkCardStatus(alipayCardStatus) === 'yes') {
@@ -152,12 +191,13 @@
           }
           return false
         }
+
         // 其他
         urlType ? jsLink('href', link) : this.$router.push(link)
       },
       bindUseSuccessAlertBtn (val) {
         this.openCardSuccessVisible = false
-        val === '立即充值' ? this.$router.push('/recharge') : jsLink('href', this.$router.query.successUrl)
+        val === '立即充值' ? this.$router.push('/recharge') : jsLink('href', decodeURIComponent(this.$route.query.successUrl) ? decodeURIComponent(this.$route.query.successUrl) : busCode)
       }
     }
   }

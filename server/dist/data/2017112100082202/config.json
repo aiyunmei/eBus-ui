@@ -4,9 +4,9 @@
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
-    "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider",
-    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
-    "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
+    "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider/xian",
+    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider/xian",
+    "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider/xian"
   },
   "alipayCardInfo": {
     "appId": "2017112100082202",
@@ -25,13 +25,16 @@
     "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D610100%26cardType%3DS0610100%26source%XIAN_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
-    "storeSign": ""
+    "storeSign": "",
+    "postNotification": {
+      "name": "com.alipay.mobile.offlinepay.RECEIVE_CARD_CALLBACK"
+    }
   },
   "global": {
-    "cardName": "西安地铁电子卡",
+    "cardName": "西安电子地铁卡",
     "cityName": "西安",
     "cityCode": "610100",
-    "showUrl": false,
+    "showUrl": true,
     "onWhite": false,
     "whiteList": [],
     "linkOldUrl": {
@@ -54,7 +57,7 @@
     },
     "popupList": [
       {
-        "name": "《西安地铁电子卡协议》",
+        "name": "《西安电子地铁卡协议》",
         "href": "https://xiansubway.i-xiaoma.com.cn/2017112100082202#/protocol"
       },
       {
@@ -69,14 +72,21 @@
   "protocol": {
     "company": "西安地铁有限",
     "companyShort": "西安地铁",
-    "telephone": "xxxxx"
+    "telephone": "12345"
   },
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
+    "noticeConfig": {
+      "visible": true,
+      "content": "西安电子地铁卡,欢迎您!",
+      "width": "100%"
+    },
     "bannerConfig": {
       "visible": false,
+      "isAlipayMon": false,
       "href": "http://baidu.com",
-      "src": "../../static/img/banner2.png"
+      "src": "../../static/img/banner2.png",
+      "adPid": "213213123123"
     },
     "useBtnVal": "立即使用",
     "cardCloseConfirm": {
@@ -88,26 +98,32 @@
     "successAlertConfig": {
       "imgUrl": "../../static/img/card_detail_alert.png",
       "leftBtnVal": "查看卡片",
-      "rightBtnVal": "立即充值"
+      "rightBtnVal": "立即使用"
     },
     "menuOptions": [
       {
         "label": "余额查询",
         "link": "/balance",
-        "visible": true,
-        "icon": "../../static/img/balance_icon.png"
+        "icon": "../../static/img/balance_icon.png",
+        "visible": true
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "visible": true,
-        "icon": "../../static/img/recharge_icon.png"
+        "icon": "../../static/img/recharge_icon.png",
+        "visible": true
       },
       {
         "label": "自动充值",
         "link": "/rechargeAuto",
-        "visible": true,
-        "icon": ""
+        "icon": "../../static/img/rechargeAuto_icon.png",
+        "visible": true
+      },
+      {
+        "label": "用户反馈",
+        "link": "/userFeedBack",
+        "icon": "../../static/img/userFeedBack_icon.png",
+        "visible": true
       },
       {
         "label": "乘车记录",
@@ -118,12 +134,12 @@
       {
         "label": "开通线路",
         "link": "/openLine",
-        "icon": "../../static/img/trafficSearch_icon.png"
+        "icon": "../../static/img/openLine_icon.png"
       },
       {
         "label": "使用帮助",
         "link": "/help",
-        "icon": "../../static/img/userFeedBack_icon.png"
+        "icon": "../../static/img/help_icon.png"
       },
       {
         "label": "退卡申请",
@@ -194,7 +210,32 @@
   "payResult": {
     "alipayLogoImage": "https://t.alipayobjects.com/images/rmsweb/T1B8lgXi4iXXXXXXXX.png"
   },
-  "help": "[{\"question\":\"现在已开通线路支持优惠换乘吗？\",\"answer\":\"支付宝扫码换乘优惠预计在8月份正式推出，具体发布时间请以官方公告为准。\"},{\"question\":\"现在使用武汉电子公交卡乘车有优惠吗？\",\"answer\":\"使用武汉电子公交卡乘车现享8折优惠！后续更多优惠活动持续推出。\"},{\"question\":\"武汉现在已开通刷码乘车的线路有哪些？\",\"answer\":\"<a href='#/openLine'><font color='red'>武汉已开通线路</font></a>,未来会陆续开放其他公交线路。\"},{\"question\":\"武汉电子公交卡都有哪些智能服务和功能？\",\"answer\":\"武汉电子公交卡系全国首发，包含了公交付款，线路查询，收藏线路，线路提醒，乘车记录等众多功能。\"},{\"question\":\"如何使用武汉电子公交卡刷码乘车？\",\"answer\":\"首次使用，打开支付宝搜索公交付款，或搜索“武汉公交”生活号，领取“武汉电子公交卡”即可进行刷码付款；再次使用直接从支付宝首页“卡包”选择“武汉电子公交卡”进行刷码乘车。\"},{\"question\":\"BRT线如何使用武汉电子公交卡刷码乘车？\",\"answer\":\"进入BRT站，刷码专用进站通道，打开支付宝公交付款，刷码进站即可。公交线路上车处找到刷码机具，刷码乘车即可。\"},{\"question\":\"武汉电子公交卡是如何刷码付款的？\",\"answer\":\"刷码上车后，稍后会从您的支付宝账户扣款，资金渠道以您的支付设置为准。\"},{\"question\":\"反馈建议通道有吗？\",\"answer\":\"为更好为武汉市民提供服务，您有任何反馈和建议，都可以通过信息中心客服热线：027-84510000反馈或QQ群523143023咨询,反馈时间：周一到周五，早上9:00到下午5:00。\"}]",
+  "help": [
+    {
+      "question": "现在使用西安电子地铁卡乘车有优惠吗？",
+      "answer": "使用西安电子地铁卡乘车暂时不支持优惠。优惠活动预计近期退出，具体发布时间请以官方公告为准。"
+    },
+    {
+      "question": "西安地铁现在已开通刷码乘车的线路有哪些？",
+      "answer": "<a href='#/openLine'><font color='red'>西安地铁已开通路线</font></a>,每个站点至少已安装一进一出刷码过闸机。"
+    },
+    {
+      "question": "西安电子地铁卡都有哪些智能服务和功能？",
+      "answer": "西安电子地铁卡系全国首发支持扫码过闸，包含了地铁付款，票价查询，运行时间，紧急通知，乘车记录等众多功能。"
+    },
+    {
+      "question": "如何使用西安电子地铁卡刷码乘车？",
+      "answer": "首次使用，方法一：下载“西安地铁”APP注册登录实名认证后即可使用，或者打开支付宝，选择“城市服务”，点击“西安电子地铁卡”，按照领取步骤就可以领取到西安电子地铁卡拉！"
+    },
+    {
+      "question": "西安电子地铁卡是如何刷码付款的？",
+      "answer": "刷码进站后，出站时也通过刷码出站，稍后会从您的支付宝账户扣款，资金渠道以您的支付设置为准。"
+    },
+    {
+      "question": "反馈建议通道有吗？",
+      "answer": "为更好为西安市民提供服务，您有任何反馈和建议，都可以通过市政热线：12345反馈，反馈时间：周一到周五，早上9:00到下午5:00。"
+    }
+  ],
   "openLine": {
     "searchConfig": {
       "placeholder": "请输入您想查询的开通线路名称",
@@ -203,9 +244,19 @@
     },
     "openLineOptions": [
       {
-        "txt": "1路",
-        "start": "建设大道双墩",
-        "end": "芦沟桥路"
+        "txt": "1号线",
+        "start": "后卫寨",
+        "end": "纺织城"
+      },
+      {
+        "txt": "2号线",
+        "start": "北客站",
+        "end": "韦曲南"
+      },
+      {
+        "txt": "3号线",
+        "start": "鱼化寨",
+        "end": "保税区"
       }
     ]
   }

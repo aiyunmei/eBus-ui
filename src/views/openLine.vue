@@ -6,9 +6,7 @@
         <i class="fa fa-map-marker"></i>
         {{ cityName }}
       </div>
-      <div class="item r">
-        <input class="input" type="text" :placeholder="openLine.searchConfig.placeholder" v-model="searchData" @input="bindSearchDataChange" />
-      </div>
+      <input class="item r" type="text" :placeholder="openLine.searchConfig.placeholder" v-model="searchData" @input="bindSearchDataChange" />
     </div>
 
     <div class="open-line-body">

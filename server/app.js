@@ -4,6 +4,8 @@ const app = express()
 
 const getCityData = require('./utils/getCityData/index')
 
+const port = 3001
+
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
@@ -43,6 +45,6 @@ app.get('/:appId/:path', function (req, res) {
   })
 })
 
-app.listen(8090, function () {
-  console.log('server dev success port 8090')
+app.listen(port, function () {
+  console.log('server dev success')
 })

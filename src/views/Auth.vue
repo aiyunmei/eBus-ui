@@ -17,12 +17,15 @@
     },
     methods: {
       onReady () {
-        const { auth_code, redirectUrl } = this.$route.query
+        const { auth_code, redirectUrl, insPassBack } = this.$route.query
+
+        // 有app跳转参数保存
+        if (insPassBack) localStorage.setItem('insPassBack', insPassBack)
 
         if (auth_code === undefined) this.noAuthCode(redirectUrl)
         else this.inAuthCode(auth_code, redirectUrl)
       },
-      noAuthCode (redirectUrl) {
+      noAuthCode () {
         // 进入支付宝授权获取auth_code
         jsLink('replace', `${alipayAuthBaseUrl}?app_id=${appId}&scope=${scope}&redirect_uri=${encodeURIComponent(window.location.href)}`)
       },

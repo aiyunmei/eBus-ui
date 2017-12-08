@@ -125,7 +125,7 @@
   .z-message-box-footer{
     width: 100%;
     height: 1rem;
-    border-top: 1px solid #aaa;
+    border-top: 1px solid rgba(96, 96, 96, 0.3);
   }
   .z-message-box-footer .z-message-box-footer-btn{
     width: 50%;
@@ -136,7 +136,7 @@
     padding: 0;
     outline: none;
     height: 100%;
-    line-height: 100%;
+    line-height: 1rem;
     font-size: 0.42rem;
   }
   .z-message-box-footer .z-message-box-right-btn{
@@ -157,7 +157,7 @@
     display: block;
     width: 1px;
     height: 1rem;
-    background: #aaa;
+    background: rgba(96, 96, 96, 0.3);
     bottom: 0;
     left: 50%;
   }
