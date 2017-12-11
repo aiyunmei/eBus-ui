@@ -11,7 +11,7 @@
         <h3>{{ cardInfo.cashBalance + rechargeUnitName }}</h3>
       </div>
       <div class="item flex">
-        <Tag val="乘车8折" type="warning" size="mini" class="item-tag"></Tag>
+        <Tag val="乘车8折" type="warning" class="item-tag"></Tag>
         <span>余额用于支付车费</span>
       </div>
     </div>

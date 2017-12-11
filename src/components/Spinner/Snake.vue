@@ -59,8 +59,8 @@
     animation: snake-rotate 0.8s infinite linear;
     border: 2px solid transparent;
     border-radius: 50%;
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 1rem;
+    height: 1rem;
   }
 
   @keyframes snake-rotate {

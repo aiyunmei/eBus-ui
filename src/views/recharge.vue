@@ -6,7 +6,7 @@
         <span>卡号</span>
         <span>{{ cardInfo.alipayCardNo }}</span>
       </div>
-      <Tag val="乘车8折" size="mini" type="warning" class="item tips"></Tag>
+      <Tag val="乘车8折" type="warning" class="item tips"></Tag>
     </div>
 
     <div class="recharge-item">请选择充值金额</div>

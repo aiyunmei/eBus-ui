@@ -1,11 +1,14 @@
 <template>
   <div class="card-detail" v-if="visible">
 
-    <NoticeBar
-      v-if="cardDetail.noticeConfig.visible"
-      :content="cardDetail.noticeConfig.content"
-      :width="cardDetail.noticeConfig.width">
-    </NoticeBar>
+    <!--公告-->
+    <div class="card-detail-notice">
+      <NoticeBar
+        v-if="cardDetail.noticeConfig.visible"
+        :content="cardDetail.noticeConfig.content"
+        :width="cardDetail.noticeConfig.width">
+      </NoticeBar>
+    </div>
 
     <!--卡片-->
     <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">

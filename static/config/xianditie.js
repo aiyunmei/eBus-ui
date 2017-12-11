@@ -162,7 +162,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "../../static/img/recharge_list_body_tip.png",
           "label": "立减25",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -171,7 +171,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "../../static/img/recharge_list_body_tip.png",
           "label": "立减25",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -180,7 +180,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "../../static/img/recharge_list_body_tip.png",
           "label": "享8.6折",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -189,7 +189,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "../../static/img/recharge_list_body_tip.png",
           "label": "享8折",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -198,7 +198,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "../../static/img/recharge_list_body_tip.png",
           "label": "惠",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       }
     ],
