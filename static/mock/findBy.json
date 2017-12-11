@@ -9,9 +9,9 @@
     "checkEndTime": 1502361975720,
     "appId": "2017072107839707",
     "alipayCardData": "1",
-    "alipayCardStatus": 5,
+    "alipayCardStatus": 8,
     "userId": "2088302427608644",
-    "cashBalance": 2500
+    "cashBalance": -2500
   },
   "success": true
 }

@@ -1,4 +1,4 @@
-window.threeConfig = {
+{
   "api": {
     "baseUrl": "https://zf.wuhanbus.com:8090/2017022705927164",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
@@ -106,12 +106,12 @@ window.threeConfig = {
       {
         "label": "余额查询",
         "link": "/balance",
-        "icon": "../../static/img/balance_icon.png",
+        "icon": "../../static/img/balance_icon.png"
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "icon": "../../static/img/recharge_icon.png",
+        "icon": "../../static/img/recharge_icon.png"
       },
       {
         "label": "自动充值",

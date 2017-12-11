@@ -52,7 +52,7 @@
 
 <script>
   import zButton from '../components/Button/Button.vue'
-  import { checkNull, checkCardCloseTime, checkBalance, formatRMBYuan, formatRMBYuanDecimal, showToast } from '../utils/public'
+  import { checkNull, checkCardCloseTime, checkBalance, showToast } from '../utils/public'
   import { getCardInfo, cancelCardClose, revokeCardClose, setRefund, showAlipayStore } from '../utils/http'
   import { alipayExitApp } from '../utils/alipayJsApi'
 

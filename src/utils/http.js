@@ -3,7 +3,7 @@
 * */
 import api from './api'
 import request from './request'
-import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuan, showToast } from './public'
+import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast } from './public'
 import { codeError } from './helper'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo
@@ -98,7 +98,7 @@ export async function getCardInfo ({ Vue, cb }) {
     dispatch('setAlipayCardInfo', { item: 'alipayCardData', data: checkCardData(alipayCardData) })
     dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: alipayCardNo })
     dispatch('setAlipayCardInfo', { item: 'alipayCardStatus', data: alipayCardStatus })
-    dispatch('setAlipayCardInfo', { item: 'cashBalance', data: checkNull(cashBalance) === 0 ? 0 : formatRMBYuan(cashBalance) })
+    dispatch('setAlipayCardInfo', { item: 'cashBalance', data: checkNull(cashBalance) === 0 ? '0.00' : formatRMBYuanDecimal(cashBalance) })
 
     cb(data)
   } else {

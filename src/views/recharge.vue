@@ -18,7 +18,7 @@
           <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
           <div class="tips"
                v-if="item.tipItem"
-               :style="{ backgroundImage: `url(${item.tipItem.imgUrl})`, width: item.tipItem.width ? item.tipItem.width : '1rem' }">
+               :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
             {{ item.tipItem.label }}
             </div>
         </div>
@@ -80,7 +80,7 @@
         const { userId } = this.$route.query
         // 没有用户信息去授权
         if (checkNull(sessionStorage.getItem('userId')) === 0 && userId === undefined) {
-          this.$router.replace('/Auth?redirectUrl=balance')
+          this.$router.replace('/Auth?redirectUrl=recharge')
           return false
         }
         // 外部进入先缓存uid
