@@ -4,9 +4,9 @@ window.threeConfig = {
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
-    "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider/xian",
-    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider/xian",
-    "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider/xian"
+    "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider",
+    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
+    "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
     "appId": "2017112100082202",

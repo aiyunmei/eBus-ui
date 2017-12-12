@@ -23,7 +23,7 @@ const { appId } = global.threeConfig.alipayCardInfo
 class Axios {
   constructor() {
     this.instance = axios.create({
-      timeout: 20 * 1000,
+      timeout: 30 * 1000,
       params: {
         isStressTest: false
       },
@@ -37,7 +37,7 @@ class Axios {
     return new Promise((resolve, reject) => {
       checkNull(isEncode) === 0 ? isEncode = false : isEncode
       Spinner.open()
-      this.instance.get(`${url}?async_timestamp=${async_timestamp}&app_id=${appId}`, { params: isEncode === false ? params : enCodeString(params) }).then(res => {
+      this.instance.get(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, { params: isEncode === false ? params : enCodeString(params) }).then(res => {
         Spinner.close()
         resolve(res.data)
       }).catch(err => {
@@ -52,7 +52,7 @@ class Axios {
     return new Promise((resolve, reject) => {
       checkNull(isEncode) === 0 ? isEncode = false : isEncode
       Spinner.open()
-      this.instance.post(`${url}?async_timestamp=${async_timestamp}&app_id=${appId}`, qs.stringify(isEncode === false ? params : enCodeString(params))).then(res => {
+      this.instance.post(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, qs.stringify(isEncode === false ? params : enCodeString(params))).then(res => {
         Spinner.close()
         resolve(res.data)
       }).catch(err => {
