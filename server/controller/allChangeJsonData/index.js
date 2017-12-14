@@ -6,11 +6,16 @@ const http = require('http')
 const fs = require('fs')
 const qs = require('querystring')
 
+const port = '8089' // 西安地铁同步全局数据
+// const port = '8081' // 武汉同步全局数据
+// const allJsonName = 'allChangeJsonDataUrlList.json' // 武汉ip 配置
+const allJsonName = 'allChangeJsonDataXianSubWay.json' // 西安地铁 ip配置
+
 exports.allChangeJsonData = (appId, jsonName, content, callback) => {
   'use strict'
   let AjaxUrlList
   try {
-    AjaxUrlList = JSON.parse(fs.readFileSync('./utils/config/allChangeJsonDataUrlList.json', 'utf-8'))
+    AjaxUrlList = JSON.parse(fs.readFileSync(`./utils/config/${allJsonName}`, 'utf-8'))
   } catch (e) {
     if (e) throw e
     callback(null, { msg: {code: '90001', message: 'http url 配置文件失败'} })
@@ -29,7 +34,7 @@ function doHttp (host, data, cb) {
   'use strict'
   const config = {
     host: host,
-    port: '8081',
+    port: port,
     path: '/changeJsonData',
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

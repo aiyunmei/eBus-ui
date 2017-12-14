@@ -132,8 +132,9 @@ window.threeConfig = {
         "icon": "../../static/img/trafficLog_icon.png"
       },
       {
-        "label": "开通线路",
-        "link": "/openLine",
+        "label": "地铁线路",
+        "link": "http://m.amap.com/subway/#city=6101&lnglat=113.334825,23.096432",
+        "urlType": "outside",
         "icon": "../../static/img/openLine_icon.png"
       },
       {
