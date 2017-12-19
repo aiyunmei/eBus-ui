@@ -15,19 +15,14 @@
       <div class="info">
         <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
       </div>
-      <!--wave-->
       <img src="../../static/img/wave_bg.png" class="wave" />
     </div>
 
     <div class="body">
-
-
-      <!--卡号-->
       <div class="card-detail-card-no">
         <img src="../../static/img/card_no_icon.png" class="icon" />
         <span>卡号 {{ cardInfo.alipayCardNo }}</span>
       </div>
-     <!--菜单-->
       <ul class="card-detail-menu">
         <li class="menu-item" v-for="(item, index) in cardDetail.menuOptions" v-if="!item.visible" @click="bindMenuList(item)">
           <div class="info">
@@ -38,8 +33,8 @@
           </div>
         </li>
       </ul>
-
     </div>
+
 
 
     <div class="footer">
@@ -51,7 +46,6 @@
         </a>
       </div>
 
-      <!--立即使用-->
       <div class="card-detail-btn">
         <div class="info">
           <a :href="useBtnHref" target="_blank">
@@ -59,7 +53,6 @@
           </a>
         </div>
       </div>
-
     </div>
 
     <!--领卡成功-->

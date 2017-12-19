@@ -1,6 +1,8 @@
 @import './const.styl'
 
 .card-detail
+  height 100%
+  background #fff
   /* 公告 */
   .card-detail-notice
     width 100%
@@ -15,6 +17,7 @@
     margin 0 auto
     position relative
     padding 1.2rem 1rem
+    background-size 100% 100%
     .wave
       width 100%
       position absolute
@@ -22,13 +25,12 @@
       bottom -0.8rem
   .body
     width 100%
-    /* 波浪 */
     /* 卡号 */
     .card-detail-card-no
       width 92%
       margin 0 auto
       position relative
-      padding 0.1rem 0
+      padding 0.1rem 0 0.6rem 0
       border-bottom 1px solid #e0e0e0
       display flex
       flex-direction row
@@ -68,13 +70,15 @@
     position fixed
     left 0
     bottom 0
+    /* banner */
     .card-detail-banner
       width 100%
+      height 4rem
       padding-bottom 0.3rem
       img
         width 92%
-        height 4rem
         margin 0 auto
+        height 100%
         display block
         border-radius 0.1rem
     /* 底部按钮 */

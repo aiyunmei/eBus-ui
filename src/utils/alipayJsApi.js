@@ -58,7 +58,7 @@ export function alipayPushWindow (url) {
 /*
 * 支付宝app跳转
 * */
-export function alipayPostNotification ({ name, insPassBack, cardType, result }) {
+export function alipayPostNotification ({ name, insPassBack, cardType, result, cb }) {
   alipayOnReady(() => {
     AlipayJSBridge.call('postNotification', {
       name: name,
@@ -67,6 +67,8 @@ export function alipayPostNotification ({ name, insPassBack, cardType, result })
         cardType: cardType,
         result: result
       }
+    }, (e) => { // 回调获取当前信息
+      cb(e)
     })
   })
 }

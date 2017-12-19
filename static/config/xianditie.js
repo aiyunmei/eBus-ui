@@ -77,7 +77,7 @@ window.threeConfig = {
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
     "noticeConfig": {
-      "visible": true,
+      "visible": false,
       "content": "西安电子地铁卡,欢迎您!",
       "width": "100%"
     },

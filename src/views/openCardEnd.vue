@@ -38,7 +38,7 @@
     },
     mounted () {
       this.onReady()
-      // this.openCard('2088002177372531')
+      // this.openCard(sessionStorage.getItem('userId'))
     },
     methods: {
       onReady () {
@@ -66,17 +66,20 @@
           userId: uid,
           cb: (msg, data) => {
             if (msg && msg.code === '20000') {
-              // 有参数执行 需要app跳转执行
-              if (localStorage.getItem('insPassBack')) {
-                this.linkToApp('success')
-                localStorage.removeItem('insPassBack')
-                return false
-              }
-              // 正常流程
               const { cardNo } = data
-              this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
               const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
-              this.$router.replace('/cardDetail?alipayCardNo=' + cardNo + '&successUrl=' + encodeURIComponent(alipayTransitCardEntry + toHash(getAlipayBusCodeParams)))
+              this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
+              // 有参数执行 需要app跳转执行
+              if (localStorage.getItem('insPassBack')) { // 有参数
+                this.linkToApp('success', (e) => {})
+                localStorage.removeItem('insPassBack')
+                // 没有执行走正常流程
+                setTimeout(() => {
+                  this.normalFlow(cardNo, getAlipayBusCodeParams)
+                }, 3000)
+              } else { // 无参数
+                this.normalFlow(cardNo, getAlipayBusCodeParams)
+              }
             } else {
               this.visible = true
               this.tryAgainVisible = true
@@ -84,12 +87,16 @@
           }
         })
       },
-      linkToApp (result) {
+      normalFlow (cardNo, params) { // 正常流程
+        this.$router.replace('/cardDetail?alipayCardNo=' + cardNo + '&successUrl=' + encodeURIComponent(alipayTransitCardEntry + toHash(params)))
+      },
+      linkToApp (result, callback) {
         alipayPostNotification({
           name: postNotification.name,
-          isPassBack: localStorage.getItem('insPassBack'),
+          insPassBack: localStorage.getItem('insPassBack'),
           cardType: cardType,
           result: result,
+          cb: e => { callback(e) }
         })
       }
     }
