@@ -73,7 +73,6 @@
               this.normalFlow(cardNo, getAlipayBusCodeParams)
             } else {
               this.visible = true
-              this.tryAgainVisible = true
             }
           }
         })

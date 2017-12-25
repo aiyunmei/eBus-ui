@@ -13,7 +13,7 @@ const TITLE_LIST = {
   rechargeAuto: '自动充值',
   balance: '余额查询',
   cardClose: '退卡申请',
-  protocol: `${cardName}协议`,
+  protocol: `${cardName}用户协议`,
   other: cardName
 }
 
