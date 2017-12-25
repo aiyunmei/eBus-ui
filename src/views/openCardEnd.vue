@@ -20,9 +20,9 @@
   import zButton from '../components/Button/Button.vue'
   import { toHash } from '../utils/public'
   import { getCardComponentUid, getEnjoyCardComponent } from '../utils/http'
-  import { alipayExitApp, alipayPostNotification } from '../utils/alipayJsApi'
+  import { alipayExitApp } from '../utils/alipayJsApi'
 
-  const { cardType, scene, subScene, openCardAction, openCardSource, postNotification } = global.threeConfig.alipayCardInfo
+  const { cardType, scene, subScene, openCardAction, openCardSource } = global.threeConfig.alipayCardInfo
   const { alipayTransitCardEntry } = global.threeConfig.api
 
   export default {
@@ -70,16 +70,7 @@
               const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
               this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
               // 有参数执行 需要app跳转执行
-              if (localStorage.getItem('insPassBack')) { // 有参数
-                this.linkToApp('success', (e) => {})
-                localStorage.removeItem('insPassBack')
-                // 没有执行走正常流程
-                setTimeout(() => {
-                  this.normalFlow(cardNo, getAlipayBusCodeParams)
-                }, 3000)
-              } else { // 无参数
-                this.normalFlow(cardNo, getAlipayBusCodeParams)
-              }
+              this.normalFlow(cardNo, getAlipayBusCodeParams)
             } else {
               this.visible = true
               this.tryAgainVisible = true
@@ -89,15 +80,6 @@
       },
       normalFlow (cardNo, params) { // 正常流程
         this.$router.replace('/cardDetail?alipayCardNo=' + cardNo + '&successUrl=' + encodeURIComponent(alipayTransitCardEntry + toHash(params)))
-      },
-      linkToApp (result, callback) {
-        alipayPostNotification({
-          name: postNotification.name,
-          insPassBack: localStorage.getItem('insPassBack'),
-          cardType: cardType,
-          result: result,
-          cb: e => { callback(e) }
-        })
       }
     }
   }

@@ -17,10 +17,7 @@
     },
     methods: {
       onReady () {
-        const { auth_code, redirectUrl, insPassBack } = this.$route.query
-
-        // 有app跳转参数保存
-        if (insPassBack) localStorage.setItem('insPassBack', insPassBack)
+        const { auth_code, redirectUrl } = this.$route.query
 
         if (auth_code === undefined) this.noAuthCode(redirectUrl)
         else this.inAuthCode(auth_code, redirectUrl)
