@@ -130,7 +130,7 @@
       },
       {
         "label": "开通线路",
-        "link": "/openCard",
+        "link": "/openLine",
         "icon": "../../static/img/openLine_icon.png"
       },
       {

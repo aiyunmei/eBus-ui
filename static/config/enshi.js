@@ -1,4 +1,4 @@
-{
+window.threeConfig = {
   "api": {
     "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
@@ -130,7 +130,7 @@
       },
       {
         "label": "开通线路",
-        "link": "/openLine",
+        "link": "/openCard",
         "icon": "../../static/img/openLine_icon.png"
       },
       {
