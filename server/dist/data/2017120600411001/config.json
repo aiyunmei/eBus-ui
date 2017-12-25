@@ -40,7 +40,7 @@
     }
   },
   "card": {
-    "image": "../../static/img/enshi_card.png"
+    "image": "../../static/img/enshi_card.jpg"
   },
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",
