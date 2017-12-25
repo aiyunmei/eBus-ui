@@ -4,7 +4,7 @@ const app = express()
 
 const getCityData = require('./utils/getCityData/index')
 
-const port = 3000
+const port = 3001
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))

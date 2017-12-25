@@ -10,7 +10,7 @@ const getMenuData = require('./controller/getMenu/index')
 const back = require('./controller/back/index')
 const allChangeJson = require('./controller/allChangeJsonData')
 
-const port = 8089
+const port = 8081
 
 /*
  * 设置跨域访问

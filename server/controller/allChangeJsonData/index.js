@@ -6,10 +6,10 @@ const http = require('http')
 const fs = require('fs')
 const qs = require('querystring')
 
-const port = '8089' // 西安地铁同步全局数据
-// const port = '8081' // 武汉同步全局数据
-// const allJsonName = 'allChangeJsonDataUrlList.json' // 武汉ip 配置
-const allJsonName = 'allChangeJsonDataXianSubWay.json' // 西安地铁 ip配置
+// const port = '8089' // 西安地铁同步全局数据
+const port = '8081' // 武汉同步全局数据
+const allJsonName = 'allChangeJsonDataUrlList.json' // 武汉ip 配置
+// const allJsonName = 'allChangeJsonDataXianSubWay.json' // 西安地铁 ip配置
 
 exports.allChangeJsonData = (appId, jsonName, content, callback) => {
   'use strict'
