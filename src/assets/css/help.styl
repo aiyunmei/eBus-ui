@@ -10,20 +10,34 @@
       color #333333
       font-weight 700
       font-size large_font_size
-      position relative
       padding-right 0.66rem
+      position relative
+      display flex
+      flex-direction row
+      justify-content space-between
       .arrow
-        font-size large_font_size
         position absolute
-        top 0
         right 0
-        width 0.66rem
+        top 2%
+        font-size large_font_size
         transition all .3s
     .answer
       color #666
       font-size normal_font_size
       padding-top 0.3rem
+      display flex
+      flex-direction row
+      justify-content flex-start
+      span
+        color #63bc56
+        width 8%
+        overflow hidden
+      .answer-item
+        width 92%
+        overflow hidden
   .open
+    .question
+      color #108ee9
     .arrow
       transform rotate(180deg)
 
