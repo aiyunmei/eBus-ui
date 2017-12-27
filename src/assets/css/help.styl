@@ -10,15 +10,15 @@
       color #333333
       font-weight 700
       font-size large_font_size
-      padding-right 0.66rem
       position relative
       display flex
       flex-direction row
       justify-content space-between
+      span
+        white-space nowrap
+        text-overflow ellipsis
+        overflow hidden
       .arrow
-        position absolute
-        right 0
-        top 2%
         font-size large_font_size
         transition all .3s
     .answer
