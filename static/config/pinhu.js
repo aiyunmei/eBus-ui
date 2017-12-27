@@ -1,6 +1,6 @@
-{
+window.threeConfig = {
   "api": {
-    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017102409485516",
+    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017102409492235",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
@@ -9,28 +9,28 @@
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2017102409485516",
+    "appId": "2017102409492235",
     "scope": "auth_base",
     "sign": "RSA",
-    "cardType": "T0330600",
+    "cardType": "T0330482",
     "bizType": "MEMBER_CARD",
-    "templateId": "2017122510325359224336243",
-    "subScene": "330600",
+    "templateId": "2017122510450100208932455",
+    "subScene": "330400",
     "scene": "TRANSIT",
     "applyCardAction": "sign",
     "openCardAction": "use",
-    "applyCardSource": "SHAOXING_BUS_APPLY",
-    "openCardSource": "SHAOXING_CARD_USE",
-    "useCardSource": "SHAOXING_BUS_USE",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D330600%26cardType%3DT0330600%26source%SHAOXING_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
+    "applyCardSource": "PINGHU_BUS_APPLY",
+    "openCardSource": "PINGHU_CARD_USE",
+    "useCardSource": "PINGHU_BUS_USE",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D330600%26cardType%3DT0330482%26source%PINGHU_BUS_USEE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
     "storeSign": ""
   },
   "global": {
-    "cardName": "绍兴电子公交卡",
-    "cityName": "绍兴",
-    "cityCode": "330600",
+    "cardName": "平湖公交一卡通",
+    "cityName": "平湖",
+    "cityCode": "330400",
     "showUrl": true,
     "onWhite": false,
     "whiteList": [],
@@ -40,12 +40,12 @@
     }
   },
   "card": {
-    "image": "../../static/img/shaoxing_card.jpg"
+    "image": "../../static/img/pinhu_card.png"
   },
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017102409485516&template_id=2017122510325359224336243&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2017102409485516/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017102409492235&template_id=2017122510450100208932455&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2017102409492235/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
@@ -54,8 +54,8 @@
     },
     "popupList": [
       {
-        "name": "《绍兴电子公交卡用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017102409485516#/protocol"
+        "name": "《平湖公交一卡通用户协议》",
+        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017102409492235#/protocol"
       },
       {
         "name": "《芝麻服务及支付宝公交付款协议》",
@@ -67,15 +67,15 @@
     "busyImage": "../../static/img/open_card_end_busy.png"
   },
   "protocol": {
-    "company": "绍兴市城市公交一卡通有限责任",
-    "companyShort": "绍兴一卡通",
-    "telephone": "0575-88205670"
+    "company": "平湖市开元运务有限",
+    "companyShort": "开元运务",
+    "telephone": "0573-85129333"
   },
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
     "noticeConfig": {
       "visible": false,
-      "content": "绍兴电子公交卡,欢迎您!",
+      "content": "平湖公交一卡通,欢迎您!",
       "width": "100%"
     },
     "bannerConfig": {
@@ -209,48 +209,48 @@
   },
   "help": [
     {
-      "question": "绍兴电子公交卡是什么？",
-      "answer": "绍兴电子公交卡是绍兴公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“绍兴电子公交卡”，乘车时只要打开支付宝的绍兴公交刷码页面，即可刷码乘车。"
+      "question": "平湖公交一卡通是什么？",
+      "answer": "平湖公交一卡通是平湖公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“平湖公交一卡通”，乘车时只要打开支付宝的平湖公交刷码页面，即可刷码乘车。"
     },
     {
-      "question": "如何领取“绍兴电子公交卡”？",
-      "answer": "（1）打开支付宝——选择【付款】——点击底部【乘车码】——按照领卡提示，即可领取您专属的“绍兴电子公交卡”（2）或在支付宝内搜素“绍兴公交”生活号，按提示领取专属公交卡（此方式待定）"
+      "question": "如何领取“平湖公交一卡通”？",
+      "answer": "（1）打开支付宝——选择【付款】——点击底部【乘车码】——按照领卡提示，即可领取您专属的“平湖公交一卡通”（2）或在支付宝内搜素“平湖公交”生活号，按提示领取专属公交卡"
     },
     {
       "question": "领卡后如何使用？",
       "answer": "打开支付宝——选择【付款】——点击底部【乘车码】——将乘车码对准公交车上扫码窗口——听到【扫码成功】语音提示即可"
     },
     {
-      "question": "“绍兴电子公交卡”是如何收费的？乘车票价是多少？",
-      "answer": "“绍兴电子公交卡”领取电子公交卡免费，乘车按照车费收取“绍兴电子公交卡”先开通的线路仅为试点线路，目前每次刷码按常规票价（投币票价）进行扣款；"
+      "question": "“平湖公交一卡通”是如何收费的？乘车票价是多少？",
+      "answer": "“平湖公交一卡通”领取电子公交卡免费，乘车按照车费收取“平湖公交一卡通”先开通的线路仅为试点线路，目前每次刷码按常规票价（投币票价）进行扣款；"
     },
     {
-      "question": "“绍兴电子公交卡”是否有换乘优惠？是否有乘车优惠？",
-      "answer": "目前，绍兴仅开通部分线路作为试运营线路，暂无乘车优惠。换乘优惠暂时未开通，尽请期待。"
+      "question": "“平湖公交一卡通”是否有换乘优惠？是否有乘车优惠？",
+      "answer": "目前，平湖仅开通部分线路作为试运营线路，暂无乘车优惠。换乘优惠暂时未开通，尽请期待。"
     },
     {
-      "question": "使用“绍兴电子公交卡”乘车发票怎么开？乘车记录有么？",
-      "answer": "目前，绍兴电子公交卡不支持乘车发票开具您可通过支付宝——【卡包】——【绍兴电子公交卡】——【使用记录】查询乘车记录"
+      "question": "使用“平湖公交一卡通”乘车发票怎么开？乘车记录有么？",
+      "answer": "目前，平湖公交一卡通不支持乘车发票开具您可通过支付宝——【卡包】——【平湖公交一卡通】——【使用记录】查询乘车记录"
     },
     {
       "question": "哪些线路可以使用支付宝乘车？其他线路什么时候可以上线？",
-      "answer": "您可通过支付宝——【卡包】——【绍兴电子公交卡】——【开通线路】查询已开通乘车刷码功能的公交线路其他线路的乘车刷码功能在逐步开通中"
+      "answer": "您可通过支付宝——【卡包】——【平湖公交一卡通】——【开通线路】查询已开通乘车刷码功能的公交线路其他线路的乘车刷码功能在逐步开通中"
     },
     {
       "question": "还有哪些城市可以使用支付宝乘车？",
       "answer": "您可通过支付宝内【乘车码】-【切换卡片】-【领取新卡】来查看现有开通公交卡（及乘车码）业务的城市"
     },
     {
-      "question": "“绍兴电子公交卡”可以充值实体公交卡么？",
-      "answer": "目前，“绍兴电子公交卡”仅支持乘车刷码功能，充值实体卡仍需要到公交充值点进行充值；"
+      "question": "“平湖公交一卡通”可以充值实体公交卡么？",
+      "answer": "目前，“平湖公交一卡通”仅支持乘车刷码功能，充值实体卡仍需要到公交充值点进行充值；"
     },
     {
-      "question": "为什么无法领取“绍兴电子公交卡”",
-      "answer": "（1）您在领卡时，同一用户只能领取一张公交卡，若该账号无法领取，请查看是否有其他支付宝账号领取“绍兴电子公交卡”（2）若依然无法领取“绍兴电子公交卡”，请查看是否有支付宝内芝麻信用是否达到550分，或在支付宝“花呗”是否有欠款，如信用分未达到550分或“花呗”“借呗”有违期情况均不可领取电子公交卡（3）如上述问题不存在仍不可领卡，请在支付宝内发起咨询或支付宝客服电话：95188或添加QQ群：523143023进行咨询"
+      "question": "为什么无法领取“平湖公交一卡通”",
+      "answer": "（1）您在领卡时，同一用户只能领取一张公交卡，若该账号无法领取，请查看是否有其他支付宝账号领取“平湖公交一卡通”（2）若依然无法领取“平湖公交一卡通”，请查看是否有支付宝内芝麻信用是否达到550分，或在支付宝“花呗”是否有欠款，如信用分未达到550分或“花呗”“借呗”有违期情（3）况均不可领取“一卡通”（4）如上述问题不存在仍不可领卡，请在支付宝内发起咨询或支付宝客服电话：95188或添加QQ群：523143023进行咨询"
     },
     {
       "question": "上车时不小心多刷了好几遍，扣款如何退回？",
-      "answer": "若您在乘车时对刷码金额有疑问，均可在支付宝内发起客服咨询，待客服审核该笔交易无误后，多余费用将会在工作日内返还到您账户。客服咨询流程：打开【绍兴电子公交卡】——点击【使用记录】——找到有疑问的乘车记录并打开【账单详情】——从【对此订单有疑问】发起咨询"
+      "answer": "若您在乘车时对刷码金额有疑问，均可在支付宝内发起客服咨询，待客服审核该笔交易无误后，多余费用将会在工作日内返还到您账户。客服咨询流程：打开【平湖公交一卡通】——点击【使用记录】——找到有疑问的乘车记录并打开【账单详情】——从【对此订单有疑问】发起咨询"
     },
     {
       "question": "使用乘车刷码刷码机没反应怎么办？",
@@ -262,7 +262,7 @@
     },
     {
       "question": "不想用了，如何退卡？",
-      "answer": "若用户不想使用线上公交卡后，乘车时不使用“绍兴电子公交卡”即可，该卡不会产生任何扣费情况。若用户希望直接退卡，则需通过【乘车码】——点击卡名【绍兴电子公交卡】——进入卡片详情页——【退卡申请】即可"
+      "answer": "若用户不想使用线上公交卡后，乘车时不使用“平湖公交一卡通”即可，该卡不会产生任何扣费情况。若用户希望直接退卡，则需通过【乘车码】——点击卡名【平湖公交一卡通】——进入卡片详情页——【退卡申请】即可"
     }
   ],
   "openLine": {
@@ -279,12 +279,12 @@
       },
       {
         "end": "迪荡始发站",
-        "start": "绍兴高铁北站",
+        "start": "平湖高铁北站",
         "txt": "15路"
       },
       {
         "end": "火车站",
-        "start": "绍兴高铁北站",
+        "start": "平湖高铁北站",
         "txt": "15路区间"
       },
       {
@@ -321,51 +321,6 @@
         "end": "快阁苑",
         "start": "浪港新村",
         "txt": "22路"
-      },
-      {
-        "end": "王坛",
-        "start": "柯桥客运中心",
-        "txt": "102路"
-      },
-      {
-        "end": "绍兴高铁北站",
-        "start": "服装市场",
-        "txt": "808路"
-      },
-      {
-        "end": "横山岭",
-        "start": "湖光桥",
-        "txt": "812路"
-      },
-      {
-        "end": "蜀风村",
-        "start": "服装市场",
-        "txt": "860路"
-      },
-      {
-        "end": "东方山水",
-        "start": "大禹陵景区",
-        "txt": "专1001路"
-      },
-      {
-        "end": "上虎汽车东站",
-        "start": "绍兴东站",
-        "txt": "201路"
-      },
-      {
-        "end": "上虎汽车东站",
-        "start": "上虞火车站",
-        "txt": "206路"
-      },
-      {
-        "end": "城南中学",
-        "start": "市民中心",
-        "txt": "222路"
-      },
-      {
-        "end": "上虞北站（高铁）",
-        "start": "上虞北站（高铁）",
-        "txt": "223路(环线)"
       }
     ]
   }

@@ -1,25 +1,29 @@
 @import './const.styl';
 
 .help-list
-  padding 0.4rem
-  .item
+  .help-list-item
     width 100%
-    display flex
-    flex-direction row
-    justify-content flex-start
-    margin-bottom 0.3rem
-    em
-      display inline-block
-      width 8%
-    span
-      display inline-block
-      width 92%
-  .question
-    color #333333
-    font-weight 700
-    font-size large_font_size
-  .answer
-    color #666
-    font-size normal_font_size
-    em
-      color #63bc56
+    overflow hidden
+    padding 2%
+    border-bottom 1px solid #ccc
+    .question
+      color #333333
+      font-weight 700
+      font-size large_font_size
+      position relative
+      padding-right 0.66rem
+      .arrow
+        font-size large_font_size
+        position absolute
+        top 0
+        right 0
+        width 0.66rem
+        transition all .3s
+    .answer
+      color #666
+      font-size normal_font_size
+      padding-top 0.3rem
+  .open
+    .arrow
+      transform rotate(180deg)
+

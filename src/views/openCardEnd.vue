@@ -69,7 +69,6 @@
               const { cardNo } = data
               const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
               this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
-              // 有参数执行 需要app跳转执行
               this.normalFlow(cardNo, getAlipayBusCodeParams)
             } else {
               this.visible = true

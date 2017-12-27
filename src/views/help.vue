@@ -2,15 +2,15 @@
   <div>
 
     <ul class="help-list">
-      <li v-for="(item, index) in help">
-        <div class="item question">
-          <em>{{ `${index + 1}、` }}</em>
-          <span v-html="item.question"></span>
+      <li class="help-list-item" v-for="(item, index) in helpList" @click="helpItemVisible(item, index)" :class="count === index ? 'open' : ''">
+        <div class="question">
+          <em>{{ index + 1 }}、</em>
+          <span>{{ item.question }}</span>
+          <i class="fa fa-chevron-down arrow"></i>
         </div>
-        <div class="item answer">
-          <em>答：</em>
-          <span v-html="item.answer"></span>
-        </div>
+        <CollapseTransition>
+          <div class="answer" v-html="item.answer" v-show="count === index ? true : false"></div>
+        </CollapseTransition>
       </li>
     </ul>
 
@@ -18,9 +18,22 @@
 </template>
 
 <script>
+  import CollapseTransition from '../components/CollapseTransition/index'
+
+  const { help } = global.threeConfig
+
   export default {
+    components: { CollapseTransition },
     computed: {
-      help () { return typeof global.threeConfig.help === 'object' ? global.threeConfig.help : JSON.parse(global.threeConfig.help) }
+      helpList () { return typeof help === 'string' ? JSON.parse(help) : help }
+    },
+    data () {
+      return {
+        count: null
+      }
+    },
+    methods: {
+      helpItemVisible (item, index) { this.count = index }
     }
   }
 </script>
