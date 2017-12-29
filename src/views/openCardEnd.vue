@@ -18,11 +18,17 @@
 
 <script>
   import zButton from '../components/Button/Button.vue'
-  import { toHash } from '../utils/public'
-  import { getCardComponentUid, getEnjoyCardComponent } from '../utils/http'
+  import { checkNull, toHash } from '../utils/public'
+  import {
+    getCardComponentUid,
+    getEnjoyCardComponent,
+    getMoreCardComponentUid,
+    getYanTaiCardNo,
+    getYanTaiRechargeCardComponent
+  } from '../utils/http'
   import { alipayExitApp } from '../utils/alipayJsApi'
 
-  const { cardType, scene, subScene, openCardAction, openCardSource } = global.threeConfig.alipayCardInfo
+  const { appId, cardType, scene, subScene, openCardAction, openCardSource } = global.threeConfig.alipayCardInfo
   const { alipayTransitCardEntry } = global.threeConfig.api
 
   export default {
@@ -38,46 +44,83 @@
     },
     mounted () {
       this.onReady()
-      // this.openCard(sessionStorage.getItem('userId'))
+      // this.normaEnjoylApplyCard(sessionStorage.getItem('userId'))
     },
     methods: {
       onReady () {
-        const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-        if (userInfo) {
-          const { auth_code, request_id } = userInfo
-          localStorage.removeItem('userInfo')
-          getCardComponentUid({
-            auth_code: auth_code,
-            request_id: request_id,
-            cb: (msg, data) => {
-              if (msg && msg.code === '20000') {
-                sessionStorage.setItem('userId', data.userId)
-                this.openCard(data.userId)
-              } else {
-                this.visible = true
-              }
-            }
-          })
+        // 没有auth_code 去开卡
+        if (checkNull(localStorage.getItem('userInfo')) === 0) {
+          this.$router.replace('/openCard')
+          return false
         }
-        else this.$router.push('/openCard')
+        const { auth_code, request_id  } = JSON.parse(localStorage.getItem('userInfo'))
+        // 判断商户是否是正常领卡还是定制化领卡
+        switch (appId) {
+          case '2017121300671681': // 烟台领卡流程
+            this.yanTaiGetMoreAlipayUid(auth_code, request_id)
+            break;
+          default: // 默认流程
+            this.getAlipayUid(auth_code, request_id)
+        }
+        // 判断执行流程移除缓存的auth_code
+        localStorage.removeItem('userInfo')
       },
-      openCard (uid) {
-        getEnjoyCardComponent({
-          userId: uid,
-          cb: (msg, data) => {
-            if (msg && msg.code === '20000') {
-              const { cardNo } = data
-              const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
-              this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
-              this.normalFlow(cardNo, getAlipayBusCodeParams)
-            } else {
-              this.visible = true
-            }
+      getAlipayUid (auth_code, request_id) { // 获取支付宝uid
+        getCardComponentUid({
+          auth_code: auth_code,
+          request_id: request_id,
+          Vue: this,
+          cb: data => {
+            sessionStorage.setItem('userId', data.userId)
+            // 获取到uid去领卡
+            this.normaEnjoylApplyCard(data.userId)
           }
         })
       },
-      normalFlow (cardNo, params) { // 正常流程
-        this.$router.replace('/cardDetail?alipayCardNo=' + cardNo + '&successUrl=' + encodeURIComponent(alipayTransitCardEntry + toHash(params)))
+      normaEnjoylApplyCard (userId) { // 正常先享后付领卡
+        getEnjoyCardComponent({
+          userId: userId,
+          cb: (msg, data) => {
+            if (msg && msg.code === '20000') this.successOpenCard(data.cardNo)
+            else this.visible = true
+          }
+        })
+      },
+      yanTaiGetMoreAlipayUid (auth_code, request_id) { // 获取更多用户信息的uid 手机 身份证 电话
+        getMoreCardComponentUid({
+          auth_code: auth_code,
+          request_id: request_id,
+          Vue: this,
+          cb: data1 => {
+            const { userId, certNo, userName, mobilePhone } = data1
+            sessionStorage.setItem('userId', userId)
+            getYanTaiCardNo({
+              userId: userId,
+              certNo: certNo,
+              userName: userName,
+              mobilePhone: mobilePhone,
+              Vue: this,
+              cb: data2 => {
+                this.yanTaiRechargeApplyCard(userId, data2.alipayCardNo)
+              }
+            })
+          }
+        })
+      },
+      yanTaiRechargeApplyCard (userId, cardNo) { // 烟台领取储值卡
+        getYanTaiRechargeCardComponent({
+          userId: userId,
+          cardNo: cardNo,
+          cb: (msg, data) => {
+            if (msg && msg.code === '20000') this.successOpenCard(data.cardNo)
+            else this.visible = true
+          }
+        })
+      },
+      successOpenCard (cardNo) { // 正常领卡成功流程
+        const getAlipayBusCodeParams = { cardType: cardType, cardNo: cardNo, scene: scene, subScene: subScene, source: openCardSource, action: openCardAction }
+        this.$store.dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: cardNo })
+        this.$router.replace('/cardDetail?alipayCardNo=' + cardNo + '&successUrl=' + encodeURIComponent(alipayTransitCardEntry + toHash(getAlipayBusCodeParams)))
       }
     }
   }

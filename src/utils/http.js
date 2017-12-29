@@ -3,7 +3,7 @@
 * */
 import api from './api'
 import request from './request'
-import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast } from './public'
+import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, randomStr } from './public'
 import { codeError } from './helper'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo
@@ -41,7 +41,7 @@ export async function getUser ({ auth_code, cb }) {
 /*
 * 开卡组件的根据token获取uid
 * */
-export async function getCardComponentUid ({ auth_code, request_id, cb }) {
+export async function getCardComponentUid ({ auth_code, request_id, Vue, cb }) {
   const { msg, data } = await request.apiGet(api.getAlipayCardComponentUid, {
     appId: appId,
     sign: sign,
@@ -50,7 +50,24 @@ export async function getCardComponentUid ({ auth_code, request_id, cb }) {
     auth_code: auth_code,
     request_id: request_id
   })
-  cb(msg, data)
+  if (msg && msg.code === '20000') cb(data)
+  else Vue.$router.replace('/openCard')
+}
+
+/*
+* 开卡组件根据token获取跟多用户信息
+* */
+export async function getMoreCardComponentUid ({ auth_code, request_id, Vue, cb }) {
+  const { msg, data } = await request.apiGet(api.getMoreAlipayCardComponentUid, {
+    appId: appId,
+    sign: sign,
+    bizType: bizType,
+    templateId: templateId,
+    auth_code: auth_code,
+    request_id: request_id
+  })
+  if (msg && msg.code === '20000') cb(data)
+  else Vue.$router.replace('/openCard')
 }
 
 /*
@@ -64,6 +81,38 @@ export async function getEnjoyCardComponent ({ userId, cb }) {
     cityCode: cityCode,
     templateId: templateId,
     bizType: bizType,
+    userId: userId
+  })
+  cb(msg, data)
+}
+
+/*
+* 烟台拿用户信息换卡号
+* */
+export async function getYanTaiCardNo ({ userId, certNo, userName, mobilePhone, Vue, cb }) {
+  const { message, data } = await request.apiPost('http://cx.yantai.cn:8880/QRcode/opencard.jsp', {
+    userId: userId,
+    certNo: certNo,
+    userName: userName,
+    mobilePhone: mobilePhone,
+    messageId: new Date().getTime() + `${randomStr(32)}` + userId
+  })
+  if (message && message.code === '20000') cb(data)
+  else Vue.$router.replace('/openCard')
+}
+
+/*
+* 烟台开通储值卡
+* */
+export async function getYanTaiRechargeCardComponent ({ userId, cardNo, cb }) {
+  const { msg, data } = await request.apiGet(api.applyRechargeCardComponent, {
+    appId: appId,
+    sign: sign,
+    cardType: cardType,
+    cityCode: cityCode,
+    templateId: templateId,
+    bizType: bizType,
+    cardNo: cardNo,
     userId: userId
   })
   cb(msg, data)
@@ -213,7 +262,7 @@ export async function getRechargeLog ({ pageSize, pageNum, cb }) {
 * @params ${imgUrl} 图片地址
 * */
 export async function getAlipayMon ({ adPid, cb }) {
-  const { contnet } = await request.apiPost(api.alipayMom, {
+  const { content } = await request.apiPost(api.alipayMom, {
     uid: sessionStorage.getItem('userId'),
     adPid: adPid
   })

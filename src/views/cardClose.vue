@@ -8,7 +8,7 @@
     <div class="card-close-main">
 
       <div class="card-close-time">
-        <img :src="cardClose.timeImage" v-if="!timeImgVisible" />
+        <img :src="cardClose.timeImage" v-if="!timeImgVisible" class="success-time" />
         <div class="waring-time" v-if="timeImgVisible">
           <span>!</span>
         </div>
@@ -16,7 +16,7 @@
 
       <div class="card-close-content">
         <h3 v-if="bodyHeaderVisible">退卡申请已提交</h3>
-        <!--先享后付说明-->
+        <!--说明-->
         <div class="card-close-content-item" v-html="contentVal" v-if="contentVal"></div>
         <!--储值尾部说明渲染-->
         <div class="card-close-content-item gray" v-html="rechargeTipVal" v-if="rechargeTipVal"></div>

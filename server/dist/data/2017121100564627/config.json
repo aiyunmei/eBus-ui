@@ -1,6 +1,6 @@
 {
   "api": {
-    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001",
+    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017121100564627",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
@@ -9,28 +9,28 @@
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2017120600411001",
+    "appId": "2017121100564627",
     "scope": "auth_base",
     "sign": "RSA",
-    "cardType": "T0422801",
+    "cardType": "T0420300",
     "bizType": "MEMBER_CARD",
-    "templateId": "2017122310534768594459975",
-    "subScene": "422800",
+    "templateId": "2017122823265876651491137",
+    "subScene": "420300",
     "scene": "TRANSIT",
     "applyCardAction": "sign",
     "openCardAction": "use",
-    "applyCardSource": "ENSHI_BUS_APPLY",
-    "openCardSource": "ENSHI_CARD_USE",
-    "useCardSource": "ENSHI_BUS_USE",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D422800%26cardType%3DT0422801%26source%ENSHI_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
+    "applyCardSource": "SHIYAN_BUS_APPLY",
+    "openCardSource": "SHIYAN_CARD_USE",
+    "useCardSource": "SHIYAN_BUS_USE",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D420300%26cardType%3DT0420300%26source%SHIYAN_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
     "storeSign": ""
   },
   "global": {
-    "cardName": "恩施电子公交卡",
-    "cityName": "恩施",
-    "cityCode": "422800",
+    "cardName": "十堰车城通电子公交卡",
+    "cityName": "十堰",
+    "cityCode": "420300",
     "showUrl": true,
     "onWhite": false,
     "whiteList": [],
@@ -40,12 +40,12 @@
     }
   },
   "card": {
-    "image": "../../static/img/enshi_card.jpg"
+    "image": "../../static/img/shiyan_card.jpg"
   },
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017120600411001&template_id=2017122310534768594459975&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2017120600411001/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017121100564627&template_id=2017122823265876651491137&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2017121100564627/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
@@ -54,8 +54,8 @@
     },
     "popupList": [
       {
-        "name": "《恩施电子公交卡用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001#/protocol"
+        "name": "《十堰车城通电子公交卡用户协议》",
+        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017121100564627#/protocol"
       },
       {
         "name": "《芝麻服务及支付宝公交付款协议》",
@@ -67,15 +67,15 @@
     "busyImage": "../../static/img/open_card_end_busy.png"
   },
   "protocol": {
-    "company": "恩施市公共汽车",
-    "companyShort": "恩施公交",
-    "telephone": "0718-8247898"
+    "company": "十堰市车城通科技有限",
+    "companyShort": "十堰车城通",
+    "telephone": "0719-8111923"
   },
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
     "noticeConfig": {
       "visible": false,
-      "content": "恩施电子公交卡,欢迎您!",
+      "content": "十堰车城通电子公交卡,欢迎您!",
       "width": "100%"
     },
     "bannerConfig": {
@@ -213,28 +213,28 @@
       "answer": "支付宝扫码换乘优惠预计在近期推出，具体发布时间请以官方公告为准。"
     },
     {
-      "question": "现在使用恩施公交一卡通乘车有优惠吗？",
-      "answer": "使用恩施电子公交卡乘车暂时不支持优惠。优惠活动正在测试，后续优惠活动敬请期待。"
+      "question": "现在使用十堰公交一卡通乘车有优惠吗？",
+      "answer": "使用十堰车城通电子公交卡乘车暂时不支持优惠。优惠活动正在测试，后续优惠活动敬请期待。"
     },
     {
-      "question": "恩施现在已开通刷码乘车的线路有哪些？",
-      "answer": "恩施目前已开通2路和6路2条公交线路的移动支付试运营，后期随着新的设备更换，恩施市将在2018年2月中旬实现所有线路移动支付功能，覆盖恩施市所有线路和公交车。"
+      "question": "十堰现在已开通刷码乘车的线路有哪些？",
+      "answer": "十堰目前已开通2路和6路2条公交线路的移动支付试运营，后期随着新的设备更换，十堰市将在2018年2月中旬实现所有线路移动支付功能，覆盖十堰市所有线路和公交车。"
     },
     {
-      "question": "恩施公交卡都有哪些智能服务和功能？",
-      "answer": "恩施公交一卡通，包含了公交付款，乘车记录等众多功能，后续将开放更多新功能，尽请期待。"
+      "question": "十堰公交卡都有哪些智能服务和功能？",
+      "answer": "十堰公交一卡通，包含了公交付款，乘车记录等众多功能，后续将开放更多新功能，尽请期待。"
     },
     {
-      "question": "如何使用恩施公交车刷码乘车？",
-      "answer": "首次使用，打开支付宝，选择“城市服务”，点击“电子公交卡”，按照领取步骤就可以领取到恩施公交一卡通啦！"
+      "question": "如何使用十堰公交车刷码乘车？",
+      "answer": "首次使用，打开支付宝，选择“城市服务”，点击“电子公交卡”，按照领取步骤就可以领取到十堰公交一卡通啦！"
     },
     {
-      "question": "恩施公交卡是如何刷码付款的？",
+      "question": "十堰公交卡是如何刷码付款的？",
       "answer": "刷码上车后，，点击扫码，选择底部乘车码，对准刷卡机扫码框，听到扫码成功即为付款成功。稍后会从您的支付宝账户扣款，资金渠道以您的支付设置为准。"
     },
     {
       "question": "反馈建议通道有吗？",
-      "answer": "为更好为恩施市民提供服务，您有任何反馈和建议，都可以通过恩施公交客服电话：0718-8247898或支付宝：95188或在线客服进行反馈。"
+      "answer": "为更好为十堰市民提供服务，您有任何反馈和建议，都可以通过十堰公交客服电话：0718-8247898或支付宝：95188或在线客服进行反馈。"
     },
     {
       "question": "电子公交卡有什么使用门槛吗？",
@@ -269,19 +269,24 @@
     },
     "openLineOptions": [
       {
-        "txt": "2A路",
-        "start": "市公安局宿舍区",
-        "end": "黄泥坝东方电器"
+        "txt": "21路",
+        "start": "星湖湾站",
+        "end": "万达广场（中）站"
       },
       {
-        "txt": "2B路",
-        "start": "清江种业",
-        "end": "朱家坳"
+        "txt": "61路",
+        "start": "公交二公司站",
+        "end": "六堰聚品宅家装站"
       },
       {
-        "txt": "6路",
-        "start": "火车站",
-        "end": "东门医院"
+        "txt": "63路",
+        "start": "天麟时代经典站",
+        "end": "建设大道兴丽城小区站"
+      },
+      {
+        "txt": "85路",
+        "start": "六堰聚品宅家装站",
+        "end": "七里垭路口站"
       }
     ]
   }

@@ -46,7 +46,7 @@
         </a>
       </div>
 
-      <div class="card-detail-btn">
+      <div class="card-detail-btn" v-if="cardDetailUseBtnVisible">
         <div class="info">
           <a :href="useBtnHref" target="_blank">
             <zButton :btnVal="cardDetail.useBtnVal"></zButton>
@@ -96,6 +96,7 @@
         visible: false, // 容器页
         openCardSuccessVisible: false, // 是否显示第一领卡成功弹窗
         useBtnHref: '', // 乘车码链接
+        cardDetailUseBtnVisible: true, // 底部立即使用按钮
         alipayMomBanner: { // 阿里妈妈接入信息
           href: null,
           src: null
@@ -146,7 +147,7 @@
         else window.location.replace(linkOldUrl.other)
       },
       commonReady () { // 默认渲染
-        const { successUrl } = this.$route.query
+        const { successUrl, buscode } = this.$route.query
         getCardInfo({
           Vue: this,
           cb: data => {
@@ -155,6 +156,7 @@
               if (!sessionStorage.getItem('isAlert')) this.openCardSuccessVisible = true
               sessionStorage.setItem('isAlert', 'yes') // 防止重复弹出首次弹窗
             }
+            if (buscode) this.cardDetailUseBtnVisible = false
           }
         })
       },
