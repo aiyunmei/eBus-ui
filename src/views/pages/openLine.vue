@@ -11,22 +11,8 @@
 
     <div class="open-line-body">
       <!--all-->
-      <ul class="list" v-show="!searchData">
-        <li v-for="(item, index) in openLine.openLineOptions">
-          <div class="item name">
-            {{ item.txt }}
-          </div>
-          <div class="item station">
-            <span>{{ item.start }}</span>
-            <i class="fa fa-exchange"></i>
-            <span>{{ item.end }}</span>
-          </div>
-        </li>
-      </ul>
-
-      <!--searchResult-->
-      <ul class="list" v-show="searchData">
-        <li v-for="(item, index) in searchLineData">
+      <ul class="list">
+        <li v-for="(item, index) in searchData ? searchLineData : openLine.openLineOptions" :key="index">
           <div class="item name">
             {{ item.txt }}
           </div>
@@ -63,15 +49,11 @@
       }
     },
     methods: {
-      bindSearchDataChange (e) {
-        const searchData = this.searchData
-        const openLineData = this.openLine.openLineOptions
+      bindSearchDataChange () {
         this.searchLineData = []
-        for (let i = 0; i < openLineData.length; i++) {
-          if (openLineData[i].txt.indexOf(searchData) === 0) {
-            this.searchLineData.push(openLineData[i])
-          }
-        }
+        this.openLine.openLineOptions.map((item) => {
+          if (item.txt.indexOf(this.searchData) === 0) this.searchLineData.push(item)
+        })
         this.searchLineData.length === 0 ? this.isValue = true : this.isValue = false
       }
     }
