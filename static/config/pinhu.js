@@ -40,7 +40,7 @@ window.threeConfig = {
     }
   },
   "card": {
-    "image": "../../static/img/pinhu_card.png"
+    "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/pinhu_card.jpg"
   },
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",

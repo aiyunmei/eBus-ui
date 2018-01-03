@@ -11,7 +11,7 @@
     </div>
 
     <!--卡片-->
-    <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">
+    <div class="card-detail-card-img" v-lazy:background-image="cardDetail.bgImage">
       <div class="info">
         <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
       </div>
@@ -27,7 +27,7 @@
         <li class="menu-item" v-for="(item, index) in cardDetail.menuOptions" v-if="!item.visible" @click="bindMenuList(item)">
           <div class="info">
             <div class="icon" v-if="item.icon">
-              <img :src="item.icon" />
+              <img v-lazy="item.icon" />
             </div>
             <div class="label" v-if="item.label">{{ item.label }}</div>
           </div>
@@ -42,7 +42,7 @@
       <!--广告位-->
       <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
         <a :href="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.href : cardDetail.bannerConfig.href" target="_blank">
-          <img :src="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
+          <img v-lazy="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
         </a>
       </div>
 
@@ -59,7 +59,7 @@
     <!--领卡成功-->
     <div class="card-detail-success" v-if="openCardSuccessVisible">
       <div class="main">
-        <img :src="cardDetail.successAlertConfig.imgUrl" />
+        <img v-lazy="cardDetail.successAlertConfig.imgUrl" />
         <div class="btn-list">
           <span class="btn l" @click="openCardSuccessVisible = false">{{ cardDetail.successAlertConfig.leftBtnVal }}</span><span class="btn r" @click="bindUseSuccessAlertBtn(cardDetail.successAlertConfig.rightBtnVal)">{{ cardDetail.successAlertConfig.rightBtnVal }}</span>
         </div>

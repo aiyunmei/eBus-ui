@@ -1,7 +1,7 @@
 <template>
   <div v-if="visible">
 
-    <div class="recharge-header" :style="{ backgroundImage: `url(${recharge.headerImage})` }">
+    <div class="recharge-header" v-lazy:background-image="recharge.headerImage">
       <div class="item cardNo">
         <span>卡号</span>
         <span>{{ cardInfo.alipayCardNo }}</span>
@@ -18,7 +18,7 @@
           <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
           <div class="tips"
                v-if="item.tipItem"
-               :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
+               v-lazy:background-image="item.tipItem.imgUrl">
             {{ item.tipItem.label }}
             </div>
         </div>

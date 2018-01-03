@@ -1,5 +1,5 @@
 <template>
-  <ul ref="listWrapper"
+  <ul
       v-infinite-scroll="loadMore"
       infinite-scroll-disabled="loading"
       infinite-scroll-distance="10">

@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="open-card-bg" :style="{ backgroundImage: `url(${openCard.bgImage})` }" v-if="!query.bindCard"></div>
+    <div class="open-card-bg" v-lazy:background-image="openCard.bgImage"  v-if="!query.bindCard"></div>
 
     <!--卡片-->
     <div class="open-card-img" :class="query.bindCard ? 'center' : ''">
@@ -59,7 +59,7 @@
       </div>
 
       <div class="footer">
-        <img src="../../../static/img/bindCard_footer_bg.png" />
+        <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/bindCard_footer_bg.png" />
       </div>
     </div>
 
