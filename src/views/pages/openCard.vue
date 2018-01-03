@@ -59,7 +59,7 @@
       </div>
 
       <div class="footer">
-        <img src="../../static/img/bindCard_footer_bg.png" />
+        <img src="../../../static/img/bindCard_footer_bg.png" />
       </div>
     </div>
 
@@ -67,9 +67,9 @@
 </template>
 
 <script>
-  import Card from '../components/Card/Card.vue'
-  import zButton from '../components/Button/Button.vue'
-  import { alipayTransparent, alipayPushWindow } from '../utils/alipayJsApi'
+  import Card from '../../components/Card/Card.vue'
+  import zButton from '../../components/Button/Button.vue'
+  import { alipayTransparent, alipayPushWindow } from '../../utils/alipayJsApi'
 
   export default {
     components: { Card, zButton },
@@ -99,6 +99,6 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/openCard.styl';
-  @import '../assets/css/bindCard.styl';
+  @import '../../assets/css/openCard.styl';
+  @import '../../assets/css/bindCard.styl';
 </style>

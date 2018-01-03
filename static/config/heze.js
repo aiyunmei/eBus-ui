@@ -40,7 +40,7 @@ window.threeConfig = {
     }
   },
   "card": {
-    "image": "../../static/img/heze_card.jpg"
+    "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/heze_card.jpg"
   },
   "openCard": {
     "bgImage": "../../static/img/openCard_bg.jpg",
@@ -74,7 +74,7 @@ window.threeConfig = {
   "cardDetail": {
     "bgImage": "../../static/img/card_detail_bg.jpg",
     "noticeConfig": {
-      "visible": false,
+      "visible": true,
       "content": "菏泽电子公交卡,欢迎您!",
       "width": "100%"
     },

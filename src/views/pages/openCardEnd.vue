@@ -17,16 +17,16 @@
 </template>
 
 <script>
-  import zButton from '../components/Button/Button.vue'
-  import { checkNull, toHash } from '../utils/public'
+  import zButton from '../../components/Button/Button.vue'
+  import { checkNull, toHash } from '../../utils/public'
   import {
     getCardComponentUid,
     getEnjoyCardComponent,
     getMoreCardComponentUid,
     getYanTaiCardNo,
     getYanTaiRechargeCardComponent
-  } from '../utils/http'
-  import { alipayExitApp } from '../utils/alipayJsApi'
+  } from '../../utils/http'
+  import { alipayExitApp } from '../../utils/alipayJsApi'
 
   const { appId, cardType, scene, subScene, openCardAction, openCardSource } = global.threeConfig.alipayCardInfo
   const { alipayTransitCardEntry } = global.threeConfig.api
@@ -127,5 +127,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/openCardEnd.styl';
+  @import '../../assets/css/openCardEnd.styl';
 </style>

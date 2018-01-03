@@ -1,64 +1,48 @@
 import axios from 'axios'
 import qs from 'qs'
-import { checkNull, enCodeString } from './public'
 import { netWorkError } from './helper'
 import Spinner from '../components/Spinner/index'
 
 const async_timestamp = new Date().getTime()
 const { appId } = global.threeConfig.alipayCardInfo
 
-/*
-* @apiGet 公共get请求
-* @apiPost 公共post请求
-* @apiFile 公共上传
-* @url 必填
-* @params 传递参数 必填
-* @isEncode 是否进行编码 选填 不填则为false 不进行字符串编码
-* @axios 基本配置不用可行注释
-* @timeout 默认20秒超时
-* @baseUrl 请求的公共url
-* @params 需要传递的公共参数
-* @validateStatus 返回的http 状态码用于做错误判断
-* */
 class Axios {
   constructor() {
-    this.instance = axios.create({
-      timeout: 30 * 1000,
-      params: {
-        isStressTest: false
-      },
-      validateStatus: (status) => {
-        return status
-      }
+    // 公共参数
+    axios.defaults.params = {
+      isStressTest: false
+    }
+    // 请求前
+    axios.interceptors.request.use((config) => {
+      Spinner.open()
+      return config
+    }, (error) => { // 请求出错
+      Spinner.close()
+      netWorkError()
+      return Promise.reject(error)
     })
+    // 请求响应
+    axios.defaults.transformResponse = [data => {
+      Spinner.close()
+      if (typeof data === 'string') try { data = JSON.parse(data) } catch (e) { throw e }
+      return data
+    }]
+    // 赋予内部
+    this.instance = axios
   }
 
-  apiGet (url, params, isEncode) {
+  apiGet (url, params) {
     return new Promise((resolve, reject) => {
-      checkNull(isEncode) === 0 ? isEncode = false : isEncode
-      Spinner.open()
-      this.instance.get(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, { params: isEncode === false ? params : enCodeString(params) }).then(res => {
-        Spinner.close()
+      this.instance.get(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, { params: params }).then(res => {
         resolve(res.data)
-      }).catch(err => {
-        Spinner.close()
-        reject(err)
-        netWorkError()
       })
     })
   }
 
-  apiPost (url, params, isEncode) {
+  apiPost (url, params) {
     return new Promise((resolve, reject) => {
-      checkNull(isEncode) === 0 ? isEncode = false : isEncode
-      Spinner.open()
-      this.instance.post(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, qs.stringify(isEncode === false ? params : enCodeString(params))).then(res => {
-        Spinner.close()
+      this.instance.post(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, qs.stringify(params)).then(res => {
         resolve(res.data)
-      }).catch(err => {
-        Spinner.close()
-        reject(err)
-        netWorkError()
       })
     })
   }

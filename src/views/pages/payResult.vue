@@ -38,10 +38,10 @@
 </template>
 
 <script>
-  import zButton from '../components/Button/Button.vue'
-  import { showToast } from '../utils/public'
-  import { revokeCardClose } from '../utils/http'
-  import { alipayExitApp } from '../utils/alipayJsApi'
+  import zButton from '../../components/Button/Button.vue'
+  import { showToast } from '../../utils/public'
+  import { revokeCardClose } from '../../utils/http'
+  import { alipayExitApp } from '../../utils/alipayJsApi'
 
   export default {
     components: { zButton },
@@ -85,5 +85,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/payResult.styl';
+  @import '../../assets/css/payResult.styl';
 </style>

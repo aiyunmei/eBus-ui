@@ -61,5 +61,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/openLine.styl';
+  @import '../../assets/css/openLine.styl';
 </style>

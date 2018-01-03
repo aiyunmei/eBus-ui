@@ -4,9 +4,9 @@
 </template>
 
 <script>
-  import { jsLink } from '../utils/public'
-  import { alipayExitApp } from '../utils/alipayJsApi'
-  import { getUser } from '../utils/http'
+  import { jsLink } from '../../utils/public'
+  import { alipayExitApp } from '../../utils/alipayJsApi'
+  import { getUser } from '../../utils/http'
 
   const { alipayAuthBaseUrl } = global.threeConfig.api
   const { appId, scope } = global.threeConfig.alipayCardInfo

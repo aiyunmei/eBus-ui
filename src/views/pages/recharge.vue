@@ -53,10 +53,10 @@
 </template>
 
 <script>
-  import Tag from '../components/Tag/Tag.vue'
-  import zButton from '../components/Button/Button'
-  import { checkNull, showToast } from '../utils/public'
-  import { getCardInfo, showAlipayStore } from '../utils/http'
+  import Tag from '../../components/Tag/Tag.vue'
+  import zButton from '../../components/Button/Button'
+  import { checkNull, showToast } from '../../utils/public'
+  import { getCardInfo, showAlipayStore } from '../../utils/http'
 
   export default {
     components: { Tag, zButton },
@@ -117,5 +117,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/recharge.styl';
+  @import '../../assets/css/recharge.styl';
 </style>

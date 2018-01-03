@@ -30,9 +30,9 @@
 </template>
 
 <script>
-  import { checkNull, formatRMBYuanDecimal } from '../utils/public'
-  import { getCardInfo } from '../utils/http'
-  import Tag from '../components/Tag/Tag.vue'
+  import { checkNull, formatRMBYuanDecimal } from '../../utils/public'
+  import { getCardInfo } from '../../utils/http'
+  import Tag from '../../components/Tag/Tag.vue'
 
   export default {
     components: { Tag },
@@ -72,5 +72,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/balance.styl';
+  @import '../../assets/css/balance.styl';
 </style>

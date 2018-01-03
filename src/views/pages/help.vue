@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import CollapseTransition from '../components/CollapseTransition/index'
+  import CollapseTransition from '../../components/CollapseTransition/index'
 
   const { help } = global.threeConfig
 
@@ -38,5 +38,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/help.styl';
+  @import '../../assets/css/help.styl';
 </style>

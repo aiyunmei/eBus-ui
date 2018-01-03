@@ -15,12 +15,12 @@
       <div class="info">
         <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
       </div>
-      <img src="../../static/img/wave_bg.png" class="wave" />
+      <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/wave_bg.png" class="wave" />
     </div>
 
     <div class="body">
       <div class="card-detail-card-no">
-        <img src="../../static/img/card_no_icon.png" class="icon" />
+        <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_no_icon.png" class="icon" />
         <span>卡号 {{ cardInfo.alipayCardNo }}</span>
       </div>
       <ul class="card-detail-menu">
@@ -75,12 +75,12 @@
 
 
 <script>
-  import Card from '../components/Card/Card.vue'
-  import zButton from '../components/Button/Button.vue'
-  import MessageBox from '../components/MessageBox/index'
-  import NoticeBar from '../components/Notice/Notice.vue'
-  import { checkNull, checkCardStatus, showToast, jsLink } from '../utils/public'
-  import { getCardInfo, applyCardClose, getAlipayMon } from '../utils/http'
+  import Card from '../../components/Card/Card.vue'
+  import zButton from '../../components/Button/Button.vue'
+  import MessageBox from '../../components/MessageBox/index'
+  import NoticeBar from '../../components/Notice/Notice.vue'
+  import { checkNull, checkCardStatus, showToast, jsLink } from '../../utils/public'
+  import { getCardInfo, applyCardClose, getAlipayMon } from '../../utils/http'
 
   const { onWhite, whiteList, linkOldUrl } = global.threeConfig.global
   const { busCode } = global.threeConfig.alipayCardInfo
@@ -201,5 +201,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/cardDetail.styl';
+  @import '../../assets/css/cardDetail.styl';
 </style>

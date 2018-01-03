@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Auth from '../views/Auth.vue'
-import openCard from '../views/openCard.vue'
-import openCardEnd from '../views/openCardEnd.vue'
-import cardDetail from '../views/cardDetail.vue'
-import cardClose from '../views/cardClose.vue'
-import recharge from '../views/recharge.vue'
-import balance from '../views/balance.vue'
-import rechargeLog from '../views/rechargeLog.vue'
-import payResult from '../views/payResult.vue'
-import openLine from '../views/openLine.vue'
-import help from '../views/help.vue'
-import protocol from '../views/protocol.vue'
+import {
+  Auth,
+  openCard,
+  openCardEnd,
+  cardDetail,
+  cardClose,
+  recharge,
+  balance,
+  rechargeLog,
+  payResult,
+  openLine,
+  help,
+  protocol
+} from '../views'
 
 Vue.use(Router)
 

@@ -2,7 +2,7 @@
   <div class="notice-bar" v-show="visible">
 
     <div class="icon left">
-      <img src="../../../static/img/notice_laba.png" />
+      <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/notice_laba.png" />
     </div>
 
     <div class="info">
@@ -10,7 +10,7 @@
     </div>
 
     <div class="icon right" @click="bindClose">
-      <img src="../../../static/img/notice_close.png" />
+      <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/notice_close.png" />
     </div>
 
   </div>

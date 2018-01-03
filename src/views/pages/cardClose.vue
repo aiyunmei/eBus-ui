@@ -50,10 +50,10 @@
 </template>
 
 <script>
-  import zButton from '../components/Button/Button.vue'
-  import { checkNull, checkCardCloseTime, checkBalance, showToast } from '../utils/public'
-  import { getCardInfo, cancelCardClose, revokeCardClose, setRefund, showAlipayStore } from '../utils/http'
-  import { alipayExitApp } from '../utils/alipayJsApi'
+  import zButton from '../../components/Button/Button.vue'
+  import { checkNull, checkCardCloseTime, checkBalance, showToast } from '../../utils/public'
+  import { getCardInfo, cancelCardClose, revokeCardClose, setRefund, showAlipayStore } from '../../utils/http'
+  import { alipayExitApp } from '../../utils/alipayJsApi'
 
   const { rechargeUnitName } = global.threeConfig.alipayCardInfo
 
@@ -190,5 +190,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../assets/css/cardClose.styl';
+  @import '../../assets/css/cardClose.styl';
 </style>
