@@ -1,13 +1,15 @@
 /*
 * 公共执行http请求
 * */
+import $Vue from '../main'
 import api from './api'
 import request from './request'
-import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, randomStr } from './public'
 import { codeError } from './helper'
+import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, randomStr } from './public'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo
 const { cityCode, cardName } = global.threeConfig.global
+
 const getAlipayCardStatusApi = { // 根据当前状态选择接口
   1: 'enjoyCardComponent',
   2: 'enjoyCardComponent',
@@ -16,13 +18,17 @@ const getAlipayCardStatusApi = { // 根据当前状态选择接口
   7: 'negativeCardComponent',
   8: 'negativeCardComponent'
 }
+
 const applyCardCloseAction = 'disable'
 const cancelCardCloseAction = 'enable'
 const revokeCardCloseAction = 'revoke'
+
 const applyCardCloseTips = encodeURIComponent('您已申请退卡，卡片暂时无法使用')
 const cancelCardCloseTips = encodeURIComponent('用户取消退卡')
 const negativeCardCloseTips = encodeURIComponent('当前余额不足,请充值')
 const revokeCardCloseTips = encodeURIComponent('系统统一退卡')
+
+const SUCCESS_CODE = '20000'
 
 /*
 * 根据token 获取uid
@@ -34,14 +40,14 @@ export async function getUser ({ auth_code, cb }) {
     auth_code: auth_code
   })
   sessionStorage.setItem('isClose', 'yes')
-  if (msg && msg.code === '20000') cb(data)
+  if (msg && msg.code === SUCCESS_CODE) cb(data)
   else codeError()
 }
 
 /*
 * 开卡组件的根据token获取uid
 * */
-export async function getCardComponentUid ({ auth_code, request_id, Vue, cb }) {
+export async function getCardComponentUid ({ auth_code, request_id, cb }) {
   const { msg, data } = await request.apiGet(api.getAlipayCardComponentUid, {
     appId: appId,
     sign: sign,
@@ -50,14 +56,14 @@ export async function getCardComponentUid ({ auth_code, request_id, Vue, cb }) {
     auth_code: auth_code,
     request_id: request_id
   })
-  if (msg && msg.code === '20000') cb(data)
-  else Vue.$router.replace('/openCard')
+  if (msg && msg.code === SUCCESS_CODE) cb(data)
+  else goOpenCard()
 }
 
 /*
 * 开卡组件根据token获取跟多用户信息
 * */
-export async function getMoreCardComponentUid ({ auth_code, request_id, Vue, cb }) {
+export async function getMoreCardComponentUid ({ auth_code, request_id, cb }) {
   const { msg, data } = await request.apiGet(api.getMoreAlipayCardComponentUid, {
     appId: appId,
     sign: sign,
@@ -66,8 +72,8 @@ export async function getMoreCardComponentUid ({ auth_code, request_id, Vue, cb 
     auth_code: auth_code,
     request_id: request_id
   })
-  if (msg && msg.code === '20000') cb(data)
-  else Vue.$router.replace('/openCard')
+  if (msg && msg.code === SUCCESS_CODE) cb(data)
+  else goOpenCard()
 }
 
 /*
@@ -89,7 +95,7 @@ export async function getEnjoyCardComponent ({ userId, cb }) {
 /*
 * 烟台拿用户信息换卡号
 * */
-export async function getYanTaiCardNo ({ userId, certNo, userName, mobilePhone, Vue, cb }) {
+export async function getYanTaiCardNo ({ userId, certNo, userName, mobilePhone, cb }) {
   const { message, data } = await request.apiPost('http://cx.yantai.cn:8880/QRcode/opencard.jsp', {
     userId: userId,
     certNo: certNo,
@@ -97,8 +103,8 @@ export async function getYanTaiCardNo ({ userId, certNo, userName, mobilePhone, 
     mobilePhone: mobilePhone,
     messageId: new Date().getTime() + `${randomStr(32)}` + userId
   })
-  if (message && message.code === '20000') cb(data)
-  else Vue.$router.replace('/openCard')
+  if (message && message.code === SUCCESS_CODE) cb(data)
+  else goOpenCard()
 }
 
 /*
@@ -121,15 +127,16 @@ export async function getYanTaiRechargeCardComponent ({ userId, cardNo, cb }) {
 /*
 * 查询当前卡信息
 * */
-export async function getCardInfo ({ Vue, cb }) {
+export async function getCardInfo ({ cb }) {
   const { msg, data } = await request.apiGet(api.searchCardInfo, {
     appId: appId,
     sign: sign,
     cardType: cardType,
     userId: sessionStorage.getItem('userId')
   })
-  const dispatch = Vue.$store.dispatch
-  if (msg && msg.code === '20000') {
+  const dispatch = $Vue.$store.dispatch
+
+  if (msg && msg.code === SUCCESS_CODE) {
     if (checkNull(data) === 0) {
       goOpenCard()
       return false
@@ -138,9 +145,10 @@ export async function getCardInfo ({ Vue, cb }) {
     const { alipayCardData, alipayCardNo, alipayCardStatus, cashBalance } = data
 
     if (checkHasCard(alipayCardStatus) === 'no') {
-      goOpenCard(Vue)
+      goOpenCard()
       return false
     }
+
     // 存在data 缓存下来
     sessionStorage.setItem('alipayCardInfo', typeof data === 'object' ? JSON.stringify(data) : data)
     // 写入卡信息
@@ -151,7 +159,7 @@ export async function getCardInfo ({ Vue, cb }) {
 
     cb(data)
   } else {
-    goOpenCard(Vue)
+    goOpenCard()
   }
 }
 
@@ -168,7 +176,7 @@ export async function applyCardClose ({ status, cb }) {
     action: applyCardCloseAction,
     disabledTips: applyCardCloseTips
   })
-  if (msg && msg.code === '20000') cb(msg)
+  if (msg && msg.code === SUCCESS_CODE) cb(msg)
   else codeError()
 }
 
@@ -185,7 +193,7 @@ export async function cancelCardClose ({ status, cb }) {
     action: cancelCardCloseAction,
     disabledTips: item === 'positiveCardComponent' ? cancelCardCloseTips : negativeCardCloseTips
   })
-  if (msg && msg.code === '20000') cb(msg)
+  if (msg && msg.code === SUCCESS_CODE) cb(msg)
   else codeError()
 }
 
@@ -202,7 +210,7 @@ export async function revokeCardClose ({ status, cb }) {
     action: revokeCardCloseAction,
     disabledTips: revokeCardCloseTips
   })
-  if (msg && msg.code === '20000') cb(msg)
+  if (msg && msg.code === SUCCESS_CODE) cb(msg)
   else codeError()
 }
 
@@ -221,7 +229,7 @@ export async function showAlipayStore ({ label, RMB, syncCallBackUrl, cb }) {
     totalAmount: RMB,
     syncCallBackUrl: `${api.baseUrl}#/${syncCallBackUrl}`
   })
-  if (msg && msg.code === '20000') {
+  if (msg && msg.code === SUCCESS_CODE) {
     const div = document.createElement('div') // 创建div
     div.innerHTML = data.body // 将返回的form 放入div
     document.body.appendChild(div)

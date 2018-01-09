@@ -1,3 +1,4 @@
+import $Vue from '../main'
 import Toast from '../components/Toast/index'
 import { alipaySetTitle } from './alipayJsApi'
 
@@ -42,15 +43,14 @@ export function jsLink (type, url) {
 * 去开卡页
  * @params ${Vue} 需要vue对象实现路由跳转
 * */
-export function goOpenCard (Vue) {
+export function goOpenCard () {
   // 武汉特殊不用开卡组件 故跳转乘车码去支付宝开卡页面
   if (appId === '2017022705927164') {
     jsLink('replace', busCode)
     return false
   }
-
   // 使用了开卡组件的去自己的开卡页面
-  Vue.$router.replace('/openCard')
+  $Vue.$router.replace('/openCard')
 }
 
 /**

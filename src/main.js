@@ -19,10 +19,12 @@ Vue.use(lazyLoad, {
 })
 
 /* eslint-disable no-new */
-new Vue({
+const $Vue = new Vue({
   el: '#app',
   router,
   store,
   template: '<App/>',
   components: { App }
 })
+
+export default $Vue

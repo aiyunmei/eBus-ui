@@ -2,8 +2,8 @@
   <div>
 
     <ul class="help-list">
-      <li class="help-list-item" v-for="(item, index) in helpList" @click="count === index ? count = null : count = index" :class="count === index ? 'open' : ''">
-        <div class="question">
+      <li class="help-list-item" v-for="(item, index) in helpList" :class="count === index ? 'open' : ''">
+        <div class="question" @click="count === index ? count = null : count = index">
           <span>{{ item.question }}</span>
           <i class="fa fa-angle-right arrow"></i>
         </div>
