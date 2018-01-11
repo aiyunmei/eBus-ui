@@ -1,6 +1,6 @@
-window.threeConfig = {
+{
   "api": {
-    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001",
+    "baseUrl": "https://xmbus.i-xiaoma.com.cn/2017072107839707",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
@@ -9,28 +9,28 @@ window.threeConfig = {
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2017120600411001",
+    "appId": "2017072107839707",
     "scope": "auth_base",
     "sign": "RSA",
-    "cardType": "T0422801",
+    "cardType": "TESTXMLC",
     "bizType": "MEMBER_CARD",
-    "templateId": "2017122310534768594459975",
-    "subScene": "422800",
+    "templateId": "2017082915035002420195698",
+    "subScene": "420100",
     "scene": "TRANSIT",
     "applyCardAction": "sign",
     "openCardAction": "use",
-    "applyCardSource": "ENSHI_BUS_APPLY",
-    "openCardSource": "ENSHI_CARD_USE",
-    "useCardSource": "ENSHI_BUS_USE",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D422800%26cardType%3DT0422801%26source%ENSHI_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
+    "applyCardSource": "TESTXMLC",
+    "openCardSource": "TESTXMLC",
+    "useCardSource": "TESTXMLC",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D420100%26cardType%3DTESTXMLC%26source%TESTXMLC%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
     "storeSign": ""
   },
   "global": {
-    "cardName": "恩施电子公交卡",
-    "cityName": "恩施",
-    "cityCode": "422800",
+    "cardName": "小码测试卡",
+    "cityName": "武汉",
+    "cityCode": "420100",
     "showUrl": true,
     "onWhite": false,
     "whiteList": [],
@@ -40,12 +40,12 @@ window.threeConfig = {
     }
   },
   "card": {
-    "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/enshi_card.jpg"
+    "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card.png"
   },
   "openCard": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017120600411001&template_id=2017122310534768594459975&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2017120600411001/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017072107839707&template_id=2017082915035002420195698&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn/2017072107839707/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
@@ -54,8 +54,8 @@ window.threeConfig = {
     },
     "popupList": [
       {
-        "name": "《恩施电子公交卡用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001#/protocol"
+        "name": "《小码测试卡用户协议》",
+        "href": "https://xmbus.i-xiaoma.com.cn/2017072107839707#/protocol"
       },
       {
         "name": "《芝麻服务及支付宝公交付款协议》",
@@ -67,15 +67,15 @@ window.threeConfig = {
     "busyImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/open_card_end_busy.png"
   },
   "protocol": {
-    "company": "恩施市公共汽车",
-    "companyShort": "恩施公交",
-    "telephone": "0718-8247898"
+    "company": "武汉市公共交通总",
+    "companyShort": "武汉公交",
+    "telephone": "0794-8296898"
   },
   "cardDetail": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_bg.jpg",
     "noticeConfig": {
       "visible": false,
-      "content": "恩施电子公交卡,欢迎您!",
+      "content": "小码测试卡,欢迎您!",
       "width": "100%"
     },
     "bannerConfig": {
@@ -209,56 +209,48 @@ window.threeConfig = {
   },
   "help": [
     {
-      "question": "现在已开通线路支持优惠换乘吗？",
-      "answer": "支付宝扫码换乘优惠预计在近期推出，具体发布时间请以官方公告为准。"
+      "question": "小码测试卡是什么？",
+      "answer": "小码测试卡是武汉市公共交通总公司和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“小码测试卡”，乘车时只要打开支付宝的小码测试卡刷码页面，即可刷码乘车。"
     },
     {
-      "question": "现在使用恩施公交一卡通乘车有优惠吗？",
-      "answer": "使用恩施电子公交卡乘车暂时不支持优惠。优惠活动正在测试，后续优惠活动敬请期待。"
+      "question": "如何领取“小码测试卡”？",
+      "answer": "打开支付宝——选择【付款】——点击底部【乘车码】——按照领卡提示，即可领取您专属的“小码测试卡或在支付宝内搜素“武汉公交”生活号，按提示领取专属电子公交卡"
     },
     {
-      "question": "恩施现在已开通刷码乘车的线路有哪些？",
-      "answer": "恩施目前已开通2路和6路2条公交线路的移动支付试运营，后期随着新的设备更换，恩施市将在2018年2月中旬实现所有线路移动支付功能，覆盖恩施市所有线路和公交车。"
+      "question": "领卡后如何使用？",
+      "answer": "打开支付宝——选择【付款】——点击底部【乘车码】——将乘车码对准公交车上扫码窗口——听到【扫码成功】语音提示即可"
     },
     {
-      "question": "恩施公交卡都有哪些智能服务和功能？",
-      "answer": "恩施公交一卡通，包含了公交付款，乘车记录等众多功能，后续将开放更多新功能，尽请期待。"
+      "question": "“小码测试卡”是如何收费的？乘车票价是多少？",
+      "answer": "“小码测试卡”领取电子公交卡免费，乘车按照车费收取“小码测试卡”先开通的线路仅为试点线路，目前每次刷码按常规票价（投币票价）进行扣款"
     },
     {
-      "question": "如何使用恩施公交车刷码乘车？",
-      "answer": "首次使用，打开支付宝，选择“城市服务”，点击“电子公交卡”，按照领取步骤就可以领取到恩施公交一卡通啦！"
+      "question": "“小码测试卡”是否有换乘优惠？是否有乘车优惠？",
+      "answer": "目前，保定仅开通部分线路作为试运营线路，票价同投币票价，暂无其他乘车优惠，换乘优惠暂时未开通。"
     },
     {
-      "question": "恩施公交卡是如何刷码付款的？",
-      "answer": "刷码上车后，，点击扫码，选择底部乘车码，对准刷卡机扫码框，听到扫码成功即为付款成功。稍后会从您的支付宝账户扣款，资金渠道以您的支付设置为准。"
+      "question": "哪些线路可以使用支付宝乘车？其他线路什么时候可以上线？",
+      "answer": "目前可使用支付宝乘车刷码线路有：<font color='red'>31路，后续还会开放其他路线</font>市民可通过支付宝——【卡包】——【小码测试卡】——【开通线路】查询已开通乘车刷码功能的公交线路其他线路的乘车刷码功能在逐步开通中，预计尽快完成保定地区在运营车辆的【乘公交刷支付宝】功能"
     },
     {
-      "question": "反馈建议通道有吗？",
-      "answer": "为更好为恩施市民提供服务，您有任何反馈和建议，都可以通过恩施公交客服电话：0718-8247898或支付宝：95188或在线客服进行反馈。"
+      "question": "“小码测试卡”可以充值实体电子公交卡么？",
+      "answer": "目前，“小码测试卡”仅支持乘车刷码功能，充值实体卡根据当地充值规则进行充值"
     },
     {
-      "question": "电子公交卡有什么使用门槛吗？",
-      "answer": "开通电子公交卡后完成实名认证，每个用户只可领取一张电子公交卡，该卡关联个人实名信息。"
+      "question": "为什么无法领取“小码测试卡”",
+      "answer": "市民在领卡时，同一用户只能领取一张电子公交卡，若该账号无法领取，请查看是否有其他支付宝账号领取“小码测试卡若依然无法领取“小码测试卡”，请查看是否有支付宝内芝麻信用是否达到550分，或在支付宝“花呗”是否有欠款，如信用分未达到550分或“花呗”“借呗”有违期情况均不可领取“电子公交卡”如上述问题不存在仍不可领卡，请在支付宝内发起咨询或支付宝客服电话：95188"
     },
     {
-      "question": "如果不想用了，可以退卡退款吗？",
-      "answer": "如果不想用了，可以退卡退款吗？"
+      "question": "上车时不小心多刷了好几遍，扣款如何退回？",
+      "answer": "若您在乘车时对刷码金额有疑问，均可在支付宝内发起客服咨询，待客服审核该笔交易无误后，多余费用将会在工作日内返还到您账户。客服咨询流程：打开【小码测试卡】——点击【使用记录】——找到有疑问的乘车记录并打开【账单详情】——从【对此订单有疑问】发起咨询"
     },
     {
-      "question": "使用电子公交卡/乘车码可以乘坐地铁吗？",
-      "answer": "目前暂未开通地铁刷码乘车功能，后续可陆续关注哦。"
+      "question": "如何退卡？",
+      "answer": "若用户不想使用线上电子公交卡，乘车时不使用“小码测试卡”即可，该卡不会产生任何扣费情况。若用户希望直接退卡，则需通过【乘车码】——点击卡名【小码测试卡】——进入卡片详情页——【退卡申请】即可。"
     },
     {
-      "question": "电子公交卡有什么使用门槛吗？",
-      "answer": "开通电子公交卡后完成实名认证，每个用户只可领取一张电子公交卡，该卡关联个人实名信息。"
-    },
-    {
-      "question": "我遇到了支付问题，该怎么办？",
-      "answer": "（1）确认用户手机的网络状况；（2）是否已经支付宝实名认证；（3）确认用户支付宝账户绑定银行卡或向您的支付宝“余额”或“余额宝”进行充值；（4）支付宝客服电话：96188【二维码空白/打不开】（1）建议升级支付宝到最新版本；（2）若升级后依旧不行，可尝试致电支付宝客服96188（3）可能为手机型号/版本问题，可联系支付宝【案例：账户提示前两笔款项处于等待付款状态，第三次开始无法刷码】（1）是否用户授信被冻结？导致不能生码。建议用户在给支付宝账户充钱或者还掉花呗、借呗等信贷产品（建议用户直接联系支付宝客服96188询问）   【刷码后提示乘车码无效】（1）确认用户手机时间与北京时间是否一致"
-    },
-    {
-      "question": "学生卡和老年人等能否领卡/享受优惠？",
-      "answer": "目前暂开通特殊卡优惠功能，学生/老年人乘车优惠目前只能通过实体卡享受。嘉兴公交支付宝正在积极解决该问题。后续将会同步相关优惠服务"
+      "question": "使用乘车刷码刷码机没反应",
+      "answer": "手机乘车码未对准刷码窗口，可稍微调整对准方向或距离若您依然无法刷码，可能是因为机具问题或您的乘车码被冻结（支付宝信用不够或花呗违期），若是机具问题，请告知公交司机寻求帮助。"
     }
   ],
   "openLine": {
@@ -269,19 +261,79 @@ window.threeConfig = {
     },
     "openLineOptions": [
       {
-        "txt": "2A路",
-        "start": "市公安局宿舍区",
-        "end": "黄泥坝东方电器"
+        "txt": "1路",
+        "start": "鸿河山水人家",
+        "end": "森鸿创业园"
       },
       {
-        "txt": "2B路",
-        "start": "清江种业",
-        "end": "朱家坳"
+        "txt": "2路",
+        "start": "新剪子口",
+        "end": "临川第一人民医院"
       },
       {
-        "txt": "6路",
+        "txt": "7路",
+        "start": "瀚海龙蟠",
+        "end": "呈祥外滩公馆"
+      },
+      {
+        "txt": "9路",
+        "start": "赣东大桥",
+        "end": "火车站"
+      },
+      {
+        "txt": "11路",
+        "start": "孝桥街道办",
+        "end": "金桥华府"
+      },
+      {
+        "txt": "22路",
+        "start": "临川二中新校区",
+        "end": "长岭"
+      },
+      {
+        "txt": "29路",
+        "start": "拟岘台",
+        "end": "梦湖合家欢乐园"
+      },
+      {
+        "txt": "31路",
+        "start": "未来城",
+        "end": "鸿河山水人家"
+      },
+      {
+        "txt": "33路",
+        "start": "中医药高专新校区",
+        "end": "公交三场"
+      },
+      {
+        "txt": "36路",
+        "start": "赣东大桥",
+        "end": "市第一医院新区"
+      },
+      {
+        "txt": "66路",
+        "start": "市委党校",
+        "end": "临川区政府"
+      },
+      {
+        "txt": "67路",
         "start": "火车站",
-        "end": "东门医院"
+        "end": "明正集团"
+      },
+      {
+        "txt": "68路",
+        "start": "火车站",
+        "end": "赣东大桥"
+      },
+      {
+        "txt": "高铁1路",
+        "start": "火车站",
+        "end": "孝桥"
+      },
+      {
+        "txt": "高铁2路",
+        "start": "火车站",
+        "end": "上顿渡公交修理厂"
       }
     ]
   }

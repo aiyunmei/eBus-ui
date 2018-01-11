@@ -1,23 +1,24 @@
 <template>
   <div>
 
-    <div class="open-card-bg" v-lazy:background-image="openCard.bgImage"  v-if="!query.bindCard"></div>
+    <div class="open-card-bg" v-lazy:background-image="openCard.bgImage"></div>
 
     <!--卡片-->
-    <div class="open-card-img" :class="query.bindCard ? 'center' : ''">
+    <div class="open-card-img">
       <Card :cardImage="card.image"></Card>
     </div>
 
    <!--支付宝领卡按钮-->
-    <div class="open-card-btn" v-if="!query.bindCard">
-      <a :href="openCard.getCardHref">
-        <zButton :btnVal="openCard.getCardBtnVal"></zButton>
-      </a>
+    <div class="open-card-btn" @click="applyCard(openCard.getCardHref)">
+      <zButton :btnVal="openCard.getCardBtnVal"></zButton>
     </div>
 
     <!--协议-->
-    <div class="open-card-item" v-if="!query.bindCard">
-      领取卡片并同意
+    <div class="open-card-item">
+      <span @click="setCheckedProtocol">
+        <i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'" aria-hidden="true"></i>
+        领取卡片并同意
+      </span>
       <em @click="popupVisible = true">协议</em>
     </div>
 
@@ -46,23 +47,6 @@
       </ul>
     </mt-popup>
 
-    <!--绑定卡片需要容器-->
-    <div class="bind-card" v-if="query.bindCard">
-      <div class="btn">
-        <router-link to="Auth?redirectUrl=cardDetail" replace>
-          <zButton btnVal="立即绑定" type="warningGradient"></zButton>
-        </router-link>
-      </div>
-
-      <div class="desc">
-        卡片绑定后，您可以在智能公交app中使用刷码乘车功能
-      </div>
-
-      <div class="footer">
-        <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/bindCard_footer_bg.png" />
-      </div>
-    </div>
-
   </div>
 </template>
 
@@ -70,6 +54,7 @@
   import Card from '../../components/Card/Card.vue'
   import zButton from '../../components/Button/Button.vue'
   import { alipayTransparent, alipayPushWindow } from '../../utils/alipayJsApi'
+  import { showToast } from '../../utils/public'
 
   export default {
     components: { Card, zButton },
@@ -81,6 +66,7 @@
     },
     data () {
       return {
+        checkedProtocol: false, // 用户是否同意协议
         popupVisible: false
       }
     },
@@ -93,6 +79,12 @@
       },
       alipayLinkTo ({ href }) {
         alipayPushWindow(href)
+      },
+      applyCard (href) {
+        this.checkedProtocol ?  alipayPushWindow(href) : showToast('请先同意协议，再开通服务')
+      },
+      setCheckedProtocol () {
+        this.checkedProtocol = !this.checkedProtocol
       }
     }
   }
@@ -100,5 +92,4 @@
 
 <style lang="stylus" scoped>
   @import '../../assets/css/openCard.styl';
-  @import '../../assets/css/bindCard.styl';
 </style>

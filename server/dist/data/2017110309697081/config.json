@@ -4,8 +4,8 @@
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
-    "alipayUserUrl": "https://xmbus.i-xiaoma.com.cn:8088/api",
-    "alipayCardManagementUrl": "https://xmbus.i-xiaoma.com.cn:9191/api",
+    "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider",
+    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
@@ -340,6 +340,46 @@
         "end": "民合转盘农场",
         "start": "濮院车站",
         "txt": "K386路"
+      },
+      {
+        "end": "互联网产业园",
+        "start": "卫校",
+        "txt": "K002"
+      },
+      {
+        "end": "传媒学院",
+        "start": "客运中心",
+        "txt": "K006"
+      },
+      {
+        "end": "特殊教育学校",
+        "start": "传媒学院",
+        "txt": "K007"
+      },
+      {
+        "end": "春晖路小学（环线）",
+        "start": "春晖路小学",
+        "txt": "K011"
+      },
+      {
+        "end": "传媒学院",
+        "start": "客运中心",
+        "txt": "K012"
+      },
+      {
+        "end": "庆北公交站",
+        "start": "客运中心",
+        "txt": "K013"
+      },
+      {
+        "end": "庆北公交站",
+        "start": "客运中心",
+        "txt": "K016"
+      },
+      {
+        "end": "濮院物流园区",
+        "start": "客运中心",
+        "txt": "K017"
       }
     ]
   }
