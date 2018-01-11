@@ -1,25 +1,32 @@
 <template>
   <div>
 
-    <div class="open-card-bg" v-lazy:background-image="openCard.bgImage"></div>
+    <div class="open-card-bg"   :style="{ backgroundImage: `url(${openCard.bgImage})` }"></div>
 
     <!--卡片-->
     <div class="open-card-img">
       <Card :cardImage="card.image"></Card>
     </div>
 
-   <!--支付宝领卡按钮-->
-    <div class="open-card-btn" @click="applyCard(openCard.getCardHref)">
-      <zButton :btnVal="openCard.getCardBtnVal"></zButton>
-    </div>
-
     <!--协议-->
     <div class="open-card-item">
       <span @click="setCheckedProtocol">
-        <i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'" aria-hidden="true"></i>
-        领取卡片并同意
+         <i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'"
+            aria-hidden="true"
+            class="check-icon"></i>
+        我已阅读并同意
       </span>
-      <em @click="popupVisible = true">协议</em>
+      <span>
+        <em v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item.href)">{{ item.name }}</em>
+      </span>
+      <div class="open-card-item-tip">
+        <cell-tip content="请先阅读并先同意协议" v-show="protocolTipVisible"></cell-tip>
+      </div>
+    </div>
+
+    <!--支付宝领卡按钮-->
+    <div class="open-card-btn" @click="applyCard(openCard.getCardHref)">
+      <zButton :btnVal="openCard.getCardBtnVal"></zButton>
     </div>
 
     <!--卡片说明-->
@@ -37,27 +44,17 @@
       该服务由{{ global.cardName }}提供
     </div>
 
-    <!--底部弹窗-->
-    <mt-popup position="bottom" v-model="popupVisible" class="open-card-popup">
-      <ul>
-        <li v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item)">
-          <span>{{ item.name }}</span>
-        </li>
-        <li class="item-last" @click="popupVisible = false">取消</li>
-      </ul>
-    </mt-popup>
-
   </div>
 </template>
 
 <script>
   import Card from '../../components/Card/Card.vue'
   import zButton from '../../components/Button/Button.vue'
+  import CellTip from '../../components/CellTip/CellTip.vue'
   import { alipayTransparent, alipayPushWindow } from '../../utils/alipayJsApi'
-  import { showToast } from '../../utils/public'
 
   export default {
-    components: { Card, zButton },
+    components: { Card, zButton, CellTip },
     computed: {
       openCard () { return global.threeConfig.openCard },
       card () { return global.threeConfig.card },
@@ -67,7 +64,8 @@
     data () {
       return {
         checkedProtocol: false, // 用户是否同意协议
-        popupVisible: false
+        protocolTipVisible: false, // 是否显示气泡
+        timer: null,
       }
     },
     mounted () {
@@ -77,14 +75,27 @@
       onReady () {
         alipayTransparent('auto')
       },
-      alipayLinkTo ({ href }) {
+      alipayLinkTo (href) {
         alipayPushWindow(href)
       },
-      applyCard (href) {
-        this.checkedProtocol ?  alipayPushWindow(href) : showToast('请先同意协议，再开通服务')
+      applyCard (href) { // 申请开卡
+        this.checkedProtocol ?  alipayPushWindow(href) : this.toggleProtocolTip('show')
       },
       setCheckedProtocol () {
         this.checkedProtocol = !this.checkedProtocol
+        if (this.checkedProtocol) this.toggleProtocolTip('hide')
+      },
+      toggleProtocolTip (type) { // 显示/关闭 气泡
+        if (type === 'show') {
+          clearTimeout(this.timer)
+          this.protocolTipVisible = true
+          this.timer = setTimeout(() => {
+            this.protocolTipVisible = false
+          }, 3000)
+        } else {
+          clearTimeout(this.timer)
+          this.protocolTipVisible = false
+        }
       }
     }
   }

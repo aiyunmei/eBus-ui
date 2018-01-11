@@ -54,12 +54,12 @@ window.threeConfig = {
     },
     "popupList": [
       {
-        "name": "《恩施电子公交卡用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001#/protocol"
+        "name": "《公交先享后付服务和芝麻服务等相关协议》",
+        "href": "https://render.alipay.com/p/f/fd-j5c107e4/index.html"
       },
       {
-        "name": "《芝麻服务及支付宝公交付款协议》",
-        "href": "https://render.alipay.com/p/f/fd-j5c107e4/index.html"
+        "name": "《恩施电子公交卡公交乘车码用户服务协议》",
+        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001#/protocol"
       }
     ]
   },
