@@ -10,6 +10,7 @@ import {
   recharge,
   balance,
   rechargeLog,
+  rechargeAuto,
   payResult,
   openLine,
   help,
@@ -29,6 +30,7 @@ export default new Router({
     { path: '/recharge', component: recharge }, // 充值
     { path: '/balance', component: balance }, // 余额
     { path: '/rechargeLog', component: rechargeLog }, // 充值记录
+    { path: '/rechargeAuto', component: rechargeAuto }, // 自动充值
     { path: '/payResult/:userId/:type', component: payResult }, // 支付结果
     { path: '/openLine', component: openLine }, // 已开通线路
     { path: '/help', component: help }, // 使用帮助

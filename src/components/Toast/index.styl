@@ -1,7 +1,5 @@
 @import '../../assets/css/const.styl'
 
-toast-fade-leave-active
-  opacity 0
 .toast
   position fixed
   left 50%
@@ -14,7 +12,6 @@ toast-fade-leave-active
   overflow hidden
   padding 0.3rem
   border-radius 0.1rem
-  transition opacity .3s linear
   font-size normal_font_size
 .toast-top
   top 5%
@@ -22,3 +19,9 @@ toast-fade-leave-active
   top 45%
 .toast-bottom
   top: 95%
+
+/* 动画 */
+.toast-fade-enter-active, .toast-fade-leave-active
+  transition: opacity .3s;
+.toast-fade-enter, .toast-fade-leave-active
+  opacity 0

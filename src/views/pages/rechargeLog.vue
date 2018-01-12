@@ -7,7 +7,7 @@
       {{ item }}
     </li>
     <li class="loading" v-show="loading">
-      <spinner-item class="loading-item"></spinner-item>
+      <spinner-item class="loading-item" borderColor="#108ee9"></spinner-item>
       <div class="loading-txt">加载中...</div>
     </li>
   </ul>

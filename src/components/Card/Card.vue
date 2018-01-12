@@ -1,7 +1,7 @@
 <template>
   <div class="card">
-    <img v-lazy="cardImage" class="card-img" :class="[ shadow ? 'shadow' : '' ]">
-    <img v-lazy="tipsImage" v-if="tipsImage" class="tips" />
+    <img :src="cardImage" class="card-img" :class="[ shadow ? 'shadow' : '' ]">
+    <img :src="tipsImage" v-if="tipsImage" class="tips" />
   </div>
 </template>
 

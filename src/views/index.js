@@ -6,6 +6,7 @@ import cardClose from './pages/cardClose.vue'
 import recharge from './pages/recharge.vue'
 import balance from './pages/balance.vue'
 import rechargeLog from './pages/rechargeLog.vue'
+import rechargeAuto from './pages/rechargeAuto.vue'
 import payResult from './pages/payResult.vue'
 import openLine from './pages/openLine.vue'
 import help from './pages/help.vue'
@@ -20,6 +21,7 @@ export {
   recharge,
   balance,
   rechargeLog,
+  rechargeAuto,
   payResult,
   openLine,
   help,

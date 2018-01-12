@@ -1,48 +1,54 @@
 <template>
-  <div>
+  <div class="open-card">
 
-    <div class="open-card-bg"   :style="{ backgroundImage: `url(${openCard.bgImage})` }"></div>
+     <img :src="openCard.bgImage" class="open-card-bg" />
 
-    <!--卡片-->
-    <div class="open-card-img">
-      <Card :cardImage="card.image"></Card>
-    </div>
+    <div class="open-card-wrapper">
+      <div class="open-card-wrapper-info">
 
-    <!--协议-->
-    <div class="open-card-item">
-      <span @click="setCheckedProtocol">
-         <i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'"
-            aria-hidden="true"
-            class="check-icon"></i>
-        我已阅读并同意
-      </span>
-      <span>
-        <em v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item.href)">{{ item.name }}</em>
-      </span>
-      <div class="open-card-item-tip">
-        <cell-tip content="请先阅读并先同意协议" v-show="protocolTipVisible"></cell-tip>
+        <!--卡片-->
+        <div class="open-card-img">
+          <Card :cardImage="card.image"></Card>
+        </div>
+
+        <!--协议-->
+        <div class="open-card-item">
+          <span @click="setCheckedProtocol">
+             <i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'"
+                aria-hidden="true"
+                class="check-icon"></i>
+            我已阅读并同意
+          </span>
+          <span>
+            <em v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item.href)">{{ item.name }}</em>
+          </span>
+          <div class="open-card-item-tip">
+            <cell-tip content="请先阅读并同意协议" v-show="protocolTipVisible"></cell-tip>
+          </div>
+        </div>
+
+        <!--支付宝领卡按钮-->
+        <div class="open-card-btn" @click="applyCard(openCard.getCardHref)">
+          <zButton :btnVal="openCard.getCardBtnVal"></zButton>
+        </div>
+
+        <!--卡片说明-->
+        <div class="desc-info">
+          <div class="open-card-desc" v-for="(item, index) in openCard.cardDescription">
+            <div class="header">
+              <em>一</em>
+              <span v-html="item.header"></span>
+              <em>一</em>
+            </div>
+            <div class="footer" v-html="item.footer"></div>
+          </div>
+        </div>
+
       </div>
-    </div>
-
-    <!--支付宝领卡按钮-->
-    <div class="open-card-btn" @click="applyCard(openCard.getCardHref)">
-      <zButton :btnVal="openCard.getCardBtnVal"></zButton>
-    </div>
-
-    <!--卡片说明-->
-    <div class="open-card-desc" v-for="(item, index) in openCard.cardDescription">
-      <div class="header">
-        <em>一</em>
-        <span v-html="item.header"></span>
-        <em>一</em>
-      </div>
-      <div class="footer" v-html="item.footer"></div>
     </div>
 
     <!--底部服务商-->
-    <div class="open-card-footer" v-if="!query.bindCard">
-      该服务由{{ global.cardName }}提供
-    </div>
+    <div class="open-card-footer">该服务由{{ global.cardName }}提供</div>
 
   </div>
 </template>

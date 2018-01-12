@@ -4,6 +4,7 @@ html, body, #app {
   height: 100%;
   /*火狐*/
   /*关闭横屏自动调整文字大小的功能*/
+  background: #ffffff;
 }
 body,
 div,

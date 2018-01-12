@@ -50,6 +50,10 @@ window.threeConfig = {
       "01": {
         "header": "先乘车、后付款",
         "footer": "无需充值即可使用，从您支付宝账户扣款"
+      },
+      "02": {
+        "header": "先乘车、后付款",
+        "footer": "无需充值即可使用，从您支付宝账户扣款"
       }
     },
     "popupList": [
