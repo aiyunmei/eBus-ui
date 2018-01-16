@@ -32,7 +32,7 @@
     "cityName": "恩施",
     "cityCode": "422800",
     "showUrl": true,
-    "onWhite": false,
+    "onWhite": "enjoyProd",
     "whiteList": [],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",
@@ -58,7 +58,7 @@
         "href": "https://xmbus.i-xiaoma.com.cn:8080/2017120600411001#/protocol"
       },
       {
-        "name": "《芝麻服务及支付宝公交付款协议》",
+        "name": "《公交先享后付服务和芝麻服务等相关协议》",
         "href": "https://render.alipay.com/p/f/fd-j5c107e4/index.html"
       }
     ]

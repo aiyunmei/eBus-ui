@@ -32,7 +32,7 @@
     "cityName": "十堰",
     "cityCode": "420300",
     "showUrl": true,
-    "onWhite": false,
+    "onWhite": "enjoyProd",
     "whiteList": [],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",
