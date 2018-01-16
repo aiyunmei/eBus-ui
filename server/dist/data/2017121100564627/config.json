@@ -32,8 +32,10 @@
     "cityName": "十堰",
     "cityCode": "420300",
     "showUrl": true,
-    "onWhite": "enjoyProd",
-    "whiteList": [],
+    "onWhite": "rechargeDev",
+    "whiteList": [
+      "2088302427608644"
+    ],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",
       "other": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=carddetail"
@@ -88,7 +90,7 @@
     "useBtnVal": "立即使用",
     "cardCloseConfirm": {
       "okVal": "残忍退卡",
-      "cancelVal": "我在想想",
+      "cancelVal": "我再想想",
       "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_card_close_alert.png",
       "content": "退卡后您将不能再享受刷手机乘公交<br/>的便捷服务"
     },
@@ -101,20 +103,17 @@
       {
         "label": "余额查询",
         "link": "/balance",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png"
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_icon.png"
       },
       {
         "label": "自动充值",
         "link": "/rechargeAuto",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/rechargeAuto_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/rechargeAuto_icon.png"
       },
       {
         "label": "用户反馈",

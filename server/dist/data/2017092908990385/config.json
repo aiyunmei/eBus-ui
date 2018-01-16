@@ -88,7 +88,7 @@
     "useBtnVal": "立即使用",
     "cardCloseConfirm": {
       "okVal": "残忍退卡",
-      "cancelVal": "我在想想",
+      "cancelVal": "我再想想",
       "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_card_close_alert.png",
       "content": "退卡后您将不能再享受刷手机乘公交<br/>的便捷服务"
     },
