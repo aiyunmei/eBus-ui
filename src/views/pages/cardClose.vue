@@ -1,48 +1,46 @@
 <template>
-  <div v-if="visible">
+  <div v-if="visible" class="card-close">
 
     <!--bg-->
     <div class="card-close-bg"></div>
 
-    <!--上面内容渲染-->
-    <div class="card-close-main">
+    <div class="card-close-wrapper">
+      <div class="card-close-wrapper-info">
+        <!--上面内容渲染-->
+        <div class="card-close-main">
+          <div class="card-close-time">
+            <img :src="cardClose.timeImage" v-if="!timeImgVisible" class="success-time" />
+            <div class="waring-time" v-if="timeImgVisible">
+              <span>!</span>
+            </div>
+          </div>
 
-      <div class="card-close-time">
-        <img :src="cardClose.timeImage" v-if="!timeImgVisible" class="success-time" />
-        <div class="waring-time" v-if="timeImgVisible">
-          <span>!</span>
+          <div class="card-close-content">
+            <h3 v-if="bodyHeaderVisible">退卡申请已提交</h3>
+            <!--说明-->
+            <div class="card-close-content-item" v-html="contentVal" v-if="contentVal"></div>
+            <!--储值尾部说明渲染-->
+            <div class="card-close-content-item gray" v-html="rechargeTipVal" v-if="rechargeTipVal"></div>
+          </div>
         </div>
-      </div>
 
-      <div class="card-close-content">
-        <h3 v-if="bodyHeaderVisible">退卡申请已提交</h3>
-        <!--说明-->
-        <div class="card-close-content-item" v-html="contentVal" v-if="contentVal"></div>
-        <!--储值尾部说明渲染-->
-        <div class="card-close-content-item gray" v-html="rechargeTipVal" v-if="rechargeTipVal"></div>
-      </div>
-
-    </div>
-
-
-    <!--底部按钮渲染-->
-    <div class="card-close-btn-list">
-      <div class="item" v-if="returnBtnVisible">
-        <router-link to="cardDetail" replace>
-          <z-button btnVal="完成"></z-button>
-        </router-link>
-      </div>
-
-      <div class="item" v-if="rechargeRefundBtnVisible">
-        <z-button btnVal="退款并销卡" @click="bindRefund"></z-button>
-      </div>
-
-      <div class="item" v-if="rechargeExtraBtnVisible">
-        <z-button btnVal="立即补缴" @click="bindExtra"></z-button>
-      </div>
-
-      <div class="item" v-if="cancelBtnVisible">
-        <z-button btnVal="撤回申请" type="gray" hollow @click="bindCancelCardClose"></z-button>
+        <!--底部按钮渲染-->
+        <div class="card-close-btn-list">
+          <div class="item" v-if="returnBtnVisible">
+            <router-link to="cardDetail" replace>
+              <z-button btnVal="完成"></z-button>
+            </router-link>
+          </div>
+          <div class="item" v-if="rechargeRefundBtnVisible">
+            <z-button btnVal="退款并销卡" @click="bindRefund"></z-button>
+          </div>
+          <div class="item" v-if="rechargeExtraBtnVisible">
+            <z-button btnVal="立即补缴" @click="bindExtra"></z-button>
+          </div>
+          <div class="item" v-if="cancelBtnVisible">
+            <z-button btnVal="撤回申请" type="gray" hollow @click="bindCancelCardClose"></z-button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -99,11 +97,11 @@
         })
       },
       checkEnjoy (data) { // 先享后付逻辑
-        console.log('enjoy')
+        // console.log('enjoy')
         this.cardCloseIngEdit()
       },
       checkRecharge (data) { // 储值逻辑
-        console.log('recharge')
+        // console.log('recharge')
         if (checkCardCloseTime(data.checkEndTime) === 0) this.cardCloseIngEdit() // 没有超过审核天数
         else this.checkRechargeConfigMoreDay()
       },
@@ -118,7 +116,7 @@
         this.cancelBtnVisible = this.first === 'yes' ? false : true
       },
       plusBalanceEdit (cashBalance) { // 充值退卡正数渲染
-        console.log(`用户余额负数`)
+        // console.log(`用户余额负数`)
         this.timeImgVisible = true
         this.contentVal = `检测到您当前账户处于欠费状态<br />欠费<font color="#FC8653">${cashBalance}</font>${rechargeUnitName}`
         this.rechargeTipVal = `请先补缴后，才能退卡`
@@ -127,7 +125,7 @@
         this.bodyHeaderVisible = false
       },
       minusBalanceEdit (cashBalance) { // 充值退卡负数渲染
-        console.log(`用户余额正数或0`)
+        // console.log(`用户余额正数或0`)
         this.timeImgVisible = true
         this.contentVal = `检测到您当前账户还有余额<br /><font color="#108EE9">${cashBalance}</font>${rechargeUnitName}`
         this.rechargeRefundBtnVisible = true
@@ -153,7 +151,7 @@
       bindRefund () { // 退款
         const { alipayCardStatus, cashBalance } = this.cardInfo
         // 余额为0直接退卡
-        if (cashBalance === 0) {
+        if (cashBalance === 0 || cashBalance === '0') {
           revokeCardClose({
             status: alipayCardStatus,
             cb: () => {

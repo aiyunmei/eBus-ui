@@ -1,12 +1,12 @@
 <template>
-  <div v-if="visible">
+  <div v-if="visible" class="recharge">
 
-    <div class="recharge-header" v-lazy:background-image="recharge.headerImage">
+    <div class="recharge-header" :style="{ backgroundImage: `url(${recharge.headerImage})` }">
       <div class="item cardNo">
         <span>卡号</span>
         <span>{{ cardInfo.alipayCardNo }}</span>
       </div>
-      <Tag val="乘车8折" type="warning" class="item tips"></Tag>
+      <Tag :val="global.tipLabel" type="warning" class="item tips"></Tag>
     </div>
 
     <div class="recharge-item">请选择充值金额</div>
@@ -18,7 +18,7 @@
           <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
           <div class="tips"
                v-if="item.tipItem"
-               v-lazy:background-image="item.tipItem.imgUrl">
+               :style="{ backgroundImage: `url(${item.tipItem.imgUrl})`, width: item.tipItem.width ? item.tipItem.width : '1rem' }">
             {{ item.tipItem.label }}
             </div>
         </div>
@@ -27,9 +27,9 @@
 
     <div class="recharge-footer">
       <div class="item">
-        <span @click="linkTo('rechargeAuto')">自动充值</span>
+        <span @click="linkTo('/rechargeAuto')">自动充值</span>
         <em>|</em>
-        <span @click="linkTo('rechargeLog')">充值记录</span>
+        <span @click="linkTo('/rechargeLog')">充值记录</span>
       </div>
       <div class="item check" @click="rechargeProtocolVisible = true">
         <i class="fa fa-check-square-o"></i>
@@ -55,7 +55,7 @@
 <script>
   import Tag from '../../components/Tag/Tag.vue'
   import zButton from '../../components/Button/Button'
-  import { checkNull, showToast } from '../../utils/public'
+  import { checkNull, showToast, isCardDetailMenu } from '../../utils/public'
   import { getCardInfo, showAlipayStore } from '../../utils/http'
 
   export default {
@@ -63,6 +63,7 @@
     computed: {
       cardInfo () { return this.$store.state.alipayCardInfo },
       recharge () { return global.threeConfig.recharge },
+      global () { return global.threeConfig.global },
       rechargeUnitName () { return global.threeConfig.alipayCardInfo.rechargeUnitName }
     },
     data () {
@@ -86,12 +87,7 @@
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
         // 查询卡信息
-        getCardInfo({
-          Vue: this,
-          cb: data => {
-            this.visible = true
-          }
-        })
+        getCardInfo({ Vue: this, cb: data => { this.visible = true } })
       },
       goRecharge (item, index) {
         this.rechargeListIndex = index
@@ -110,7 +106,8 @@
         })
       },
       linkTo (path) {
-        showToast('建设中')
+        if (path === '/rechargeAuto') isCardDetailMenu(path) ? this.$router.push(path) : showToast('建设中')
+        else this.$router.push(path)
       }
     }
   }

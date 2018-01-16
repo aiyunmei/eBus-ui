@@ -18,32 +18,19 @@ class Axios {
     request.defaults.validateStatus = status => {
       return status >= 200 && status < 300
     }
-    // 请求前做的公共处理
-    request.interceptors.request.use((config) => { // 请求前
-      Spinner.open()
-      return config
-    }, (error) => { // 请求前出错
-      Spinner.close()
-      netWorkError()
-      return Promise.reject(error)
-    })
-    // 请求响应需要的做的公共处理
-    request.interceptors.response.use((response) => { // 响应成功
-      Spinner.close()
-      return response
-    }, (error) => {
-      Spinner.close()
-      netWorkError()
-      return Promise.reject(error)
-    })
     // 赋予内部
     this.instance = request
   }
 
   apiGet (url, params) {
     return new Promise((resolve, reject) => {
-      this.instance.get(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, {params}).then(res => {
+      this.instance.get(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, { params }).then(res => {
+        Spinner.close()
         resolve(res.data)
+      }).catch(error => {
+        Spinner.close()
+        netWorkError()
+        reject(error)
       })
     })
   }
@@ -51,7 +38,12 @@ class Axios {
   apiPost (url, params) {
     return new Promise((resolve, reject) => {
       this.instance.post(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, qs.stringify(params)).then(res => {
+        Spinner.close()
         resolve(res.data)
+      }).catch(error => {
+        Spinner.close()
+        netWorkError()
+        reject(error)
       })
     })
   }

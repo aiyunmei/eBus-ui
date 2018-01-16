@@ -5,19 +5,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Popup } from 'mint-ui'
-
-// 引入全局组件
-import lazyLoad from 'vue-lazyload'
+import {
+  Popup
+} from 'mint-ui'
 
 // 写入全局样式
 import '@/assets/css/reset.css'
 
 Vue.config.productionTip = false
+
 Vue.component(Popup.name, Popup)
-Vue.use(lazyLoad, {
-  preLoad: 1, attempt: 2
-})
 
 /* eslint-disable no-new */
 const $Vue = new Vue({

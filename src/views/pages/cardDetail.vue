@@ -1,6 +1,5 @@
 <template>
   <div class="card-detail" v-if="visible">
-
     <!--公告-->
     <div class="card-detail-notice">
       <NoticeBar
@@ -11,7 +10,7 @@
     </div>
 
     <!--卡片-->
-    <div class="card-detail-card-img" v-lazy:background-image="cardDetail.bgImage">
+    <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">
       <div class="info">
         <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
       </div>
@@ -23,11 +22,15 @@
         <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_no_icon.png" class="icon" />
         <span>卡号 {{ cardInfo.alipayCardNo }}</span>
       </div>
+
       <ul class="card-detail-menu">
-        <li class="menu-item" v-for="(item, index) in cardDetail.menuOptions" v-if="!item.visible" @click="bindMenuList(item)">
+        <li class="menu-item"
+            v-for="(item, index) in cardDetail.menuOptions"
+            v-if="setMenuVisible(item, index)"
+            @click="bindMenuList(item)">
           <div class="info">
             <div class="icon" v-if="item.icon">
-              <img v-lazy="item.icon" />
+              <img :src="item.icon" />
             </div>
             <div class="label" v-if="item.label">{{ item.label }}</div>
           </div>
@@ -35,17 +38,13 @@
       </ul>
     </div>
 
-
-
     <div class="footer">
-
       <!--广告位-->
       <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
         <a :href="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.href : cardDetail.bannerConfig.href" target="_blank">
-          <img v-lazy="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
+          <img :src="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
         </a>
       </div>
-
      <!--立即使用按钮-->
       <div class="card-detail-btn">
         <div class="info">
@@ -59,17 +58,14 @@
     <!--领卡成功-->
     <div class="card-detail-success" v-if="openCardSuccessVisible">
       <div class="main">
-        <img v-lazy="cardDetail.successAlertConfig.imgUrl" />
+        <img :src="cardDetail.successAlertConfig.imgUrl" />
         <div class="btn-list">
           <span class="btn l" @click="openCardSuccessVisible = false">{{ cardDetail.successAlertConfig.leftBtnVal }}</span><span class="btn r" @click="bindUseSuccessAlertBtn(cardDetail.successAlertConfig.rightBtnVal)">{{ cardDetail.successAlertConfig.rightBtnVal }}</span>
         </div>
       </div>
     </div>
-
     <!--预加载退卡弹窗图片-->
     <img v-show="false" :src="cardDetail.cardCloseConfirm.image" style="width: 0;height: 0;opacity: 0; position: absolute;">
-
-
   </div>
 </template>
 
@@ -79,6 +75,7 @@
   import zButton from '../../components/Button/Button.vue'
   import MessageBox from '../../components/MessageBox/index'
   import NoticeBar from '../../components/Notice/Notice.vue'
+  import Spinner from '../../components/Spinner/index'
   import { checkNull, checkCardStatus, showToast, jsLink } from '../../utils/public'
   import { getCardInfo, applyCardClose, getAlipayMon } from '../../utils/http'
 
@@ -97,6 +94,7 @@
         visible: false, // 容器页
         openCardSuccessVisible: false, // 是否显示第一领卡成功弹窗
         useBtnHref: '', // 乘车码链接
+        rechargeVisible: false, // 是否显示储值卡功能
         alipayMomBanner: { // 阿里妈妈接入信息
           href: null,
           src: null
@@ -109,20 +107,16 @@
     methods: {
       onReady () {
         const { userId, successUrl } = this.$route.query
-
         // 没有用户信息去授权
         if (checkNull(sessionStorage.getItem('userId')) === 0 && userId === undefined) {
           this.$router.replace('/Auth?redirectUrl=cardDetail')
           return false
         }
-
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
-
         // 写入乘车码链接
         if (successUrl) this.useBtnHref = successUrl
         else this.useBtnHref = busCode
-
         // 接入阿里妈妈
         if (this.cardDetail.bannerConfig.isAlipayMon) {
           getAlipayMon({
@@ -133,18 +127,42 @@
             }
           })
         }
-
-        // 是否打开了灰度
-        if (onWhite) this.openWhite()
-        else this.commonReady()
+        /**
+        * 由于业务 复杂 牵扯到支付宝 牵扯到公交白名单相对复杂
+        * @params onWhite {string}
+         * 'enjoyProd' ==> '先享后付全量环境' ||
+         * 'rechargeProd' ==> '储值卡全量环境' ||
+         * 'rechargeDev' ==> '储值预发环境' ||
+         * 'oldRechargeDev' ==> '兼容旧先享后付的预发环境'
+        * */
+        switch (onWhite) {
+          case 'enjoyProd':
+            this.commonReady();
+            break;
+          case 'rechargeProd':
+            this.rechargeProdType();
+            break;
+          case 'rechargeDev':
+            this.devRechargeWhiteType();
+            break;
+          case 'oldRechargeDev':
+            this.oldDevRechargeWhiteType();
+            break;
+          default:
+            this.commonReady();
+        }
       },
-      openWhite () {
-        if (whiteList.indexOf(sessionStorage.getItem('userId')) === -1) this.outWhite() // 不在白名单执行事件
-        else this.commonReady() // 在白名单执行事件
+      oldDevRechargeWhiteType () {
+        if (whiteList.indexOf(sessionStorage.getItem('userId')) === 0) this.commonReady() // 在白名单
+        else this.$route.query.buscode ? jsLink('replace', linkOldUrl.buscode) : jsLink('replace', linkOldUrl.other) // 不在白名单
       },
-      outWhite () {
-        if (this.$route.query.buscode !== undefined) jsLink('replace', linkOldUrl.buscode)
-        else jsLink('replace', linkOldUrl.other)
+      devRechargeWhiteType () {
+        if (whiteList.indexOf(sessionStorage.getItem('userId')) === 0) this.rechargeVisible = true // 在白名单开启储值功能
+        this.commonReady() // 不在白名单渲染先享后付
+      },
+      rechargeProdType () {
+        this.rechargeVisible = true
+        this.commonReady()
       },
       commonReady () { // 默认渲染
         const { successUrl, buscode } = this.$route.query
@@ -159,37 +177,38 @@
           }
         })
       },
-      bindMenuList (item) {
+      setMenuVisible (item, index) { // 菜单渲染事件
+        const { link, visible } = item
+        // 不开启的功能默认关闭
+        if (visible) return false
+        // 菜单储值功能白名单
+        if (link === '/recharge' || link === '/balance' || link === '/rechargeAuto') return this.rechargeVisible
+        // 其他菜单默认显示
+        return true
+      },
+      bindMenuList (item) { // 菜单点击事件
         const { link, urlType } = item
         const { alipayCardStatus } = this.cardInfo
         const { okVal, cancelVal, content, image } = this.cardDetail.cardCloseConfirm
-
-        // 充值
         if (link === '/recharge') {
           if (checkCardStatus(alipayCardStatus) === 'no') {
             showToast('您已申请退卡，暂时无法使用!')
             return false
           }
         }
-
-        // 退卡
         if (link === '/cardClose') {
           if (checkCardStatus(alipayCardStatus) === 'yes') {
             MessageBox({type: 'confirm', imgUrl: image, content: content, okVal: okVal, cancelVal: cancelVal, callback: (action) => {
-              if (action === 'ok') {
-                applyCardClose({
-                  status: alipayCardStatus,
-                  cb: () => { this.$router.replace('/cardClose?first=yes') }
-                })
-              }
-            }})
-          } else {
-            this.$router.replace('/cardClose?first=no')
-          }
+                if (action === 'ok') {
+                  applyCardClose({
+                    status: alipayCardStatus,
+                    cb: () => { this.$router.replace('/cardClose?first=yes') }
+                  })
+                }
+              }})
+          } else this.$router.replace('/cardClose?first=no')
           return false
         }
-
-        // 其他
         urlType ? jsLink('href', link) : this.$router.push(link)
       },
       bindUseSuccessAlertBtn (val) {

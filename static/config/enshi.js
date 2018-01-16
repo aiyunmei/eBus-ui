@@ -33,11 +33,14 @@ window.threeConfig = {
     "cityCode": "422800",
     "showUrl": true,
     "onWhite": false,
-    "whiteList": [],
+    "whiteList": [
+      '2088302427608644'
+    ],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",
       "other": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=carddetail"
-    }
+    },
+    "tipLabel": "乘车8折"
   },
   "card": {
     "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/enshi_card.jpg"
@@ -105,14 +108,12 @@ window.threeConfig = {
       {
         "label": "余额查询",
         "link": "/balance",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png"
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_icon.png"
       },
       {
         "label": "自动充值",
@@ -163,7 +164,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
           "label": "立减25",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -172,7 +173,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
           "label": "立减25",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -181,7 +182,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
           "label": "享8.6折",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -190,7 +191,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
           "label": "享8折",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       },
       {
@@ -199,7 +200,7 @@ window.threeConfig = {
         "tipItem": {
           "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
           "label": "惠",
-          "width": "1.6rem"
+          "width": "2.5rem"
         }
       }
     ],

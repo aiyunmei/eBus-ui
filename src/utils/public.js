@@ -4,6 +4,7 @@ import { alipaySetTitle } from './alipayJsApi'
 
 const { cardName } = global.threeConfig.global
 const { appId, busCode } = global.threeConfig.alipayCardInfo
+const { menuOptions } = global.threeConfig.cardDetail
 
 const TITLE_LIST = {
   cardDetail: '卡片详情',
@@ -27,7 +28,6 @@ export function setTitle (path) {
   document.title = name
   alipaySetTitle(name)
 }
-
 
 /**
 * 原生跳转
@@ -88,7 +88,6 @@ export function checkNull (data) {
   if (data === '' || data === null || data === undefined) return 0
   else return 1
 }
-
 
 /**
 * 验证当前是否有卡
@@ -226,5 +225,20 @@ export function randomStr (len) {
     pwd += str.charAt(Math.floor(Math.random() * str.length))
   }
   return pwd
+}
+
+/*
+* 验证这个功能是否开启
+* @params ${link} 需要验证的link
+*
+* false 关闭
+* true 开启
+* */
+export function isCardDetailMenu (link) {
+  let result = false
+  menuOptions.forEach(item => {
+    if (item.link === link) result = item.visible ? result = false : result = true
+  })
+  return result
 }
 

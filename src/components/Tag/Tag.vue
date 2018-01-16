@@ -1,6 +1,6 @@
 <template>
 
-  <span class="tag" :class="[ `tag-${type}`, `tag-${size}` ]">
+  <span class="tag" :class="[ `tag-${type}`, `tag-${size}` ]" v-if="val ? true : false">
     {{ val }}
   </span>
 

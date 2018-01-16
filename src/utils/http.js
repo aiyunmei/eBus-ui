@@ -1,11 +1,11 @@
 /*
 * 公共执行http请求
 * */
-import $Vue from '../main'
 import api from './api'
 import request from './request'
 import { codeError } from './helper'
 import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, randomStr } from './public'
+import Spinner from '../components/Spinner/index'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo
 const { cityCode, cardName } = global.threeConfig.global
@@ -34,6 +34,7 @@ const SUCCESS_CODE = '20000'
 * 根据token 获取uid
 * */
 export async function getUser ({ auth_code, cb }) {
+  Spinner.open()
   const { msg, data } = await request.apiGet(api.getAlipayUid, {
     appId: appId,
     sign: sign,
@@ -48,6 +49,7 @@ export async function getUser ({ auth_code, cb }) {
 * 开卡组件的根据token获取uid
 * */
 export async function getCardComponentUid ({ auth_code, request_id, cb }) {
+  Spinner.open()
   const { msg, data } = await request.apiGet(api.getAlipayCardComponentUid, {
     appId: appId,
     sign: sign,
@@ -80,6 +82,7 @@ export async function getMoreCardComponentUid ({ auth_code, request_id, cb }) {
 * 开通先享后付卡
 * */
 export async function getEnjoyCardComponent ({ userId, cb }) {
+  Spinner.open()
   const { msg, data } = await request.apiGet(api.enjoyCardComponent, {
     appId: appId,
     sign: sign,
@@ -127,14 +130,14 @@ export async function getYanTaiRechargeCardComponent ({ userId, cardNo, cb }) {
 /*
 * 查询当前卡信息
 * */
-export async function getCardInfo ({ cb }) {
+export async function getCardInfo ({ Vue, cb }) {
   const { msg, data } = await request.apiGet(api.searchCardInfo, {
     appId: appId,
     sign: sign,
     cardType: cardType,
     userId: sessionStorage.getItem('userId')
   })
-  const dispatch = $Vue.$store.dispatch
+  const dispatch = Vue.$store.dispatch
 
   if (msg && msg.code === SUCCESS_CODE) {
     if (checkNull(data) === 0) {
@@ -218,6 +221,7 @@ export async function revokeCardClose ({ status, cb }) {
 * 唤起支付宝收银台
 * */
 export async function showAlipayStore ({ label, RMB, syncCallBackUrl, cb }) {
+  Spinner.open()
   const { msg, data } = await request.apiPost(api.alipayStore, {
     appId: storeAppId ? storeAppId : appId,
     sign: storeSign ? storeSign : sign,
@@ -244,6 +248,7 @@ export async function showAlipayStore ({ label, RMB, syncCallBackUrl, cb }) {
 * 退款
 * */
 export async function setRefund ({ cb }) {
+  Spinner.open()
   const { msg } = await request.apiPost(api.alipayRefund, {
     appId: storeAppId ? storeAppId : appId,
     sign: storeSign ? storeSign : sign,
