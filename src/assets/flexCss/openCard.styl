@@ -1,0 +1,73 @@
+@import "./const.styl";
+
+.open-card
+  height 100%
+  overflow hidden
+  position relative
+  .open-card-bg
+    width 100%
+    position absolute
+    left 0
+    top 0
+    z-index 5
+  .open-card-wrapper
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    z-index 10
+    .open-card-wrapper-info
+      width 100%
+      height 100%
+
+/* 卡 */
+.open-card-img
+  width 92%
+  margin 0 auto
+  padding-top 30%
+/* 协议 */
+.open-card-item
+  width 92%
+  margin 0 auto
+  position relative
+  font-size small_font_size
+  padding: 36px 0 4px 0
+  .open-card-item-tip
+    position absolute
+    left 0
+    top 0
+  .check-icon
+    font-size normal_font_size
+  .check-active
+    color default_blue
+  em
+    color #3ab5e6
+/* 按钮 */
+.open-card-btn
+  width 92%
+  margin 0 auto
+/* 说明 */
+.desc-info
+  width 100%
+  text-align center
+  padding-top 10px
+  .open-card-desc
+    width 100%
+    margin-bottom 4px
+    .header
+      font-weight 700
+      font-size normal_font_size
+    .footer
+      font-size mini_font_size
+      color #a3a8ae
+/*底部*/
+.open-card-footer
+  position absolute
+  left 0
+  bottom 0
+  font-size mini_font_size
+  color #999
+  text-align center
+  width 100%
+  padding 4px 0

@@ -50,12 +50,12 @@
     text-align: center;
     color: #fff;
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 0.1rem;
+    border-radius: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transform: translate(-50%,-50%);
-    padding: 0.2rem;
+    padding: 4px;
   }
 </style>

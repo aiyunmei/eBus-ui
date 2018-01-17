@@ -83,5 +83,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/payResult.styl';
+  @import '../../assets/flexCss/payResult.styl';
 </style>

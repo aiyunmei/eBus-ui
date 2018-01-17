@@ -6,7 +6,7 @@
         <span>卡号</span>
         <span>{{ cardInfo.alipayCardNo }}</span>
       </div>
-      <Tag :val="global.tipLabel" type="warning" class="item tips"></Tag>
+      <Tag :val="global.tipLabel" type="warning" class="item tips" size="mini"></Tag>
     </div>
 
     <div class="recharge-item">请选择充值金额</div>
@@ -16,11 +16,9 @@
         <div class="item-main" @click="goRecharge(item, index)" :class="[ index === rechargeListIndex ? 'on' : '' ]">
           <div class="label">{{ item.label }}</div>
           <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
-          <div class="tips"
-               v-if="item.tipItem"
-               :style="{ backgroundImage: `url(${item.tipItem.imgUrl})`, width: item.tipItem.width ? item.tipItem.width : '1rem' }">
-            {{ item.tipItem.label }}
-            </div>
+          <div class="tips" v-if="item.tipItem" :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
+            <span class="tips-wrapper">{{ item.tipItem.label }}</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -114,5 +112,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/recharge.styl';
+  @import '../../assets/flexCss/recharge.styl';
 </style>

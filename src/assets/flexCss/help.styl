@@ -1,0 +1,45 @@
+@import "./const.styl";
+
+.help-list-item
+  width 100%
+  overflow hidden
+  padding 6px
+  border-bottom 1px solid #cccccc
+  .question
+    color #666
+    font-weight 700
+    font-size small_font_size
+    position relative
+    display flex
+    flex-direction row
+    justify-content space-between
+    padding-right normal_font_size
+    span
+      white-space nowrap
+      text-overflow ellipsis
+      overflow hidden
+    .arrow
+      font-size normal_font_size
+      transition all .3s
+      position absolute
+      right 0
+      top 0
+.answer
+  color default_black
+  font-size small_font_size
+  padding-top 4px
+  display flex
+  flex-direction row
+  justify-content flex-start
+  span
+    width 6%
+    color #63bc56
+    overflow hidden
+  .answer-item
+    width 94%
+    overflow hidden
+.open
+  .question
+    color #333
+  .arrow
+    transform rotate(90deg)

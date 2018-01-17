@@ -67,9 +67,9 @@
 
 <style>
   .protocol-layout {
-    padding: 0.4rem;
-    font-size: 0.5rem;
     font-family: "PingFangSC-Regular", "Helvetica Neue", Helvetica, Arial, "微软雅黑", sans-serif;
+    padding: 20px;
+    font-size: 16px;
     line-height: 2;
   }
 </style>

@@ -43,7 +43,6 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/rechargeLog.styl';
   ul li {
     text-align: center;
   }

@@ -75,7 +75,6 @@
   import zButton from '../../components/Button/Button.vue'
   import MessageBox from '../../components/MessageBox/index'
   import NoticeBar from '../../components/Notice/Notice.vue'
-  import Spinner from '../../components/Spinner/index'
   import { checkNull, checkCardStatus, showToast, jsLink } from '../../utils/public'
   import { getCardInfo, applyCardClose, getAlipayMon } from '../../utils/http'
 
@@ -220,5 +219,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/cardDetail.styl';
+  @import '../../assets/flexCss/cardDetail.styl';
 </style>

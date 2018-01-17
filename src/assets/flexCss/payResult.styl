@@ -1,0 +1,108 @@
+@import "./const.styl";
+
+.pay-result
+  height 100%
+  position relative
+  overflow hidden
+  .pay-result-bg
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    background rgba(96, 96, 96, 0.1)
+    z-index 5
+  .pay-result-wrapper
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    overflow hidden
+    z-index 10
+/* 头部 */
+.pay-result-main
+  background #fff
+  padding-top 20px
+/* logo */
+.logo
+  width 80px
+  height 80px
+  margin 0 auto
+  img
+    width 100%
+    height 100%
+/* 内容 */
+.content
+  width 100%
+  text-align center
+  h3
+    color #2c83e8
+    font-size large_font_size
+    font-weight 300
+    padding 6px 0
+  .amount
+    color default_black
+    font-size 32px
+  .tips
+    color #aaa
+    font-size small_font_size
+    padding-bottom 10px
+    border-bottom 1px solid #ddd
+ /* 底部 */
+.footer
+  width 100%
+  padding 0.2rem 0
+  .main
+    width 92%
+    margin 0 auto
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    .l
+      display flex
+      flex-direction row
+      justify-content space-between
+      align-items center
+      h3
+        font-weight 300
+        font-size small_font_size
+        span
+          font-size mini_font_size
+          color #aaa
+      .money
+        width 24px
+        height 24px
+        line-height 24px
+        text-align center
+        border 1px solid default_blue
+        color default_blue
+        font-size normal_font_size
+        border-radius 100%
+        margin-right 10px
+    .r
+      display flex
+      flex-direction row
+      justify-content center
+      align-items center
+      .btn
+        width 60px
+        height 36px
+        line-height 36px
+        font-size small_font_size
+      .arrow
+        color #aaaaaa
+        font-size normal_font_size
+        margin-left 4px
+/* 按钮 */
+.return
+  width 92%
+  margin 0 auto
+  position absolute
+  left 50%
+  bottom: 0
+  z-index 10
+  margin-left -46%
+  padding 10px 0
+

@@ -1,4 +1,4 @@
-@import '../../assets/css/const.styl'
+@import '../../assets/flexCss/const.styl';
 
 .button
   width 100%
@@ -9,15 +9,15 @@
   border 0
   box-sizing border-box
   outline none
-  border-radius 0.2rem
+  border-radius 4px
 
 /* type */
 .button-default
-  background #108ee9
+  background default_blue
   color #fff
 .button-gray
   background rgba(96, 96, 96, 0.3)
-  color #333
+  color default_black
 .button-transparent
   background transparent
   border 1px solid #fff
@@ -31,26 +31,26 @@
 .button-default-hollow
   background #fff
   color #108ee9
-  border 1px solid #108ee9
+  border 1px solid default_blue
 .button-gray-hollow
   background #fff
-  color #333
+  color default_black
   border 1px solid rgba(96, 96, 96, 0.3)
 
 /* size */
 .button-normal
-  height 1.6rem
-  line-height 1.6rem
-  font-size large_font_size
+  height 42px
+  line-height 42px
+  font-size normal_font_size
 
 /* active */
 .button-default:active
-  background #2C83E8
+  background active_default_blue
 .button-gray:active
   background rgba(96, 96, 96, 0.6)
 
 .button-default-hollow:active
-  background #108ee9
+  background default_blue
   color #fff
 .button-gray-hollow:active
   background rgba(96, 96, 96, 0.3)

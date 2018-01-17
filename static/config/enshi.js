@@ -32,7 +32,7 @@ window.threeConfig = {
     "cityName": "恩施",
     "cityCode": "422800",
     "showUrl": true,
-    "onWhite": false,
+    "onWhite": "rechargeDev",
     "whiteList": [
       '2088302427608644'
     ],
@@ -81,12 +81,12 @@ window.threeConfig = {
   "cardDetail": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_bg.jpg",
     "noticeConfig": {
-      "visible": false,
+      "visible": true,
       "content": "恩施电子公交卡,欢迎您!",
       "width": "100%"
     },
     "bannerConfig": {
-      "visible": false,
+      "visible": true,
       "isAlipayMon": false,
       "href": "http://baidu.com",
       "src": "../../static/img/banner2.png",
@@ -118,8 +118,7 @@ window.threeConfig = {
       {
         "label": "自动充值",
         "link": "/rechargeAuto",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/rechargeAuto_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/rechargeAuto_icon.png"
       },
       {
         "label": "用户反馈",

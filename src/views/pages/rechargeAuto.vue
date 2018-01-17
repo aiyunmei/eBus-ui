@@ -33,14 +33,13 @@
       <zButton :btnVal="btnVal" class="footer-btn" @click="applyRechargeAuto(applyRechargeLabel[btnVal])"></zButton>
     </div>
 
-
     <mt-popup position="bottom" v-model="thresholdPopupVisible" class="popup-item">
       <div class="slot-header">
         <div class="slot-header-item" @click="thresholdPopupVisible = false">取消</div>
         <div class="slot-header-item slot-ok">确认</div>
       </div>
       <div class="slot-body">
-        <picker :slots="thresholdSlots" @change="slotValueChange" :itemHeight="72"></picker>
+        <picker :slots="thresholdSlots" @change="slotValueChange"></picker>
       </div>
     </mt-popup>
 
@@ -50,7 +49,7 @@
         <div class="slot-header-item slot-ok">确认</div>
       </div>
       <div class="slot-body">
-        <picker :slots="rechargeSlots" @change="slotValueChange" :itemHeight="72"></picker>
+        <picker :slots="rechargeSlots" @change="slotValueChange"></picker>
       </div>
     </mt-popup>
 
@@ -128,5 +127,5 @@
 </script>
 
 <style lang="stylus">
-  @import "../../assets/css/rechargeAuto.styl";
+  @import "../../assets/flexCss/rechargeAuto.styl";
 </style>

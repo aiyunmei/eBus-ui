@@ -151,7 +151,7 @@
     top: 50%;
     margin-top: -18px;
     pointer-events: none;
-    border: 2px solid #eaeaea;
+    border: 1px solid #eaeaea;
     border-left: 0;
     border-right: 0;
   }

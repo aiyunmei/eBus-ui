@@ -1,95 +1,101 @@
-@import './const.styl';
+@import "./const.styl";
 
 .recharge
   height 100%
   overflow hidden
-  padding 0.5rem 0
 
+/* 头部 */
 .recharge-header
   width 92%
-  height 4.6rem
-  margin 0 auto
-  background no-repeat
+  height 16%
+  margin 10px auto
   background-size 100% 100%
+  padding 2% 0
   display flex
   flex-direction column
   justify-content space-around
   .item
-    font-size large_font_size
+    font-size normal_font_size
     margin-left 5%
   .cardNo
     width 70%
     overflow hidden
     color #fff
   .tips
-    width 3rem
-    font-size normal_font_size
+    width 20%
+    font-size small_font_size
 .recharge-item
-  font-size large_font_size
-  width 92%
-  margin 0.6rem auto
-.recharge-list
+  font-size normal_font_size
   width 92%
   margin 0 auto
+/* 充值列表 */
+.recharge-list
+  width 92%
+  margin 10px auto
   .item
     width 32%
-    height 3.2rem
+    height 66px
     display inline-block
     position relative
-    margin-bottom 0.8rem
+    margin-bottom 16px
     .item-main
       width 100%
       height 100%
-      border 2px solid #108ee9
-      border-radius 0.1rem
+      border 1px solid #108ee9
+      border-radius 4px
       overflow hidden
       display flex
       flex-direction column
       justify-content space-around
       text-align center
       .label
-        font-size large_font_size
-        color #108ee9
-      .value
         font-size normal_font_size
+        color default_blue
+      .value
+        font-size small_font_size
         color #82cbfe
       .tips
-        width 2.5rem
-        height 1rem
-        line-height 1.6
+        padding 1px 8px
         overflow hidden
         text-align center
-        display block
         position absolute
-        right -0.11rem
-        top -0.45rem
+        right -2%
+        top -15%
         color #fff
-        font-size small_font_size
+        font-size mini_font_size
         background-size 100% 100%
+        .tips-wrapper
+          width 100%
+          height 100%
+          position relative
+          top -2px
     .on
-       background #108ee9
-       .label, .value
-         color #fff
+      background default_blue
+      .label, .value
+        color #fff
   .item:nth-child(3n-1)
     margin 0 2%
+/* 底部 */
 .recharge-footer
   width 100%
   position fixed
   left 0
   bottom 0
+  z-index 5
   text-align center
   .item
     width 100%
-    margin 0.2rem 0
-    font-size normal_font_size
+    margin 4px 0
+    font-size mini_font_size
     em
       color #ddd
       font-weight 700
   .check
     i
-      color #108ee9
+      color default_blue
     span
       color #ddd
+/* 协议弹窗 */
 .recharge-protocol
   width 100%
   position fixed
@@ -103,29 +109,33 @@
   font-size small_font_size
   line-height 2
   .main
-    width 80%
+    width 92%
     position fixed
     z-index 2001
     left 50%
     top 50%
     transform translate(-50%,-50%)
-    background #459eff
-    padding 0.4rem 0.2rem
-    border-radius 0.2rem
+    background default_blue
+    border-radius 4px
+    padding 8px 4px
+    display flex
+    flex-direction column
   .content
     width 100%
+    max-height 320px
+    padding-bottom 40px
+    overflow-x hidden
+    overflow-y auto
     color #ffffff
   .submit
-    width 6rem
+    width 40%
     margin 0 auto
-    padding-top 0.4rem
+    padding-top 8px
     .btn
-      border-radius 1rem
+      border-radius 4px
 .recharge-protocol-enter
   opacity: 0
   transform: scale(0.7)
 .recharge-protocol-leave-active
   opacity: 0
   transform: scale(0.9)
-
-

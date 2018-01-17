@@ -1,0 +1,51 @@
+@import "./const.styl";
+
+.card-info
+  width 92%
+  margin 0 auto
+  padding 10px 0
+/* 菜单 */
+.card-list
+  width 92%
+  margin 0 auto
+  border-top 1px solid #ddd
+  .card-list-item
+    width 100%
+    height 36px
+    border-bottom 1px solid #ddd
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    .card-list-label, .card-list-value
+      font-size normal_font_size
+      color default_black
+    .card-list-value
+      .arrow
+        color #c7c7c7
+/* 按钮 */
+.footer
+  margin 0 auto
+  width 92%
+  padding-top 10px
+.popup-item
+  width 100%
+  background #ffffff
+  padding 6px 0
+  display flex
+  flex-direction column
+  justify-content space-between
+  .slot-header
+    width 92%
+    margin 0 auto
+    display flex
+    flex-direction row
+    justify-content space-between
+    .slot-header-item
+      font-size normal_font_size
+    .slot-ok
+      color default_blue
+  .slot-body, .slot-item, .picker-slot-wrapper
+    width 100%
+    .picker-item
+      font-size small_font_size

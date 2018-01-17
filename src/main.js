@@ -10,7 +10,7 @@ import {
 } from 'mint-ui'
 
 // 写入全局样式
-import '@/assets/css/reset.css'
+import '@/assets/flexCss/reset.css'
 
 Vue.config.productionTip = false
 

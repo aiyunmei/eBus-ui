@@ -188,5 +188,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/cardClose.styl';
+  @import '../../assets/flexCss/cardClose.styl';
 </style>

@@ -1,0 +1,83 @@
+@import "./const.styl";
+
+.balance
+  height 100%
+  overflow hidden
+  position relative
+  .balance-bg
+    width 100%
+    position absolute
+    left 0
+    top 0
+    right 0
+    bottom 0
+    z-index 5
+    background rgba(96, 96, 96, 0.1)
+.balance-wrapper
+  width 100%
+  height 100%
+  position absolute
+  left 0
+  top 0
+  z-index 10
+  overflow hidden
+  .balance-wrapper-info
+    width 100%
+    background #ffffff
+/* 头部 */
+.balance-header
+  width 100%
+  height 200px
+  background-size 100% 100%
+  position relative
+  .item
+    color rgba(255, 255, 255, 0.7)
+    width 92%
+    margin 0 auto
+    font-size small_font_size
+    h3
+      color #fff
+      font-size 32px
+      font-weight 300
+      padding-top 4px
+    .item-tag
+      width 66px
+  .title
+    padding-top 10%
+  .flex
+    position absolute
+    left 3%
+    bottom 5%
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+    span
+      margin-left 2%
+/* 按钮 */
+.balance-footer
+  width 100%
+  height 42px
+  .main
+    width 92%
+    height 100%
+    margin 0 auto
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+  .rmb
+    font-size normal_font_size
+    .rmb-main
+      color #108ee9
+      display inline-block
+      border-radius 50%
+      text-align center
+      border 1px solid default_blue
+      width 24px
+      height 24px
+      line-height 24px
+      font-size normal_font_size
+  .arrow
+    color #c7c7cc
+    font-size large_font_size

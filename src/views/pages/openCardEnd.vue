@@ -127,5 +127,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/openCardEnd.styl';
+  @import '../../assets/flexCss/openCardEnd.styl';
 </style>

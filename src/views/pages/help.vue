@@ -41,5 +41,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/help.styl';
+  @import '../../assets/flexCss/help.styl';
 </style>

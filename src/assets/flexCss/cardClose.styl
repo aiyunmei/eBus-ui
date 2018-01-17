@@ -1,0 +1,70 @@
+@import "./const.styl";
+
+.card-close
+  height 100%
+  overflow hidden
+  position relative
+  .card-close-bg
+    width 100%
+    height 100%
+    position absolute
+    left 0
+    top 0
+    background rgba(96, 96, 96, 0.1)
+    z-index 5
+
+.card-close-wrapper
+  width 100%
+  height 100%
+  position absolute
+  left 0
+  top 0
+  z-index 10
+  .card-close-wrapper-info
+    width 100%
+    height 100%
+/* 上面提示 */
+.card-close-main
+  width 100%
+  padding 20px 0 10px 0
+  border-bottom 1px solid #a1a1a1
+  background #fff
+  .card-close-time
+    width 100%
+    .success-time
+      width 80px
+      height 80px
+      margin 0 auto
+      display block
+    .waring-time
+      width 80px
+      height 80px
+      border-radius 50%
+      background #FFC600
+      color #fff
+      text-align center
+      line-height 80px
+      font-size 32px
+      margin 0 auto
+  .card-close-content
+    width 100%
+    padding-top 10px
+    text-align center
+    h3
+      font-size normal_font_size
+    .card-close-content-item
+      width 100%
+      text-align center
+      font-size small_font_size
+      padding-top 10px
+    .gray
+      font-size small_font_size
+      color #a1a1a1
+/* 按钮 */
+.card-close-btn-list
+  width 100%
+  .item
+    width 92%
+    margin 0 auto
+    padding-top 10px
+

@@ -96,8 +96,7 @@
     z-index: 2005;
     transition: .3s;
     box-sizing: border-box;
-    border-radius: 0.2rem;
-    padding-top: 0.3rem;
+    border-radius: 4px;
   }
   .z-message-box .z-message-box-body-img{
     width: 80%;
@@ -107,24 +106,25 @@
   .z-message-box-header{
     width: 100%;
     text-align: center;
-    font-size: 0.66rem;
+    font-size: 16px;
   }
   .z-message-box-body{
     width: 100%;
     margin: 0 auto;
-    padding: 0.1rem 0;
+    padding: 2px 0;
   }
   .z-message-box-body .z-message-box-body-content{
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    font-size: 0.56rem;
+    font-size: 12px;
     color: #aaa;
+    line-height: 1.2;
   }
 
   .z-message-box-footer{
     width: 100%;
-    height: 1.6rem;
+    height: 42px;
     border-top: 1px solid rgba(96, 96, 96, 0.3);
   }
   .z-message-box-footer .z-message-box-footer-btn{
@@ -135,7 +135,7 @@
     margin: 0;
     padding: 0;
     outline: none;
-    font-size: 0.66rem;
+    font-size: 14px;
     height: 100%;
   }
   .z-message-box-footer .z-message-box-right-btn{
@@ -153,7 +153,7 @@
     position: absolute;
     display: block;
     width: 1px;
-    height: 1.6rem;
+    height: 42px;
     background: rgba(96, 96, 96, 0.3);
     bottom: 0;
     left: 50%;

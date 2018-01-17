@@ -25,30 +25,31 @@
 <style lang="css" scoped>
   .cell-tip{
     width: 100%;
-    height: 100%;
     position: relative;
-    border-radius: 0.1rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
   }
 
   /* type */
   .cell-tip-normal{
     color: #fff;
     background: #108ee9;
-    padding: 0.2rem 0.6rem
   }
 
   /* 三角 */
   .cell-tip .cell-icon{
-    font-size: 0.56rem;
+    font-size: 12px;
   }
 
   .cell-tip-normal .cell-icon{
     color: #108ee9;
     position: absolute;
-    bottom: -0.3rem;
-    left: 0.36rem;
-    font-size: 0.46rem;
+    font-size: 12px;
+    bottom: -7px;
+    left: 4px;
   }
 
   /* 动画 */

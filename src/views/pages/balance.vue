@@ -73,5 +73,5 @@
 </script>
 
 <style lang="stylus" scoped>
-  @import '../../assets/css/balance.styl';
+  @import '../../assets/flexCss/balance.styl';
 </style>

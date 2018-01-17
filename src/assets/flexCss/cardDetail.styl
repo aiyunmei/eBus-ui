@@ -1,0 +1,135 @@
+@import "./const.styl";
+
+.card-detail
+  height 100%
+  overflow hidden
+  background #ffffff
+/* 公告 */
+.card-detail-notice
+  width 100%
+  position fixed
+  left 0
+  top 0
+  height 24px
+  z-index 5
+/* 卡 */
+.card-detail-card-img
+  width 100%
+  padding 26px 20px 26px 20px
+  background-size 100% 100%
+  position relative
+  .wave
+    width 100%
+    position absolute
+    left 0
+    bottom -1.6rem
+/* 内容 */
+.body
+  width 100%
+/* 卡号 */
+.card-detail-card-no
+  width 92%
+  margin 0 auto
+  position relative
+  border-bottom 1px solid #e0e0e0
+  display flex
+  flex-direction row
+  justify-content flex-start
+  align-items center
+  font-size small_font_size
+  padding 6px 0 4px 0
+  .icon
+    width 30px
+    height 30px
+    margin-right 4px
+/* 菜单 */
+.card-detail-menu
+  width 92%
+  margin 0 auto
+  .menu-item
+    width 25%
+    display inline-block
+    text-align center
+    font-size small_font_size
+    color #666666
+    padding 4px 0
+    .icon
+      width 100%
+      text-align center
+      img
+        width 30px
+        height 30px
+    .info
+      width 100%
+      height 100%
+      display flex
+      flex-direction column
+      justify-content space-between
+/* 底部 */
+.footer
+  width 100%
+  position absolute
+  left 0
+  bottom 0
+  z-index 5
+/* 广告 */
+.card-detail-banner
+  width 100%
+  max-height 120px
+  padding-bottom 10px
+  img
+    width 92%
+    height 100%
+    margin 0 auto
+    display block
+    border-radius 4px
+/* 底部按钮 */
+.card-detail-btn
+  width 100%
+  height 66px
+  display flex
+  flex-direction row
+  justify-content center
+  align-items center
+  border-top 1px solid #e0e0e0
+  .info
+    width 92%
+    margin 0 auto
+/* 领卡成功 */
+.card-detail-success
+  width 100%
+  position fixed
+  left 0
+  top 0
+  right 0
+  bottom 0
+  z-index 1000
+  background rgba(0, 0, 0, 0.7)
+  .main
+    position fixed
+    left 50%
+    top 15%
+    width 80%
+    margin-left -40%
+    img
+      width 100%
+    .btn-list
+      width 100%
+      position relative
+      top -6px
+      .btn
+        width 50%
+        display inline-block
+        text-align center
+        background #fff
+        height 42px
+        line-height 42px
+        font-size normal_font_size
+      .l
+        border-bottom-left-radius 4px
+      .r
+        border-bottom-right-radius 4px
+        color default_blue
+        border-left 1px solid #ddd
+
+
