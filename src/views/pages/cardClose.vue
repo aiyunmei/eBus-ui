@@ -90,8 +90,7 @@
         getCardInfo({
           Vue: this,
           cb: data => {
-            const { alipayCardData } = this.cardInfo
-            if (alipayCardData === 0) this.checkEnjoy(data)
+            if (this.cardInfo.alipayCardData === 0) this.checkEnjoy(data)
             else this.checkRecharge(data)
           }
         })
@@ -134,13 +133,10 @@
       },
       bindCancelCardClose () { // 撤回退卡
         const { alipayCardStatus } = this.cardInfo
-        cancelCardClose({
-          status: alipayCardStatus,
-          cb: () => {
+
+        cancelCardClose({ status: alipayCardStatus, cb: () => {
             // 再同步一次卡信息
-            getCardInfo({
-              Vue: this,
-              cb: data => {
+            getCardInfo({ cb: data => {
                 showToast(`撤回成功,您可以继续使用公交服务`)
                 this.$router.replace('/cardDetail')
               }
@@ -176,12 +172,7 @@
       },
       bindExtra () { // 补缴
         const { cashBalance } = this.cardInfo
-        showAlipayStore({
-          label: `退卡欠款补缴${-1 * cashBalance}`,
-          RMB: -1 * cashBalance,
-          syncCallBackUrl: `payResult/${sessionStorage.getItem('userId')}/extra`,
-          cb: () => {}
-        })
+        showAlipayStore({ label: `退卡欠款补缴${-1 * cashBalance}`,  RMB: -1 * cashBalance,  syncCallBackUrl: `payResult/${sessionStorage.getItem('userId')}/extra`, cb: () => {} })
       }
     }
   }

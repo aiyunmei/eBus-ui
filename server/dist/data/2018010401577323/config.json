@@ -1,6 +1,6 @@
 {
   "api": {
-    "baseUrl": "https://xmbus.i-xiaoma.com.cn/2017110209673350",
+    "baseUrl": "https://xmbus.i-xiaoma.com.cn/2018010401577323",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
@@ -9,12 +9,12 @@
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2017110209673350",
+    "appId": "2018010401577323",
     "scope": "auth_base",
     "sign": "RSA",
     "cardType": "T0141000",
     "bizType": "MEMBER_CARD",
-    "templateId": "2017120121402266879156514",
+    "templateId": "2018011817450418649965644",
     "subScene": "141000",
     "scene": "TRANSIT",
     "applyCardAction": "sign",
@@ -45,7 +45,7 @@
   "openCard": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017110209673350&template_id=2017120121402266879156514&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn/2017110209673350/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2018010401577323&template_id=2018011817450418649965644&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn/2018010401577323/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
@@ -55,7 +55,7 @@
     "popupList": [
       {
         "name": "《临汾电子公交卡用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn/2017110209673350#/protocol"
+        "href": "https://xmbus.i-xiaoma.com.cn/2018010401577323#/protocol"
       },
       {
         "name": "《公交先享后付服务和芝麻服务等相关协议》",

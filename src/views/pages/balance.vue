@@ -66,7 +66,7 @@
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
         // 查询卡信息
-        getCardInfo({ Vue: this, cb: data => { this.visible = true } })
+        getCardInfo({ cb: data => this.visible = true })
       }
     }
   }

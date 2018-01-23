@@ -1,40 +1,32 @@
 <template>
   <div class="open-card">
+    <img :src="openCard.bgImage" class="open-card-bg" />
 
-     <img :src="openCard.bgImage" class="open-card-bg" />
-
-    <div class="open-card-wrapper">
-      <div class="open-card-wrapper-info">
-
-        <!--卡片-->
-        <div class="open-card-img">
+    <!--中间协议和按钮-->
+    <div class="body">
+      <div class="body-info">
+        <div class="card">
           <Card :cardImage="card.image"></Card>
         </div>
 
-        <!--协议-->
-        <div class="open-card-item">
-          <span @click="setCheckedProtocol">
-             <i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'"
-                aria-hidden="true"
-                class="check-icon"></i>
-            我已阅读并同意
-          </span>
-          <span>
-            <em v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item.href)">{{ item.name }}</em>
-          </span>
+        <div class="open-card-protocol">
+          <p class="open-card-protocol-text">
+            <span @click="setCheckedProtocol"><i :class="checkedProtocol ? 'fa fa-check-circle check-active' : 'fa fa-circle-thin'" aria-hidden="true" class="check-icon"></i> 我已阅读并同意</span>
+            <span v-for="(item, index) in openCard.popupList" @click="alipayLinkTo(item.href)" :key="index" class="protocol-link">{{ item.name }}</span>
+          </p>
+
           <div class="open-card-item-tip">
             <cell-tip content="请先阅读并同意协议" v-show="protocolTipVisible"></cell-tip>
           </div>
         </div>
 
         <!--支付宝领卡按钮-->
-        <div class="open-card-btn" @click="applyCard(openCard.getCardHref)">
+        <div @click="applyCard(openCard.getCardHref)" class="open-card-btn">
           <zButton :btnVal="openCard.getCardBtnVal"></zButton>
         </div>
 
-        <!--卡片说明-->
         <div class="desc-info">
-          <div class="open-card-desc" v-for="(item, index) in openCard.cardDescription">
+          <div class="open-card-desc" v-for="(item, index) in openCard.cardDescription" :key="index">
             <div class="header">
               <em>一</em>
               <span v-html="item.header"></span>
@@ -44,11 +36,10 @@
           </div>
         </div>
 
+        <!--底部服务商-->
+        <div class="open-card-footer">该服务由{{ global.cardName }}提供</div>
       </div>
     </div>
-
-    <!--底部服务商-->
-    <div class="open-card-footer">该服务由{{ global.cardName }}提供</div>
 
   </div>
 </template>

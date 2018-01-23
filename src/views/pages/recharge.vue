@@ -1,51 +1,66 @@
 <template>
-  <div v-if="visible" class="recharge">
+  <div class="recharge">
 
-    <div class="recharge-header" :style="{ backgroundImage: `url(${recharge.headerImage})` }">
-      <div class="item cardNo">
-        <span>卡号</span>
-        <span>{{ cardInfo.alipayCardNo }}</span>
+    <div class="skeleton" v-if="!visible">
+      <div class="skeleton-header"></div>
+      <div class="skeleton-body">
+        <div class="un"></div>
+        <div class="skeleton-body-list"><div class="item" v-for="(item, index) in recharge.list"></div></div>
       </div>
-      <Tag :val="global.tipLabel" type="warning" class="item tips" size="mini"></Tag>
-    </div>
-
-    <div class="recharge-item">请选择充值金额</div>
-
-    <ul class="recharge-list">
-      <li class="item" v-for="(item, index) in recharge.list">
-        <div class="item-main" @click="goRecharge(item, index)" :class="[ index === rechargeListIndex ? 'on' : '' ]">
-          <div class="label">{{ item.label }}</div>
-          <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
-          <div class="tips" v-if="item.tipItem" :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
-            <span class="tips-wrapper">{{ item.tipItem.label }}</span>
-          </div>
-        </div>
-      </li>
-    </ul>
-
-    <div class="recharge-footer">
-      <div class="item">
-        <span @click="linkTo('/rechargeAuto')">自动充值</span>
+      <div class="skeleton-footer">
+        <span class="item"></span>
         <em>|</em>
-        <span @click="linkTo('/rechargeLog')">充值记录</span>
-      </div>
-      <div class="item check" @click="rechargeProtocolVisible = true">
-        <i class="fa fa-check-square-o"></i>
-        <span>协议内容</span>
+        <span class="item"></span>
       </div>
     </div>
 
-    <!--充值协议-->
-    <transition name="recharge-protocol">
-      <div class="recharge-protocol" v-show="rechargeProtocolVisible">
-        <div class="main">
-          <div class="content" v-html="recharge.rechargeProtocol"></div>
-          <div class="submit">
-            <zButton btnVal="我知道了" type="transparent" class="btn" @click="rechargeProtocolVisible = false"></zButton>
+    <div class="recharge-info" v-if="visible">
+      <div class="recharge-header" :style="{ backgroundImage: `url(${recharge.headerImage})` }">
+        <div class="item cardNo">
+          <span>卡号</span>
+          <span>{{ cardInfo.alipayCardNo }}</span>
+        </div>
+        <Tag :val="global.tipLabel" type="warning" class="item tips" size="mini"></Tag>
+      </div>
+
+      <div class="recharge-item">请选择充值金额</div>
+
+      <ul class="recharge-list">
+        <li class="item" v-for="(item, index) in recharge.list">
+          <div class="item-main" @click="goRecharge(item, index)" :class="[ index === rechargeListIndex ? 'on' : '' ]">
+            <div class="label">{{ item.label }}</div>
+            <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
+            <div class="tips" v-if="item.tipItem" :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
+              <span class="tips-wrapper">{{ item.tipItem.label }}</span>
+            </div>
           </div>
+        </li>
+      </ul>
+
+      <div class="recharge-footer">
+        <div class="item">
+          <span @click="linkTo('/rechargeAuto')">自动充值</span>
+          <em>|</em>
+          <span @click="linkTo('/rechargeLog')">充值记录</span>
+        </div>
+        <div class="item check" @click="rechargeProtocolVisible = true">
+          <i class="fa fa-check-square-o"></i>
+          <span>协议内容</span>
         </div>
       </div>
-    </transition>
+
+      <!--充值协议-->
+      <transition name="recharge-protocol">
+        <div class="recharge-protocol" v-show="rechargeProtocolVisible">
+          <div class="main">
+            <div class="content" v-html="recharge.rechargeProtocol"></div>
+            <div class="submit">
+              <zButton btnVal="我知道了" type="transparent" class="btn" @click="rechargeProtocolVisible = false"></zButton>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
 
   </div>
 </template>
@@ -85,7 +100,7 @@
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
         // 查询卡信息
-        getCardInfo({ Vue: this, cb: data => { this.visible = true } })
+        getCardInfo({ cb: data => this.visible = true })
       },
       goRecharge (item, index) {
         this.rechargeListIndex = index
@@ -113,4 +128,5 @@
 
 <style lang="stylus" scoped>
   @import '../../assets/flexCss/recharge.styl';
+  @import '../../assets/skeleton/recharge.styl';
 </style>

@@ -107,12 +107,7 @@
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
         // 获取卡信息
-        getCardInfo({
-          Vue: this,
-          cb: data => {
-            this.visible = true
-          }
-        })
+        getCardInfo({ Vue: this, cb: data => this.visible = true })
       },
       slotValueChange (picker, values) { // picker 监听
       },

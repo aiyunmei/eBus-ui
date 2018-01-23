@@ -1,18 +1,12 @@
 <template>
   <div v-if="visible">
-
     <!--系统繁忙-->
     <div class="open-card-end-busy">
       <img :src="openCardEnd.busyImage" class="busy-img" />
-      <div class="tips">
-        系统繁忙,请稍后再试
-      </div>
+      <div class="tips">系统繁忙,请稍后再试</div>
     </div>
    <!--重试-->
-    <div class="try-again" v-if="tryAgainVisible">
-      <zButton btnVal="立即重试" hollow></zButton>
-    </div>
-
+    <div class="try-again" v-if="tryAgainVisible"><zButton btnVal="立即重试" hollow></zButton></div>
   </div>
 </template>
 
@@ -22,9 +16,8 @@
   import {
     getCardComponentUid,
     getEnjoyCardComponent,
-    getMoreCardComponentUid,
-    getYanTaiCardNo,
-    getYanTaiRechargeCardComponent
+    getCardComponentUidNewService,
+    getEnjoyCardComponentNewService,
   } from '../../utils/http'
   import { alipayExitApp } from '../../utils/alipayJsApi'
 
@@ -39,12 +32,12 @@
     data () {
       return {
         visible: false,
-        tryAgainVisible: false
+        tryAgainVisible: false,
+        successCode: '20000'
       }
     },
     mounted () {
       this.onReady()
-      // this.normaEnjoylApplyCard(sessionStorage.getItem('userId'))
     },
     methods: {
       onReady () {
@@ -53,11 +46,11 @@
           this.$router.replace('/openCard')
           return false
         }
-        const { auth_code, request_id  } = JSON.parse(localStorage.getItem('userInfo'))
+        const { auth_code, request_id } = JSON.parse(localStorage.getItem('userInfo'))
         // 判断商户是否是正常领卡还是定制化领卡
         switch (appId) {
-          case '2017121300671681': // 烟台领卡流程
-            this.yanTaiGetMoreAlipayUid(auth_code, request_id)
+          case '2017101909389604':
+            this.getAlipayUidNewService(auth_code, request_id);
             break;
           default: // 默认流程
             this.getAlipayUid(auth_code, request_id)
@@ -66,53 +59,21 @@
         localStorage.removeItem('userInfo')
       },
       getAlipayUid (auth_code, request_id) { // 获取支付宝uid
-        getCardComponentUid({
-          auth_code: auth_code,
-          request_id: request_id,
-          Vue: this,
-          cb: data => {
-            sessionStorage.setItem('userId', data.userId)
-            // 获取到uid去领卡
-            this.normaEnjoylApplyCard(data.userId)
-          }
-        })
+        getCardComponentUid({ auth_code: auth_code, request_id: request_id, Vue: this, cb: data => this.normaEnjoylApplyCard(data.userId) })
       },
       normaEnjoylApplyCard (userId) { // 正常先享后付领卡
-        getEnjoyCardComponent({
-          userId: userId,
-          cb: (msg, data) => {
-            if (msg && msg.code === '20000') this.successOpenCard(data.cardNo)
+        getEnjoyCardComponent({ userId: userId, cb: (msg, data) => {
+            if (msg && msg.code === this.successCode) this.successOpenCard(data.cardNo)
             else this.visible = true
           }
         })
       },
-      yanTaiGetMoreAlipayUid (auth_code, request_id) { // 获取更多用户信息的uid 手机 身份证 电话
-        getMoreCardComponentUid({
-          auth_code: auth_code,
-          request_id: request_id,
-          Vue: this,
-          cb: data1 => {
-            const { userId, certNo, userName, mobilePhone } = data1
-            sessionStorage.setItem('userId', userId)
-            getYanTaiCardNo({
-              userId: userId,
-              certNo: certNo,
-              userName: userName,
-              mobilePhone: mobilePhone,
-              Vue: this,
-              cb: data2 => {
-                this.yanTaiRechargeApplyCard(userId, data2.alipayCardNo)
-              }
-            })
-          }
-        })
+      getAlipayUidNewService (auth_code, request_id) { // 获取支付宝uid 业主服务器端
+        getCardComponentUidNewService({ auth_code: auth_code, request_id: request_id, Vue: this, cb: data => this.normaEnjoylApplyCardNewService(data.userId) })
       },
-      yanTaiRechargeApplyCard (userId, cardNo) { // 烟台领取储值卡
-        getYanTaiRechargeCardComponent({
-          userId: userId,
-          cardNo: cardNo,
-          cb: (msg, data) => {
-            if (msg && msg.code === '20000') this.successOpenCard(data.cardNo)
+      normaEnjoylApplyCardNewService (userId) { // 正常先享后付领卡 业主服务端
+        getEnjoyCardComponentNewService({ userId: userId, cb: (msg, data) => {
+            if (msg && msg.code === this.successCode) this.successOpenCard(data.cardNo)
             else this.visible = true
           }
         })

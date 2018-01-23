@@ -10,64 +10,76 @@
     left 0
     top 0
     z-index 5
-  .open-card-wrapper
+  .body
     width 100%
     height 100%
+    z-index 10
     position absolute
     left 0
     top 0
-    z-index 10
-    .open-card-wrapper-info
+    .body-info
       width 100%
       height 100%
-
+      padding: 30% 0 20px 0
 /* 卡 */
-.open-card-img
+.card
   width 92%
   margin 0 auto
-  padding-top 30%
 /* 协议 */
-.open-card-item
+.open-card-protocol
   width 92%
   margin 0 auto
   position relative
-  font-size small_font_size
-  padding: 36px 0 4px 0
+  padding-top 36px
+  .open-card-protocol-text
+    display inline-block
+    font-size small_font_size
+    .check-icon
+      font-size normal_font_size
+      color default_black
+    .check-active
+      color default_blue
+    .protocol-link
+      color #3ab5e6
   .open-card-item-tip
     position absolute
-    left 0
     top 0
-  .check-icon
-    font-size normal_font_size
-  .check-active
-    color default_blue
-  em
-    color #3ab5e6
-/* 按钮 */
+    left 0
+    font-size mini_font_size
+/* 领卡按钮 */
 .open-card-btn
   width 92%
-  margin 0 auto
-/* 说明 */
+  margin 6px auto
+/* 卡描述 */
 .desc-info
   width 100%
-  text-align center
-  padding-top 10px
+  padding 4% 0
+  display flex
+  flex-direction column
+  justify-content space-around
+  align-items center
   .open-card-desc
-    width 100%
-    margin-bottom 4px
+    width 92%
+    margin 0 auto
+    padding-bottom 6px
+    text-align center
     .header
-      font-weight 700
       font-size normal_font_size
+      font-weight 500
+      color default_black
+      padding-bottom 4px
+      em
+        color #999
     .footer
       font-size mini_font_size
-      color #a3a8ae
-/*底部*/
+      color #a1a1a1
+/* 底部 */
 .open-card-footer
-  position absolute
-  left 0
-  bottom 0
+  color #a1a1a1
   font-size mini_font_size
-  color #999
-  text-align center
+  position absolute
+  z-index 15
+  left 0
+  bottom 4px
   width 100%
-  padding 4px 0
+  text-align center

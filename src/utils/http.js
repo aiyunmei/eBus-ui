@@ -1,10 +1,11 @@
 /*
 * 公共执行http请求
 * */
+import $Vue from '../main'
 import api from './api'
 import request from './request'
 import { codeError } from './helper'
-import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, randomStr } from './public'
+import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast } from './public'
 import Spinner from '../components/Spinner/index'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo
@@ -32,6 +33,8 @@ const SUCCESS_CODE = '20000'
 
 /*
 * 根据token 获取uid
+* @params auth_code
+* @params cb
 * */
 export async function getUser ({ auth_code, cb }) {
   Spinner.open()
@@ -47,6 +50,9 @@ export async function getUser ({ auth_code, cb }) {
 
 /*
 * 开卡组件的根据token获取uid
+* @params auth_code
+* @params request_id
+* @params cb
 * */
 export async function getCardComponentUid ({ auth_code, request_id, cb }) {
   Spinner.open()
@@ -58,15 +64,23 @@ export async function getCardComponentUid ({ auth_code, request_id, cb }) {
     auth_code: auth_code,
     request_id: request_id
   })
-  if (msg && msg.code === SUCCESS_CODE) cb(data)
-  else goOpenCard()
+  if (msg && msg.code === SUCCESS_CODE) {
+    sessionStorage.setItem('userId', data.userId)
+    cb(data)
+  } else {
+    goOpenCard()
+  }
 }
 
 /*
-* 开卡组件根据token获取跟多用户信息
+* 开卡组件根据token获取uid 业主服务器端
+* @params auth_code
+* @params request_id
+* @params cb
 * */
-export async function getMoreCardComponentUid ({ auth_code, request_id, cb }) {
-  const { msg, data } = await request.apiGet(api.getMoreAlipayCardComponentUid, {
+export async function getCardComponentUidNewService ({ auth_code, request_id, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiGet(api.getAlipayCardComponentUidNewService, {
     appId: appId,
     sign: sign,
     bizType: bizType,
@@ -74,12 +88,18 @@ export async function getMoreCardComponentUid ({ auth_code, request_id, cb }) {
     auth_code: auth_code,
     request_id: request_id
   })
-  if (msg && msg.code === SUCCESS_CODE) cb(data)
-  else goOpenCard()
+  if (msg && msg.code === SUCCESS_CODE) {
+    sessionStorage.setItem('userId', data.userId)
+    cb(data)
+  } else {
+    goOpenCard()
+  }
 }
 
 /*
-* 开通先享后付卡
+* 开通先享后付卡 业主服务器端
+* @params userId
+* @params cb
 * */
 export async function getEnjoyCardComponent ({ userId, cb }) {
   Spinner.open()
@@ -96,32 +116,19 @@ export async function getEnjoyCardComponent ({ userId, cb }) {
 }
 
 /*
-* 烟台拿用户信息换卡号
+* 开通先享后付卡
+* @params userId
+* @params cb
 * */
-export async function getYanTaiCardNo ({ userId, certNo, userName, mobilePhone, cb }) {
-  const { message, data } = await request.apiPost('http://cx.yantai.cn:8880/QRcode/opencard.jsp', {
-    userId: userId,
-    certNo: certNo,
-    userName: userName,
-    mobilePhone: mobilePhone,
-    messageId: new Date().getTime() + `${randomStr(32)}` + userId
-  })
-  if (message && message.code === SUCCESS_CODE) cb(data)
-  else goOpenCard()
-}
-
-/*
-* 烟台开通储值卡
-* */
-export async function getYanTaiRechargeCardComponent ({ userId, cardNo, cb }) {
-  const { msg, data } = await request.apiGet(api.applyRechargeCardComponent, {
+export async function getEnjoyCardComponentNewService ({ userId, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiGet(api.enjoyCardComponentNewService, {
     appId: appId,
     sign: sign,
     cardType: cardType,
     cityCode: cityCode,
     templateId: templateId,
     bizType: bizType,
-    cardNo: cardNo,
     userId: userId
   })
   cb(msg, data)
@@ -129,15 +136,16 @@ export async function getYanTaiRechargeCardComponent ({ userId, cardNo, cb }) {
 
 /*
 * 查询当前卡信息
+* @params cb
 * */
-export async function getCardInfo ({ Vue, cb }) {
+export async function getCardInfo ({ cb }) {
   const { msg, data } = await request.apiGet(api.searchCardInfo, {
     appId: appId,
     sign: sign,
     cardType: cardType,
     userId: sessionStorage.getItem('userId')
   })
-  const dispatch = Vue.$store.dispatch
+  const dispatch = $Vue.$store.dispatch
 
   if (msg && msg.code === SUCCESS_CODE) {
     if (checkNull(data) === 0) {
@@ -154,6 +162,7 @@ export async function getCardInfo ({ Vue, cb }) {
 
     // 存在data 缓存下来
     sessionStorage.setItem('alipayCardInfo', typeof data === 'object' ? JSON.stringify(data) : data)
+
     // 写入卡信息
     dispatch('setAlipayCardInfo', { item: 'alipayCardData', data: checkCardData(alipayCardData) })
     dispatch('setAlipayCardInfo', { item: 'alipayCardNo', data: alipayCardNo })
@@ -168,6 +177,8 @@ export async function getCardInfo ({ Vue, cb }) {
 
 /*
 * 申请退卡
+* @params status
+* @params cb
 * */
 export async function applyCardClose ({ status, cb }) {
   const item = getAlipayCardStatusApi[status]
@@ -185,6 +196,8 @@ export async function applyCardClose ({ status, cb }) {
 
 /*
 * 撤回退卡申请
+* @params status
+* @params cb
 * */
 export async function cancelCardClose ({ status, cb }) {
   const item = getAlipayCardStatusApi[status]
@@ -202,6 +215,8 @@ export async function cancelCardClose ({ status, cb }) {
 
 /*
 * 销卡
+* @params status
+* @params cb
 * */
 export async function revokeCardClose ({ status, cb }) {
   const item = getAlipayCardStatusApi[status]
@@ -219,6 +234,10 @@ export async function revokeCardClose ({ status, cb }) {
 
 /*
 * 唤起支付宝收银台
+* @params label
+* @params RMB
+* @params syncCallBackUrl
+* @params cb
 * */
 export async function showAlipayStore ({ label, RMB, syncCallBackUrl, cb }) {
   Spinner.open()
@@ -246,6 +265,7 @@ export async function showAlipayStore ({ label, RMB, syncCallBackUrl, cb }) {
 
 /*
 * 退款
+* @params cb
 * */
 export async function setRefund ({ cb }) {
   Spinner.open()
@@ -264,15 +284,17 @@ export async function setRefund ({ cb }) {
 
 /*
 * 充值记录
+* @params pageNum
+* @params pageSize
+* @params cb
 * */
 export async function getRechargeLog ({ pageSize, pageNum, cb }) {
 }
 
 /*
 * 阿里妈妈接入
-* @params ${adPid} 广告位id
-* @params ${clickThroughUrl} 跳转地址
-* @params ${imgUrl} 图片地址
+* @params adPid 广告位id
+* @params cb
 * */
 export async function getAlipayMon ({ adPid, cb }) {
   const { content } = await request.apiPost(api.alipayMom, {

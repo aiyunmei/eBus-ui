@@ -1,71 +1,81 @@
 <template>
-  <div class="card-detail" v-if="visible">
-    <!--公告-->
-    <div class="card-detail-notice">
-      <NoticeBar
-        v-if="cardDetail.noticeConfig.visible"
-        :content="cardDetail.noticeConfig.content"
-        :width="cardDetail.noticeConfig.width">
-      </NoticeBar>
+  <div class="card-detail">
+
+    <!--骨架-->
+    <div class="skeleton" v-if="!visible">
+      <div class="skeleton-header"></div>
+      <div class="skeleton-body"><div class="un"></div><div v-for="(item, index) in cardDetail.menuOptions" class="item" v-if="setMenuVisible(item, index)"><span></span></div></div>
+      <div class="skeleton-footer"><div class="item"></div></div>
     </div>
 
-    <!--卡片-->
-    <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">
-      <div class="info">
-        <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
-      </div>
-      <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/wave_bg.png" class="wave" />
-    </div>
-
-    <div class="body">
-      <div class="card-detail-card-no">
-        <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_no_icon.png" class="icon" />
-        <span>卡号 {{ cardInfo.alipayCardNo }}</span>
+    <div class="card-detail-info" v-if="visible">
+      <!--公告-->
+      <div class="card-detail-notice">
+        <NoticeBar
+          v-if="cardDetail.noticeConfig.visible"
+          :content="cardDetail.noticeConfig.content"
+          :width="cardDetail.noticeConfig.width">
+        </NoticeBar>
       </div>
 
-      <ul class="card-detail-menu">
-        <li class="menu-item"
-            v-for="(item, index) in cardDetail.menuOptions"
-            v-if="setMenuVisible(item, index)"
-            @click="bindMenuList(item)">
-          <div class="info">
-            <div class="icon" v-if="item.icon">
-              <img :src="item.icon" />
-            </div>
-            <div class="label" v-if="item.label">{{ item.label }}</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="footer">
-      <!--广告位-->
-      <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
-        <a :href="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.href : cardDetail.bannerConfig.href" target="_blank">
-          <img :src="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
-        </a>
-      </div>
-     <!--立即使用按钮-->
-      <div class="card-detail-btn">
+      <!--卡片-->
+      <div class="card-detail-card-img" :style="{ backgroundImage: `url(${cardDetail.bgImage})` }">
         <div class="info">
-          <a :href="useBtnHref" target="_blank">
-            <zButton :btnVal="cardDetail.useBtnVal"></zButton>
+          <Card :cardImage="card.image" :tipsImage="card.tipsImage"></Card>
+        </div>
+        <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/wave_bg.png" class="wave" />
+      </div>
+
+      <div class="body">
+        <div class="card-detail-card-no">
+          <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_no_icon.png" class="icon" />
+          <span>卡号 {{ cardInfo.alipayCardNo }}</span>
+        </div>
+
+        <ul class="card-detail-menu">
+          <li class="menu-item"
+              v-for="(item, index) in cardDetail.menuOptions"
+              v-if="setMenuVisible(item, index)"
+              @click="bindMenuList(item)">
+            <div class="info">
+              <div class="icon" v-if="item.icon">
+                <img :src="item.icon" />
+              </div>
+              <div class="label" v-if="item.label">{{ item.label }}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <!--广告位-->
+        <div class="card-detail-banner" v-if="cardDetail.bannerConfig.visible">
+          <a :href="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.href : cardDetail.bannerConfig.href" target="_blank">
+            <img :src="cardDetail.bannerConfig.isAlipayMon ? alipayMomBanner.src : cardDetail.bannerConfig.src" />
           </a>
         </div>
-      </div>
-    </div>
-
-    <!--领卡成功-->
-    <div class="card-detail-success" v-if="openCardSuccessVisible">
-      <div class="main">
-        <img :src="cardDetail.successAlertConfig.imgUrl" />
-        <div class="btn-list">
-          <span class="btn l" @click="openCardSuccessVisible = false">{{ cardDetail.successAlertConfig.leftBtnVal }}</span><span class="btn r" @click="bindUseSuccessAlertBtn(cardDetail.successAlertConfig.rightBtnVal)">{{ cardDetail.successAlertConfig.rightBtnVal }}</span>
+        <!--立即使用按钮-->
+        <div class="card-detail-btn">
+          <div class="info">
+            <a :href="useBtnHref" target="_blank">
+              <zButton :btnVal="cardDetail.useBtnVal"></zButton>
+            </a>
+          </div>
         </div>
       </div>
+
+      <!--领卡成功-->
+      <div class="card-detail-success" v-if="openCardSuccessVisible">
+        <div class="main">
+          <img :src="cardDetail.successAlertConfig.imgUrl" />
+          <div class="btn-list">
+            <span class="btn l" @click="openCardSuccessVisible = false">{{ cardDetail.successAlertConfig.leftBtnVal }}</span><span class="btn r" @click="bindUseSuccessAlertBtn(cardDetail.successAlertConfig.rightBtnVal)">{{ cardDetail.successAlertConfig.rightBtnVal }}</span>
+          </div>
+        </div>
+      </div>
+      <!--预加载退卡弹窗图片-->
+      <img v-show="false" :src="cardDetail.cardCloseConfirm.image" style="width: 0;height: 0;opacity: 0; position: absolute;">
     </div>
-    <!--预加载退卡弹窗图片-->
-    <img v-show="false" :src="cardDetail.cardCloseConfirm.image" style="width: 0;height: 0;opacity: 0; position: absolute;">
   </div>
 </template>
 
@@ -164,17 +174,17 @@
         this.commonReady()
       },
       commonReady () { // 默认渲染
+        getCardInfo({ Vue: this,  cb: data => this.createdReady(data) })
+      },
+      createdReady (data) { // 渲染完毕卡详情执行的事件
         const { successUrl, buscode } = this.$route.query
-        getCardInfo({
-          Vue: this,
-          cb: data => {
-            this.visible = true
-            if (successUrl) {
-              if (!sessionStorage.getItem('isAlert')) this.openCardSuccessVisible = true
-              sessionStorage.setItem('isAlert', 'yes') // 防止重复弹出首次弹窗
-            }
-          }
-        })
+
+        this.visible = true
+
+        if (successUrl) {
+          if (!sessionStorage.getItem('isAlert')) this.openCardSuccessVisible = true
+          sessionStorage.setItem('isAlert', 'yes') // 防止重复弹出首次弹窗
+        }
       },
       setMenuVisible (item, index) { // 菜单渲染事件
         const { link, visible } = item
@@ -189,25 +199,23 @@
         const { link, urlType } = item
         const { alipayCardStatus } = this.cardInfo
         const { okVal, cancelVal, content, image } = this.cardDetail.cardCloseConfirm
+
         if (link === '/recharge') {
           if (checkCardStatus(alipayCardStatus) === 'no') {
             showToast('您已申请退卡，暂时无法使用!')
             return false
           }
         }
+
         if (link === '/cardClose') {
           if (checkCardStatus(alipayCardStatus) === 'yes') {
             MessageBox({type: 'confirm', imgUrl: image, content: content, okVal: okVal, cancelVal: cancelVal, callback: (action) => {
-                if (action === 'ok') {
-                  applyCardClose({
-                    status: alipayCardStatus,
-                    cb: () => { this.$router.replace('/cardClose?first=yes') }
-                  })
-                }
+                if (action === 'ok') applyCardClose({ status: alipayCardStatus, cb: () => this.$router.replace('/cardClose?first=yes') })
               }})
           } else this.$router.replace('/cardClose?first=no')
           return false
         }
+
         urlType ? jsLink('href', link) : this.$router.push(link)
       },
       bindUseSuccessAlertBtn (val) {
@@ -220,4 +228,5 @@
 
 <style lang="stylus" scoped>
   @import '../../assets/flexCss/cardDetail.styl';
+  @import '../../assets/skeleton/cardDetail.styl';
 </style>

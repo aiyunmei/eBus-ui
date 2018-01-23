@@ -14,7 +14,8 @@ import {
   payResult,
   openLine,
   help,
-  protocol
+  protocol,
+  aa
 } from '../views'
 
 Vue.use(Router)

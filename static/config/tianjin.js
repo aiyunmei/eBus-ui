@@ -1,4 +1,4 @@
-{
+window.threeConfig = {
   "api": {
     "baseUrl": "https://ebus.tjbus.com/2017101909389604",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",

@@ -213,20 +213,6 @@ export function showToast (val) {
   Toast(val)
 }
 
-/**
- * @params {len} 需要生成的长度
-* 生成随机字符串
-* */
-export function randomStr (len) {
-  len = len || 32
-  const str = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
-  let pwd = '';
-  for (let i = 0; i < len; i++) {
-    pwd += str.charAt(Math.floor(Math.random() * str.length))
-  }
-  return pwd
-}
-
 /*
 * 验证这个功能是否开启
 * @params ${link} 需要验证的link
