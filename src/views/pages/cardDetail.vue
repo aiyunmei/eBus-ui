@@ -1,13 +1,6 @@
 <template>
   <div class="card-detail">
 
-    <!--骨架-->
-    <div class="skeleton" v-if="!visible">
-      <div class="skeleton-header"></div>
-      <div class="skeleton-body"><div class="un"></div><div v-for="(item, index) in cardDetail.menuOptions" class="item" v-if="setMenuVisible(item, index)"><span></span></div></div>
-      <div class="skeleton-footer"><div class="item"></div></div>
-    </div>
-
     <div class="card-detail-info" v-if="visible">
       <!--公告-->
       <div class="card-detail-notice">
@@ -228,5 +221,4 @@
 
 <style lang="stylus" scoped>
   @import '../../assets/flexCss/cardDetail.styl';
-  @import '../../assets/skeleton/cardDetail.styl';
 </style>

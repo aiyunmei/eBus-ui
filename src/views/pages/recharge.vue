@@ -1,19 +1,6 @@
 <template>
   <div class="recharge">
 
-    <div class="skeleton" v-if="!visible">
-      <div class="skeleton-header"></div>
-      <div class="skeleton-body">
-        <div class="un"></div>
-        <div class="skeleton-body-list"><div class="item" v-for="(item, index) in recharge.list"></div></div>
-      </div>
-      <div class="skeleton-footer">
-        <span class="item"></span>
-        <em>|</em>
-        <span class="item"></span>
-      </div>
-    </div>
-
     <div class="recharge-info" v-if="visible">
       <div class="recharge-header" :style="{ backgroundImage: `url(${recharge.headerImage})` }">
         <div class="item cardNo">
@@ -128,5 +115,4 @@
 
 <style lang="stylus" scoped>
   @import '../../assets/flexCss/recharge.styl';
-  @import '../../assets/skeleton/recharge.styl';
 </style>
