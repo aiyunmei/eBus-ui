@@ -5,7 +5,7 @@
     <!--中间协议和按钮-->
     <div class="body">
       <div class="body-info">
-        <div class="card">
+        <div class="card clearfix">
           <Card :cardImage="card.image"></Card>
         </div>
 

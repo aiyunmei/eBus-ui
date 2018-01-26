@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img :src="cardImage" class="card-img" :class="[ shadow ? 'shadow' : '' ]">
+    <img :src="cardImage" class="card-img clearfix" :class="[ shadow ? 'shadow' : '' ]">
     <img :src="tipsImage" v-if="tipsImage" class="tips" />
   </div>
 </template>

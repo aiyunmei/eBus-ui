@@ -1,5 +1,7 @@
 <template>
-  <button class="button" @click="bindClick" :class="[ `button-${type}`, `button-${size}`, hollow ? `button-${type}-hollow` : '' ]">
+  <button
+    class="button"
+    @click="bindClick" :class="[ `button-${type}`, `button-${size}`, hollow ? `button-${type}-hollow` : '' ]">
     {{ btnVal }}
   </button>
 </template>

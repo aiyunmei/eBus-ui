@@ -5,7 +5,7 @@ import $Vue from '../main'
 import api from './api'
 import request from './request'
 import { codeError } from './helper'
-import { checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast } from './public'
+import {checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, jsLink} from './public'
 import Spinner from '../components/Spinner/index'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo

@@ -22,7 +22,7 @@
     "applyCardSource": "TONGXIANG_BUS_APPLY",
     "openCardSource": "TONGXIANG_CARD_USE",
     "useCardSource": "TONGXIANG_BUS_USE",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D330400%26cardType%3DT0330483%26source%TONGXIANG_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=/www/card_entry.html?scene=TRANSIT&subScene=330400&cardType=T0330483&source%TONGXIANG_BUS_USE&__webview_options__=canPullDown%3DYES%26pullRefresh%3DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
     "storeSign": ""
@@ -45,18 +45,17 @@
   "openCard": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017110309697081&template_id=2017091320231503108663078&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn/2017110309697081/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017110309697081&template_id=2017091320231503108663078&__webview_options__=canPullDown=NO&transparentTitle=auto&callback=https://xmbus.i-xiaoma.com.cn/2017110309697081/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
         "footer": "无需充值即可使用，从您支付宝账户扣款"
       }
     },
-    "popupList": [
-      {
-        "name": "《桐乡公交一卡通用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn/2017110309697081#/protocol"
-      },
+    "popupList": [{
+      "name": "《桐乡公交一卡通用户协议》",
+      "href": "https://xmbus.i-xiaoma.com.cn/2017110309697081#/protocol"
+    },
       {
         "name": "《公交先享后付服务和芝麻服务等相关协议》",
         "href": "https://render.alipay.com/p/f/fd-j5c107e4/index.html"
@@ -97,13 +96,12 @@
       "leftBtnVal": "查看卡片",
       "rightBtnVal": "立即使用"
     },
-    "menuOptions": [
-      {
-        "label": "余额查询",
-        "link": "/balance",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png",
-        "visible": true
-      },
+    "menuOptions": [{
+      "label": "余额查询",
+      "link": "/balance",
+      "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png",
+      "visible": true
+    },
       {
         "label": "卡片充值",
         "link": "/recharge",
@@ -124,7 +122,7 @@
       },
       {
         "label": "乘车记录",
-        "link": "alipays://platformapi/startapp?appId=20000076&returnHome=NO&bizSubType=75&showSearch=false&title=%E4%B9%98%E8%BD%A6%E8%AE%B0%E5%BD%95",
+        "link": "alipays://platformapi/startapp?appId=20000076&returnHome=NO&bizSubType=75&showSearch=false&title=ä¹è½¦è®°å½",
         "urlType": "outside",
         "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/trafficLog_icon.png"
       },
@@ -152,16 +150,15 @@
   "recharge": {
     "headerImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/wh_recharge_header_bg.png",
     "RMBThreshold": 100000,
-    "list": [
-      {
-        "label": "0.01元",
-        "value": 0.01,
-        "tipItem": {
-          "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
-          "label": "立减25",
-          "width": "1.6rem"
-        }
-      },
+    "list": [{
+      "label": "0.01元",
+      "value": 0.01,
+      "tipItem": {
+        "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
+        "label": "立减25",
+        "width": "1.6rem"
+      }
+    },
       {
         "label": "0.05元",
         "value": 0.05,
@@ -207,11 +204,10 @@
   "payResult": {
     "alipayLogoImage": "https://t.alipayobjects.com/images/rmsweb/T1B8lgXi4iXXXXXXXX.png"
   },
-  "help": [
-    {
-      "question": "桐乡公交一卡通是什么？",
-      "answer": "桐乡公交一卡通是桐乡公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“桐乡公交一卡通”，乘车时只要打开支付宝的桐乡公交刷码页面，即可刷码乘车。"
-    },
+  "help": [{
+    "question": "桐乡公交一卡通是什么？",
+    "answer": "桐乡公交一卡通是桐乡公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“桐乡公交一卡通”，乘车时只要打开支付宝的桐乡公交刷码页面，即可刷码乘车。"
+  },
     {
       "question": "如何领取“桐乡公交一卡通”？",
       "answer": "打开支付宝——选择【付钱】——点击底部【乘车码】——按照领卡提示，即可领取您专属的“桐乡公交一卡通”或在支付宝内搜素“桐乡公交一卡通”生活号，按提示领取专属公交卡"
@@ -267,6 +263,10 @@
     {
       "question": "使用乘车刷码刷码机没反应",
       "answer": "手机乘车码未对准刷码窗口，可稍微调整对准方向或距离若您依然无法刷码，可能是因为机具问题或您的乘车码被冻结（支付宝信用不够或花呗违期），若是机具问题，请告知公交司机寻求帮助。"
+    },
+    {
+      "question": "桐乡城乡二级公交多票制如何扫码乘车？",
+      "answer": "乘客需上车扫码，下车再次扫码，按路程计费。若下车不扫码将扣全程票价。"
     }
   ],
   "openLine": {
@@ -275,12 +275,11 @@
       "nullTips": "该线路未开通手机支付,敬请期待",
       "nullImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/open_line_null.png"
     },
-    "openLineOptions": [
-      {
-        "end": "传媒学院",
-        "start": "客运中心",
-        "txt": "K1路"
-      },
+    "openLineOptions": [{
+      "end": "传媒学院",
+      "start": "客运中心",
+      "txt": "K1路"
+    },
       {
         "end": "发展大道",
         "start": "公交北站",

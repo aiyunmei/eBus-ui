@@ -50,9 +50,7 @@
         <!--立即使用按钮-->
         <div class="card-detail-btn">
           <div class="info">
-            <a :href="useBtnHref" target="_blank">
-              <zButton :btnVal="cardDetail.useBtnVal"></zButton>
-            </a>
+            <zButton :btnVal="cardDetail.useBtnVal" @click="userBusCode"></zButton>
           </div>
         </div>
       </div>
@@ -78,11 +76,10 @@
   import zButton from '../../components/Button/Button.vue'
   import MessageBox from '../../components/MessageBox/index'
   import NoticeBar from '../../components/Notice/Notice.vue'
-  import { checkNull, checkCardStatus, showToast, jsLink } from '../../utils/public'
+  import { linkBusCode, checkNull, checkCardStatus, showToast, jsLink } from '../../utils/public'
   import { getCardInfo, applyCardClose, getAlipayMon } from '../../utils/http'
 
   const { onWhite, whiteList, linkOldUrl } = global.threeConfig.global
-  const { busCode } = global.threeConfig.alipayCardInfo
 
   export default {
     components: { Card, zButton, NoticeBar },
@@ -95,7 +92,6 @@
       return {
         visible: false, // 容器页
         openCardSuccessVisible: false, // 是否显示第一领卡成功弹窗
-        useBtnHref: '', // 乘车码链接
         rechargeVisible: false, // 是否显示储值卡功能
         alipayMomBanner: { // 阿里妈妈接入信息
           href: null,
@@ -116,9 +112,6 @@
         }
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
-        // 写入乘车码链接
-        if (successUrl) this.useBtnHref = successUrl
-        else this.useBtnHref = busCode
         // 接入阿里妈妈
         if (this.cardDetail.bannerConfig.isAlipayMon) {
           getAlipayMon({
@@ -129,7 +122,7 @@
             }
           })
         }
-        /**
+        /*
         * 由于业务 复杂 牵扯到支付宝 牵扯到公交白名单相对复杂
         * @params onWhite {string}
          * 'enjoyProd' ==> '先享后付全量环境' ||
@@ -192,14 +185,18 @@
         const { link, urlType } = item
         const { alipayCardStatus } = this.cardInfo
         const { okVal, cancelVal, content, image } = this.cardDetail.cardCloseConfirm
-
+        /*
+        * 充值如果是在退卡申请中拦截
+        * */
         if (link === '/recharge') {
           if (checkCardStatus(alipayCardStatus) === 'no') {
             showToast('您已申请退卡，暂时无法使用!')
             return false
           }
         }
-
+        /*
+        * 退卡如果是退卡申请中不进行确认弹窗
+        * */
         if (link === '/cardClose') {
           if (checkCardStatus(alipayCardStatus) === 'yes') {
             MessageBox({type: 'confirm', imgUrl: image, content: content, okVal: okVal, cancelVal: cancelVal, callback: (action) => {
@@ -208,12 +205,17 @@
           } else this.$router.replace('/cardClose?first=no')
           return false
         }
-
+        /*
+        * 其他的菜单跳转逻辑 外部 使用原生 内部使用hash跳转
+        * */
         urlType ? jsLink('href', link) : this.$router.push(link)
       },
-      bindUseSuccessAlertBtn (val) {
+      userBusCode () { // 去乘车码
+        linkBusCode()
+      },
+      bindUseSuccessAlertBtn (val) { // 立即充值跳转充值 立即使用跳转乘车码
         this.openCardSuccessVisible = false
-        val === '立即充值' ? this.$router.push('/recharge') : jsLink('href', decodeURIComponent(this.$route.query.successUrl) ? decodeURIComponent(this.$route.query.successUrl) : busCode)
+        val === '立即充值' ? this.$router.push('/recharge') : linkBusCode()
       }
     }
   }

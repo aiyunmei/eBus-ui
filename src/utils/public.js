@@ -39,6 +39,13 @@ export function jsLink (type, url) {
   else if (type === 'href') window.location.href = url
 }
 
+/*
+* 去支付宝乘车码
+* */
+export function linkBusCode () {
+  jsLink('href', busCode)
+}
+
 /**
 * 去开卡页
  * @params ${Vue} 需要vue对象实现路由跳转
@@ -46,7 +53,7 @@ export function jsLink (type, url) {
 export function goOpenCard () {
   // 武汉特殊不用开卡组件 故跳转乘车码去支付宝开卡页面
   if (appId === '2017022705927164') {
-    jsLink('replace', busCode)
+    linkBusCode()
     return false
   }
   // 使用了开卡组件的去自己的开卡页面
@@ -227,4 +234,5 @@ export function isCardDetailMenu (link) {
   })
   return result
 }
+
 
