@@ -32,6 +32,13 @@ const revokeCardCloseTips = encodeURIComponent('系统统一退卡')
 const SUCCESS_CODE = '20000'
 
 /*
+* 成功的code
+* */
+export function getSuccessCode () {
+  return SUCCESS_CODE
+}
+
+/*
 * 根据token 获取uid
 * @params auth_code
 * @params cb
