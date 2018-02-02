@@ -22,7 +22,7 @@
       <div class="body">
         <div class="card-detail-card-no">
           <img src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_no_icon.png" class="icon" />
-          <span>卡号 {{ cardInfo.alipayCardNo }}</span>
+          <span>{{ appId === enums.TIAN_JIN_APPID ? '票' : '卡' }}号 {{ cardInfo.alipayCardNo }}</span>
         </div>
 
         <ul class="card-detail-menu">
@@ -78,6 +78,7 @@
   import NoticeBar from '../../components/Notice/Notice.vue'
   import { linkBusCode, checkNull, checkCardStatus, showToast, jsLink } from '../../utils/public'
   import { getCardInfo, applyCardClose, getAlipayMon } from '../../utils/http'
+  import enums from '../../utils/enums'
 
   const { onWhite, whiteList, linkOldUrl } = global.threeConfig.global
 
@@ -86,7 +87,9 @@
     computed: {
       card () { return global.threeConfig.card },
       cardDetail () { return global.threeConfig.cardDetail },
-      cardInfo () { return this.$store.state.alipayCardInfo }
+      cardInfo () { return this.$store.state.alipayCardInfo },
+      appId () { return global.threeConfig.alipayCardInfo.appId },
+      enums () { return enums }
     },
     data () {
       return {

@@ -1,13 +1,14 @@
 import $Vue from '../main'
 import Toast from '../components/Toast/index'
 import { alipaySetTitle } from './alipayJsApi'
+import enums from './enums'
 
 const { cardName } = global.threeConfig.global
 const { appId, busCode } = global.threeConfig.alipayCardInfo
 const { menuOptions } = global.threeConfig.cardDetail
 
 const TITLE_LIST = {
-  cardDetail: '卡片详情',
+  cardDetail: appId === enums.TIAN_JIN_APPID ? '客票详情' : '卡片详情', // 天津使用的票
   help: '使用帮助',
   openLine: '已开通线路',
   recharge: '卡片充值',
@@ -51,8 +52,7 @@ export function linkBusCode () {
  * @params ${Vue} 需要vue对象实现路由跳转
 * */
 export function goOpenCard () {
-  // 武汉特殊不用开卡组件 故跳转乘车码去支付宝开卡页面
-  if (appId === '2017022705927164') {
+  if (appId === enums.WU_HAN_APPID) { // 武汉特殊不用开卡组件 故跳转乘车码去支付宝开卡页面
     linkBusCode()
     return false
   }

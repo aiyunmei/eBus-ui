@@ -2,24 +2,24 @@
 
   <div class="protocol-layout">
     <p align="left">
-      本协议是{{protocol.company}}公司（以下简称“{{protocol.companyShort}}”）、支付宝（中国）网络技术有限公司（以下简称“支付宝”）与您就使用{{ cardName }}电子公交卡服务的相关事项所订立的有效合约。请您仔细阅读本协议（<strong>特别是以粗体下划线标注的内容</strong>），如果您不同意本协议的任意内容，或者无法准确理解{{protocol.companyShort}}和支付宝对条款的解释，请不要进行后续操作。您通过支付宝相关页面点击立即领卡或以其他方式选择接受本协议，即表示您同意接受本协议的全部内容。
+      本协议是{{protocol.company}}公司（以下简称“{{protocol.companyShort}}”）、支付宝（中国）网络技术有限公司（以下简称“支付宝”）与您就使用{{ cardName }}电子公交{{ cardUnitName }}服务的相关事项所订立的有效合约。请您仔细阅读本协议（<strong>特别是以粗体下划线标注的内容</strong>），如果您不同意本协议的任意内容，或者无法准确理解{{protocol.companyShort}}和支付宝对条款的解释，请不要进行后续操作。您通过支付宝相关页面点击立即领{{ cardUnitName }}或以其他方式选择接受本协议，即表示您同意接受本协议的全部内容。
     </p>
     <p align="left"><strong>您同意，为持续为您提供良好的用户体验，{{protocol.companyShort}}或支付宝可能对本协议进行变更或修改，若您在本协议内容公告变更生效后继续使用本服务的，表示您已充分阅读、理解并接受变更后的协议内容，也将遵循变更后的协议内容使用本服务。</strong>
     </p>
-    <p align="left"><br/><strong>一、电子公交卡服务内容</strong></p>
-    <p align="left"><strong>1</strong><strong>、{{cardName}}电子公交卡服务是{{protocol.companyShort}}和支付宝（以下简称“服务提供方”）联合发行的为用户提供的一种电子公交卡服务。用户通过领取电子公交卡并在乘车时刷支付宝客户端电子公交卡乘车二维码（以下简称“乘车码”），即可享有在装备了电子公交卡刷卡机具的公交车上乘坐的权利。</strong>
+    <p align="left"><br/><strong>一、电子公交{{ cardUnitName }}服务内容</strong></p>
+    <p align="left"><strong>1</strong><strong>、{{cardName}}电子公交{{ cardUnitName }}服务是{{protocol.companyShort}}和支付宝（以下简称“服务提供方”）联合发行的为用户提供的一种电子公交{{ cardUnitName }}服务。用户通过领取电子公交{{ cardUnitName }}并在乘车时刷支付宝客户端电子公交{{ cardUnitName }}乘车二维码（以下简称“乘车码”），即可享有在装备了电子公交{{ cardUnitName }}刷{{ cardUnitName }}机具的公交车上乘坐的权利。</strong>
     </p>
     <p>
-      <strong>2</strong><strong>、您通过支付宝APP申领、使用和管理您的电子公交卡，您可以查询公交卡状态、交易记录、卡服务，同时享有{{protocol.companyShort}}和支付宝为您提供的互联网增值服务等权利。</strong>
+      <strong>2</strong><strong>、您通过支付宝APP申领、使用和管理您的电子公交{{ cardUnitName }}，您可以查询公交{{ cardUnitName }}状态、交易记录、{{ cardUnitName }}服务，同时享有{{protocol.companyShort}}和支付宝为您提供的互联网增值服务等权利。</strong>
     </p>
     <p align="left">&nbsp;</p>
     <p align="left">
-      <strong>二、您的权利与义务</strong><br/>1、您自愿申请使用{{ cardName }}电子公交卡服务。{{cardName}}电子公交卡服务为：在您乘坐公共交通时，展示乘车码并经公交扫码设备读取验证后，用支付宝免密扣款完成向{{protocol.companyShort}}的公交费用支付。
+      <strong>二、您的权利与义务</strong><br/>1、您自愿申请使用{{ cardName }}电子公交{{ cardUnitName }}服务。{{cardName}}电子公交{{ cardUnitName }}服务为：在您乘坐公共交通时，展示乘车码并经公交扫码设备读取验证后，用支付宝免密扣款完成向{{protocol.companyShort}}的公交费用支付。
     </p>
-    <p align="left"><strong>2、您理解并同意支付宝乘车码仅限于实际开通{{cardName}}电子公交卡的公共交通工具（如公共汽车、地铁等）使用。使用此服务前，您需要将用户信息（包括姓名、身份证、手机号）授权提供给{{protocol.companyShort}}和支付宝及关联公司包括芝麻信用管理有限公司。您了解您必须满足本服务的开通条件才可以享受本服务，具体开通条件见相关服务协议。如开通服务后您不满足持续享受本服务的条件，您将无法使用本服务。</strong>
+    <p align="left"><strong>2、您理解并同意支付宝乘车码仅限于实际开通{{cardName}}电子公交{{ cardUnitName }}的公共交通工具（如公共汽车、地铁等）使用。使用此服务前，您需要将用户信息（包括姓名、身份证、手机号）授权提供给{{protocol.companyShort}}和支付宝及关联公司包括芝麻信用管理有限公司。您了解您必须满足本服务的开通条件才可以享受本服务，具体开通条件见相关服务协议。如开通服务后您不满足持续享受本服务的条件，您将无法使用本服务。</strong>
     </p>
     <p align="left">
-      3、您可以从以下路径使用乘车码：支付宝APP-城市服务-公交付款；支付宝APP-卡包-电子公交卡-立即使用。使用路径可能调整，以支付宝页面实际支持为准。如您不想继续使用该服务，可以在退卡页面申请退卡。支付宝可以根据您的信用和履约情况随时终止提供此项服务。如停止使用服务后您尚有欠款，{{protocol.companyShort}}和支付宝保留对您的欠款追偿的权利。
+      3、您可以从以下路径使用乘车码：支付宝APP-城市服务-公交付款；支付宝APP-{{ cardUnitName }}包-电子公交{{ cardUnitName }}-立即使用。使用路径可能调整，以支付宝页面实际支持为准。如您不想继续使用该服务，可以在退{{ cardUnitName }}页面申请退{{ cardUnitName }}。支付宝可以根据您的信用和履约情况随时终止提供此项服务。如停止使用服务后您尚有欠款，{{protocol.companyShort}}和支付宝保留对您的欠款追偿的权利。
     </p>
     <p align="left">4、<strong>您知晓您的乘车码仅供您本人使用，请勿复制您的乘车码并提供给其他人使用。因您自身使用不当造成您资金损失的，由您自行承担。</strong></p>
     <p align="left">
@@ -56,11 +56,26 @@
 </template>
 
 <script>
+  import enums from '../../utils/enums'
 
   export default {
     computed: {
       protocol () { return global.threeConfig.protocol },
-      cardName () { return global.threeConfig.global.cardName }
+      cardName () { return global.threeConfig.global.cardName },
+      alipayCardInfo () { return global.threeConfig.alipayCardInfo }
+    },
+    data () {
+      return {
+        cardUnitName: '卡'
+      }
+    },
+    mounted () {
+      this.onReady()
+    },
+    methods: {
+      onReady () {
+        if (this.alipayCardInfo.appId === enums.TIAN_JIN_APPID) { this.cardUnitName = '票' }
+      }
     }
   }
 </script>
