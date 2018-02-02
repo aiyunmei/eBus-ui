@@ -11,6 +11,7 @@ class Logger {
     this.isLogin = false // 用户是否连接进来
     this.socket = null // 长连接对象
     this.logUrl = 'https://www.i-xiaoma.cn'
+    // this.logUrl = 'http://127.0.0.1:8091'
   }
 
   initLog () {

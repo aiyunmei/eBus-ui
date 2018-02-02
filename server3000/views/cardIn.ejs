@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= JSON.parse(data).appName%></title>
+</head>
+<body>
+
+</body>
+<script>
+  var data = <%- data%>
+  var userInfo = {
+    auth_code: getHash('auth_code'),
+    request_id: getHash('request_id')
+  }
+
+  localStorage.setItem('userInfo', JSON.stringify(userInfo))
+
+  window.location.replace(data.cardIn + toHash(data.hash))
+
+  function toHash (obj) {
+    var hash = '?'
+    for (var item in obj) {
+      hash += item + '=' + encodeURIComponent(obj[item]) + '&'
+    }
+    var newHash = hash.substr(0, hash.length - 1) // 删除字符串的最后一个字符
+    return newHash
+  }
+
+  function getHash (name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+    // 构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg)
+    // 匹配目标参数
+    if (r != null) return decodeURIComponent(r[2])
+    return null // 返回参数值
+  }
+</script>
+</html>

@@ -22,7 +22,7 @@
     "applyCardSource": "TONGXIANG_BUS_APPLY",
     "openCardSource": "TONGXIANG_CARD_USE",
     "useCardSource": "TONGXIANG_BUS_USE",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=/www/card_entry.html?scene=TRANSIT&subScene=330400&cardType=T0330483&source%TONGXIANG_BUS_USE&__webview_options__=canPullDown%3DYES%26pullRefresh%3DYES",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D330400%26cardType%3DT0330483%26source%TONGXIANG_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
     "storeSign": ""
@@ -122,7 +122,7 @@
       },
       {
         "label": "乘车记录",
-        "link": "alipays://platformapi/startapp?appId=20000076&returnHome=NO&bizSubType=75&showSearch=false&title=ä¹è½¦è®°å½",
+        "link": "alipays://platformapi/startapp?appId=20000076&returnHome=NO&bizSubType=75&showSearch=false&title=%E4%B9%98%E8%BD%A6%E8%AE%B0%E5%BD%95",
         "urlType": "outside",
         "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/trafficLog_icon.png"
       },

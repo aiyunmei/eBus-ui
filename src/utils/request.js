@@ -21,6 +21,7 @@ class Axios {
     request.defaults.validateStatus = status => {
       return status >= 200 && status < 300
     }
+    request.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
     // 赋予内部
     this.instance = request
   }
