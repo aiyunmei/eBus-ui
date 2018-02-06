@@ -17,6 +17,7 @@ const TITLE_LIST = {
   balance: '余额查询',
   cardClose: '退卡申请',
   protocol: `${cardName}用户协议`,
+  lineInfo: '线路详情',
   other: cardName
 }
 

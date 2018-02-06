@@ -11,6 +11,7 @@ import payResult from './pages/payResult.vue'
 import openLine from './pages/openLine.vue'
 import help from './pages/help.vue'
 import protocol from './pages/protocol.vue'
+import lineInfo from './pages/lineInfo.vue'
 
 export {
   Auth,
@@ -25,5 +26,6 @@ export {
   payResult,
   openLine,
   help,
-  protocol
+  protocol,
+  lineInfo
 }

@@ -17,9 +17,14 @@
             {{ item.txt }}
           </div>
           <div class="item station">
-            <span>{{ item.start }}</span>
-            <i class="fa fa-exchange"></i>
-            <span>{{ item.end }}</span>
+            <div class="station-info">
+              <span>{{ item.start }}</span>
+              <i class="fa fa-exchange"></i>
+              <span>{{ item.end }}</span>
+            </div>
+            <div class="station-more" @click="bindSearchLine(item)">
+              <more-icon></more-icon>
+            </div>
           </div>
         </li>
       </ul>
@@ -36,7 +41,10 @@
 </template>
 
 <script>
+  import MoreIcon from '../../components/MoreIcon/MoreIcon'
+
   export default {
+    components: { MoreIcon },
     computed: {
       cityName () { return global.threeConfig.global.cityName },
       openLine () { return global.threeConfig.openLine }
@@ -55,6 +63,9 @@
           if (item.txt.indexOf(this.searchData) === 0) this.searchLineData.push(item)
         })
         this.searchLineData.length === 0 ? this.isValue = true : this.isValue = false
+      },
+      bindSearchLine (item) {
+        this.$router.push(`/lineInfo?lineShort=${item.txt}`)
       }
     }
   }

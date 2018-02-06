@@ -9,7 +9,7 @@
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2018010401577323",
+    "appId": "2018010301557353",
     "scope": "auth_base",
     "sign": "RSA",
     "cardType": "T0131000",
@@ -45,7 +45,7 @@
   "openCard": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2018010401577323&template_id=2018020514161534556476751&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2018010301557353/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2018010301557353&template_id=2018020514161534556476751&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2018010301557353/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",

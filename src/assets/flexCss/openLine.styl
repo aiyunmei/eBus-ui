@@ -36,7 +36,7 @@
       width 100%
       border-bottom 1px solid #ccc
       overflow hidden
-      padding 10px 0 10px 10px
+      padding 10px
       .item
         width 100%
       .name
@@ -44,7 +44,14 @@
         font-size normal_font_size
         padding-bottom 0.4rem
       .station
-        font-size small_font_size
+        display flex
+        flex-direction row
+        justify-content space-between
+        align-items center
+        .station-info
+          font-size small_font_size
+        .station-more
+          font-size small_font_size
 /* null */
 .open-line-null
   width 100%

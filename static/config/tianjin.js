@@ -34,7 +34,6 @@ window.threeConfig = {
     "showUrl": true,
     "onWhite": "enjoyProd",
     "whiteList": [
-
     ],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",

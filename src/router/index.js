@@ -15,7 +15,7 @@ import {
   openLine,
   help,
   protocol,
-  aa
+  lineInfo
 } from '../views'
 
 Vue.use(Router)
@@ -35,6 +35,7 @@ export default new Router({
     { path: '/payResult/:userId/:type', component: payResult }, // 支付结果
     { path: '/openLine', component: openLine }, // 已开通线路
     { path: '/help', component: help }, // 使用帮助
-    { path: '/protocol', component: protocol } // 协议
+    { path: '/protocol', component: protocol }, // 协议
+    { path: '/lineInfo', component: lineInfo } // 线路详情
   ]
 })
