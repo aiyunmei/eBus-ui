@@ -12,7 +12,7 @@
     <div class="open-line-body">
       <!--all-->
       <ul class="list">
-        <li v-for="(item, index) in searchData ? searchLineData : openLine.openLineOptions" :key="index">
+        <li v-for="(item, index) in searchData ? searchLineData : openLine.openLineOptions" :key="index" @click="bindSearchLine(item)">
           <div class="item name">
             {{ item.txt }}
           </div>
@@ -22,7 +22,7 @@
               <i class="fa fa-exchange"></i>
               <span>{{ item.end }}</span>
             </div>
-            <div class="station-more" @click="bindSearchLine(item)">
+            <div class="station-more">
               <more-icon></more-icon>
             </div>
           </div>
