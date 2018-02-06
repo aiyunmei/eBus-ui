@@ -36,7 +36,8 @@ new Vue({
         { label: '平湖公交', appId: '2017102409492235', cardType: 'T0330482', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '330400' },
         { label: '恩施公交', appId: '2017120600411001', cardType: 'T0422801', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '422800' },
         { label: '十堰公交', appId: '2017121100564627', cardType: 'T0420300', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '420300' },
-        { label: '九江公交', appId: '2017112300118905', cardType: 'T0360400', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '360400' }
+        { label: '九江公交', appId: '2017112300118905', cardType: 'T0360400', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '360400' },
+        { label: '廊坊公交', appId: '2018010301557353', cardType: 'T0131000', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '131000' }
       ],
       ruleForm: {
         appId: '2017072107839707',
