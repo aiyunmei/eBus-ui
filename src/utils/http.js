@@ -7,6 +7,7 @@ import request from './request'
 import { codeError } from './helper'
 import {checkNull, goOpenCard, checkHasCard, checkCardData, formatRMBYuanDecimal, showToast, jsLink} from './public'
 import Spinner from '../components/Spinner/index'
+import enums from './enums'
 
 const { appId, sign, cardType, templateId, bizType, storeAppId, storeSign } = global.threeConfig.alipayCardInfo
 const { cityCode, cardName } = global.threeConfig.global
@@ -29,15 +30,6 @@ const cancelCardCloseTips = encodeURIComponent('用户取消退卡')
 const negativeCardCloseTips = encodeURIComponent('当前余额不足,请充值')
 const revokeCardCloseTips = encodeURIComponent('系统统一退卡')
 
-const SUCCESS_CODE = '20000'
-
-/*
-* 成功的code
-* */
-export function getSuccessCode () {
-  return SUCCESS_CODE
-}
-
 /*
 * 根据token 获取uid
 * @params auth_code
@@ -51,7 +43,7 @@ export async function getUser ({ auth_code, cb }) {
     auth_code: auth_code
   })
   sessionStorage.setItem('isClose', 'yes')
-  if (msg && msg.code === SUCCESS_CODE) cb(data)
+  if (msg && msg.code === enums.SUCCESS_CODE) cb(data)
   else codeError()
 }
 
@@ -71,7 +63,31 @@ export async function getCardComponentUid ({ auth_code, request_id, cb }) {
     auth_code: auth_code,
     request_id: request_id
   })
-  if (msg && msg.code === SUCCESS_CODE) {
+  if (msg && msg.code === enums.SUCCESS_CODE) {
+    sessionStorage.setItem('userId', data.userId)
+    cb(data)
+  } else {
+    goOpenCard()
+  }
+}
+
+/*
+* 开卡组件获取用户更多的用户信息
+* @params auth_code
+* @params request_id
+* @params cb
+* */
+export async function getCardComponentUidMore ({ auth_code, request_id, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiGet(api.getAlipayCardComponentUidMore, {
+    appId: appId,
+    sign: sign,
+    bizType: bizType,
+    templateId: templateId,
+    auth_code: auth_code,
+    request_id: request_id
+  })
+  if (msg && msg.code === enums.SUCCESS_CODE) {
     sessionStorage.setItem('userId', data.userId)
     cb(data)
   } else {
@@ -95,7 +111,7 @@ export async function getCardComponentUidNewService ({ auth_code, request_id, cb
     auth_code: auth_code,
     request_id: request_id
   })
-  if (msg && msg.code === SUCCESS_CODE) {
+  if (msg && msg.code === enums.SUCCESS_CODE) {
     sessionStorage.setItem('userId', data.userId)
     cb(data)
   } else {
@@ -104,7 +120,30 @@ export async function getCardComponentUidNewService ({ auth_code, request_id, cb
 }
 
 /*
-* 开通先享后付卡 业主服务器端
+* 长安通领卡中间转换服务
+* @params mobile           手机号
+* @params identityCardNo   身份证
+* @params alipayUserName   姓名
+* @params cb
+* */
+export async function changAnApplyCardMiddleware({ mobile, identityCardNo, alipayUserName, alipayUserId, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiPost(api.changAnApplyCardMiddleware, {
+    appId: appId,
+    mobile: mobile,
+    identityCardNo: identityCardNo,
+    alipayUserName: alipayUserName,
+    alipayUserId: alipayUserId
+  })
+  if (msg && msg.code === enums.SUCCESS_CODE) {
+    cb(data)
+  } else {
+    goOpenCard()
+  }
+}
+
+/*
+* 开通先享后付卡
 * @params userId
 * @params cb
 * */
@@ -123,7 +162,7 @@ export async function getEnjoyCardComponent ({ userId, cb }) {
 }
 
 /*
-* 开通先享后付卡
+* 开通先享后付卡 业主服务器端
 * @params userId
 * @params cb
 * */
@@ -142,6 +181,27 @@ export async function getEnjoyCardComponentNewService ({ userId, cb }) {
 }
 
 /*
+* 长安通中间服务的开通先享后付卡
+* @params userId  支付宝uid
+* @params middleWareData
+* @params cb
+* */
+export async function getChangAnEnjoyCardComponentMiddleware ({ middleWareData, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiGet(api.changAnEnjoyCardComponentMiddleware, {
+    appId: appId,
+    sign: sign,
+    cardType: cardType,
+    cityCode: cityCode,
+    templateId: templateId,
+    bizType: bizType,
+    userId: sessionStorage.getItem('userId'),
+    ...middleWareData
+  })
+  cb(msg, data)
+}
+
+/*
 * 查询当前卡信息
 * @params cb
 * */
@@ -154,7 +214,7 @@ export async function getCardInfo ({ cb }) {
   })
   const dispatch = $Vue.$store.dispatch
 
-  if (msg && msg.code === SUCCESS_CODE) {
+  if (msg && msg.code === enums.SUCCESS_CODE) {
     if (checkNull(data) === 0) {
       goOpenCard()
       return false
@@ -197,7 +257,7 @@ export async function applyCardClose ({ status, cb }) {
     action: applyCardCloseAction,
     disabledTips: applyCardCloseTips
   })
-  if (msg && msg.code === SUCCESS_CODE) cb(msg)
+  if (msg && msg.code === enums.SUCCESS_CODE) cb(msg)
   else codeError()
 }
 
@@ -216,7 +276,7 @@ export async function cancelCardClose ({ status, cb }) {
     action: cancelCardCloseAction,
     disabledTips: item === 'positiveCardComponent' ? cancelCardCloseTips : negativeCardCloseTips
   })
-  if (msg && msg.code === SUCCESS_CODE) cb(msg)
+  if (msg && msg.code === enums.SUCCESS_CODE) cb(msg)
   else codeError()
 }
 
@@ -235,7 +295,7 @@ export async function revokeCardClose ({ status, cb }) {
     action: revokeCardCloseAction,
     disabledTips: revokeCardCloseTips
   })
-  if (msg && msg.code === SUCCESS_CODE) cb(msg)
+  if (msg && msg.code === enums.SUCCESS_CODE) cb(msg)
   else codeError()
 }
 
@@ -259,7 +319,7 @@ export async function showAlipayStore ({ label, RMB, syncCallBackUrl, cb }) {
     totalAmount: RMB,
     syncCallBackUrl: `${api.baseUrl}#/${syncCallBackUrl}`
   })
-  if (msg && msg.code === SUCCESS_CODE) {
+  if (msg && msg.code === enums.SUCCESS_CODE) {
     const div = document.createElement('div') // 创建div
     div.innerHTML = data.body // 将返回的form 放入div
     document.body.appendChild(div)

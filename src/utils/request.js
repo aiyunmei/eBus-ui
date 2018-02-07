@@ -3,7 +3,7 @@ import qs from 'qs'
 import { netWorkError } from './helper'
 import Spinner from '../components/Spinner/index'
 import Logger from './log'
-import { getSuccessCode } from './http'
+import enums from './enums'
 
 const async_timestamp = new Date().getTime()
 const { appId } = global.threeConfig.alipayCardInfo
@@ -21,7 +21,6 @@ class Axios {
     request.defaults.validateStatus = status => {
       return status >= 200 && status < 300
     }
-    request.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
     // 赋予内部
     this.instance = request
   }
@@ -63,7 +62,7 @@ class Axios {
   }
 
   checkResCode(res) {
-    if (res.data.msg && res.data.msg.code === getSuccessCode()) {
+    if (res.data.msg && res.data.msg.code === enums.SUCCESS_CODE) {
       logger.loggerInfo(res)
     } else {
       logger.loggerWarn(res)

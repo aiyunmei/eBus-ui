@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import Spinner from '../../components/Spinner/index'
   const { cityName } = global.threeConfig.global
 
   export default {
@@ -94,6 +95,7 @@
         window.location.reload()
       },
       lineSearch () {
+        Spinner.open()
         AMap.service(['AMap.LineSearch'], () => {
           const searchObj = new AMap.LineSearch({
             pageIndex :1,
@@ -103,6 +105,7 @@
           })
           // TODO:调用search方法
           searchObj.search(this.lineShort, (status, result) => {
+            Spinner.close()
             this.visible = true
             if (status === 'complete' && result.info === 'OK') {
               this.lineData = result.lineInfo[0]

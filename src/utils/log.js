@@ -1,8 +1,6 @@
 /*
 * 日志监控
 * */
-import io from 'socket.io-client'
-
 const { cardName } = global.threeConfig.global
 
 class Logger {
