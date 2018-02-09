@@ -11,7 +11,7 @@
   "alipayCardInfo": {
     "appId": "2018020802164031",
     "scope": "auth_base",
-    "sign": "RSA",
+    "sign": "RSA2",
     "cardType": "T0610100",
     "bizType": "MEMBER_CARD",
     "templateId": "2018020820355061747310879",
