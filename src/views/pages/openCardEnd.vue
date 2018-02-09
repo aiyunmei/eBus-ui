@@ -55,7 +55,7 @@
           case enums.TIAN_JIN_APPID: // 天津
             this.getAlipayUidNewService(auth_code, request_id);
             break;
-          case enums.XIAO_MA_APPID: // 小码卡 === 给长安通测试领卡流程
+          case enums.CHANG_AN_APPID: // 长安通
             this.changAnGetAlipayUid(auth_code, request_id)
             break;
           default: // 默认流程

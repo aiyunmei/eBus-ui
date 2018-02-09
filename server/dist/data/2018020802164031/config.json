@@ -1,36 +1,36 @@
 {
   "api": {
-    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2017121300671681",
+    "baseUrl": "https://xmbus.i-xiaoma.com.cn:8080/2018020802164031",
     "alipayAuthBaseUrl": "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm",
     "alipayTransitCardEntry": "https://render.alipay.com/p/f/public_transit/card_entry.html",
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
     "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider",
-    "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
+    "alipayCardManagementUrl": "https://changantong.i-xiaoma.cn/card-management-provider",
     "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
   },
   "alipayCardInfo": {
-    "appId": "2017121300671681",
+    "appId": "2018020802164031",
     "scope": "auth_base",
     "sign": "RSA",
-    "cardType": "T0370600",
+    "cardType": "T0610100",
     "bizType": "MEMBER_CARD",
-    "templateId": "2018020821560428520683872",
-    "subScene": "370600",
+    "templateId": "2018020820355061747310879",
+    "subScene": "610100",
     "scene": "TRANSIT",
     "applyCardAction": "sign",
     "openCardAction": "use",
-    "applyCardSource": "YANTAI_BUS_APPLY",
-    "openCardSource": "YANTAI_CARD_USE",
-    "useCardSource": "YANTAI_BUS_USE",
-    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D370600%26cardType%3DT0370600%26source%YANTAI_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
+    "applyCardSource": "XIAN_BUS_APPLY",
+    "openCardSource": "XIAN_CARD_USE",
+    "useCardSource": "XIAN_BUS_USE",
+    "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D610100%26cardType%3DT0610100%26source%XIAN_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
     "storeAppId": "",
     "storeSign": ""
   },
   "global": {
-    "cardName": "烟台市民卡",
-    "cityName": "烟台",
-    "cityCode": "370600",
+    "cardName": "长安通电子卡",
+    "cityName": "西安",
+    "cityCode": "610100",
     "showUrl": true,
     "onWhite": "enjoyProd",
     "whiteList": [],
@@ -40,12 +40,12 @@
     }
   },
   "card": {
-    "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/yantai_card.jpg"
+    "image": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/changan_card.jpg"
   },
   "openCard": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openCard_bg.jpg",
     "getCardBtnVal": "立即领卡",
-    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2017121300671681&template_id=2018020821560428520683872&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2017121300671681/cardIn&biz_type=scard",
+    "getCardHref": "https://memberprod.alipay.com/account/openform/activecard.htm?app_id=2018020802164031&template_id=2018020820355061747310879&__webview_options__=canPullDown%3dNO%26transparentTitle%3dauto&callback=https://xmbus.i-xiaoma.com.cn:8080/2018020802164031/cardIn&biz_type=scard",
     "cardDescription": {
       "01": {
         "header": "先乘车、后付款",
@@ -54,8 +54,8 @@
     },
     "popupList": [
       {
-        "name": "《烟台市民卡用户协议》",
-        "href": "https://xmbus.i-xiaoma.com.cn:8080/2017121300671681#/protocol"
+        "name": "《长安通电子卡用户协议》",
+        "href": "https://xmbus.i-xiaoma.com.cn:8080/2018020802164031#/protocol"
       },
       {
         "name": "《公交先享后付服务和芝麻服务等相关协议》",
@@ -67,15 +67,15 @@
     "busyImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/open_card_end_busy.png"
   },
   "protocol": {
-    "company": "烟台公共交通有限",
-    "companyShort": "烟台公交",
+    "company": "西安公共交通有限",
+    "companyShort": "西安公交",
     "telephone": "400-03164111"
   },
   "cardDetail": {
     "bgImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_bg.jpg",
     "noticeConfig": {
       "visible": false,
-      "content": "烟台市民卡,欢迎您!",
+      "content": "长安通电子卡,欢迎您!",
       "width": "100%"
     },
     "bannerConfig": {
@@ -209,48 +209,48 @@
   },
   "help": [
     {
-      "question": "烟台市民卡是什么？",
-      "answer": "烟台市民卡是长安通、烟台公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“烟台市民卡”，乘车时只要打开支付宝的烟台市民卡公交刷码页面，即可刷码乘公交。"
+      "question": "长安通电子卡是什么？",
+      "answer": "长安通电子卡是长安通、西安公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“长安通电子卡”，乘车时只要打开支付宝的长安通电子卡公交刷码页面，即可刷码乘公交。"
     },
     {
-      "question": "如何领取“烟台市民卡”？",
-      "answer": "（1）打开支付宝——选择烟台【城市服务】——选择【长安通乘车码】——按照领卡提示，点击【立即领卡】，即可领取您专属的“烟台市民卡”（2）或在支付宝内搜素“长安通”生活号，按提示领取专属公交卡"
+      "question": "如何领取“长安通电子卡”？",
+      "answer": "（1）打开支付宝——选择西安【城市服务】——选择【长安通乘车码】——按照领卡提示，点击【立即领卡】，即可领取您专属的“长安通电子卡”（2）或在支付宝内搜素“长安通”生活号，按提示领取专属公交卡"
     },
     {
       "question": "领卡后如何使用？",
-      "answer": "(1）打开支付宝——选择【卡包】——打开【烟台市民卡】——点击【去刷码】——将乘车码对准公交车上扫码窗口——听到【扫码成功】语音提示即可乘车(2）打开支付宝——选择烟台【城市服务】——点击【长安通乘车码】——将乘车码对准公交车上扫码窗口——听到【扫码成功】语音提示即可"
+      "answer": "(1）打开支付宝——选择【卡包】——打开【长安通电子卡】——点击【去刷码】——将乘车码对准公交车上扫码窗口——听到【扫码成功】语音提示即可乘车(2）打开支付宝——选择西安【城市服务】——点击【长安通乘车码】——将乘车码对准公交车上扫码窗口——听到【扫码成功】语音提示即可"
     },
     {
-      "question": "“烟台市民卡”是如何收费的？乘车票价是多少？",
-      "answer": "“烟台市民卡”领取电子公交卡免费，乘车按照车费收取 “烟台市民卡”先开通的线路仅为试点线路，目前每次刷码按常规票价（投币票价）进行扣款；"
+      "question": "“长安通电子卡”是如何收费的？乘车票价是多少？",
+      "answer": "“长安通电子卡”领取电子公交卡免费，乘车按照车费收取 “长安通电子卡”先开通的线路仅为试点线路，目前每次刷码按常规票价（投币票价）进行扣款；"
     },
     {
-      "question": "“烟台市民卡”是否有换乘优惠？是否有乘车优惠？",
-      "answer": "目前，烟台公交仅开通部分线路作为试运营线路，暂无乘车优惠。 换乘优惠暂时未开通，尽请期待。"
+      "question": "“长安通电子卡”是否有换乘优惠？是否有乘车优惠？",
+      "answer": "目前，西安公交仅开通部分线路作为试运营线路，暂无乘车优惠。 换乘优惠暂时未开通，尽请期待。"
     },
     {
-      "question": "使用“烟台市民卡”乘车发票怎么开？乘车记录有么？",
-      "answer": "目前，烟台市民卡不支持乘车发票开具 您可通过支付宝——【卡包】——【烟台市民卡】——【使用记录】查询乘车记录"
+      "question": "使用“长安通电子卡”乘车发票怎么开？乘车记录有么？",
+      "answer": "目前，长安通电子卡不支持乘车发票开具 您可通过支付宝——【卡包】——【长安通电子卡】——【使用记录】查询乘车记录"
     },
     {
       "question": "哪些线路可以使用支付宝乘车？其他线路什么时候可以上线？",
-      "answer": "您可通过支付宝——【卡包】——【烟台市民卡】——【开通线路】查询已开通乘车刷码功能的公交线路 其他线路的乘车刷码功能在逐步开通中"
+      "answer": "您可通过支付宝——【卡包】——【长安通电子卡】——【开通线路】查询已开通乘车刷码功能的公交线路 其他线路的乘车刷码功能在逐步开通中"
     },
     {
       "question": "还有哪些城市可以使用支付宝乘车？",
       "answer": "您可通过支付宝内【乘车码】-【切换卡片】-【领取新卡】来查看现有开通公交卡（及乘车码）业务的城市"
     },
     {
-      "question": "“烟台市民卡”可以充值实体公交卡么？",
-      "answer": "目前，“烟台市民卡”仅支持乘车刷码功能，充值实体卡仍需要到公交充值点或使用长安通其他充值方式进行充值；"
+      "question": "“长安通电子卡”可以充值实体公交卡么？",
+      "answer": "目前，“长安通电子卡”仅支持乘车刷码功能，充值实体卡仍需要到公交充值点或使用长安通其他充值方式进行充值；"
     },
     {
-      "question": "为什么无法领取“烟台市民卡”",
-      "answer": "（1）您在领卡时，同一用户只能领取一张公交卡，若该账号无法领取，请查看是否有其他支付宝账号领取“烟台市民卡” （2）您在领卡认证时，是否输错验证信息；（3）如上述问题不存在仍不可领卡，请在支付宝内发起咨询或支付宝客服电话：95188或添加QQ群：523143023进行咨询"
+      "question": "为什么无法领取“长安通电子卡”",
+      "answer": "（1）您在领卡时，同一用户只能领取一张公交卡，若该账号无法领取，请查看是否有其他支付宝账号领取“长安通电子卡” （2）您在领卡认证时，是否输错验证信息；（3）如上述问题不存在仍不可领卡，请在支付宝内发起咨询或支付宝客服电话：95188或添加QQ群：523143023进行咨询"
     },
     {
       "question": "上车时不小心多刷了好几遍，扣款如何退回？",
-      "answer": "若您在乘车时对刷码金额有疑问，均可在支付宝内发起客服咨询，待客服审核该笔交易无误后，多余费用将会在工作日内返还到您账户。 客服咨询流程：打开【烟台市民卡】——点击【使用记录】——找到有疑问的乘车记录并打开【账单详情】——从【对此订单有疑问】发起咨询"
+      "answer": "若您在乘车时对刷码金额有疑问，均可在支付宝内发起客服咨询，待客服审核该笔交易无误后，多余费用将会在工作日内返还到您账户。 客服咨询流程：打开【长安通电子卡】——点击【使用记录】——找到有疑问的乘车记录并打开【账单详情】——从【对此订单有疑问】发起咨询"
     },
     {
       "question": "使用乘车刷码刷码机没反应怎么办？",
@@ -258,10 +258,10 @@
     },
     {
       "question": "不想用了，如何退卡？",
-      "answer": "若用户不想使用线上公交卡后，乘车时不使用“烟台市民卡”即可，该卡不会产生任何扣费情况。 若用户希望直接退卡，则需通过【卡包】——点击卡名【烟台市民卡】——进入卡片详情页——【退卡申请】即可"
+      "answer": "若用户不想使用线上公交卡后，乘车时不使用“长安通电子卡”即可，该卡不会产生任何扣费情况。 若用户希望直接退卡，则需通过【卡包】——点击卡名【长安通电子卡】——进入卡片详情页——【退卡申请】即可"
     },
     {
-      "question": "乘公交可以使用烟台市民卡帮朋友刷码么？",
+      "question": "乘公交可以使用长安通电子卡帮朋友刷码么？",
       "answer": "根据有关规定，目前乘车码仅限本人使用。"
     }
   ],
