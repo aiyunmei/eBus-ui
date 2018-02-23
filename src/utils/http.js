@@ -143,6 +143,31 @@ export async function changAnApplyCardMiddleware({ mobile, identityCardNo, alipa
 }
 
 /*
+* 烟台领卡中间服务
+* @params userId
+* @params certNo
+* @params mobilePhone
+* @params userName
+* @params appId
+* */
+export async function yanTaiApplyCardMiddleware({ userId, certNo, mobilePhone, userName, appId, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiGet(api.yanTaiApplyCardMiddleware, {
+    userId,
+    certNo,
+    mobilePhone,
+    userName,
+    appId: appId
+  })
+  if (msg && msg.code === enums.SUCCESS_CODE) {
+    cb(data)
+  } else {
+    goOpenCard()
+  }
+}
+
+
+/*
 * 开通先享后付卡
 * @params userId
 * @params cb
