@@ -23,5 +23,6 @@ export default {
   changAnApplyCardMiddleware: `${alipayCardManagementUrl}/customer/open/account`, // 长安通的中间服务
   changAnEnjoyCardComponentMiddleware: `${alipayCardManagementUrl}/customer/virtual/card/alipay/status`, // 长安通中间服务的先享后付开卡
   // 烟台定制化领卡接口
-  yanTaiApplyCardMiddleware: `${alipayCardManagementUrl}/user/info/exchange/card/info` // 烟台的中间服务
+  yanTaiApplyCardMiddleware: `${alipayCardManagementUrl}/user/info/exchange/card/info`, // 烟台的中间服务
+  yanTaiEnjoyCardComponentMiddleware: `${alipayCardManagementUrl}/virtual/card/alipay/status/with/card` // 烟台中间服务的先享后付开卡
 }

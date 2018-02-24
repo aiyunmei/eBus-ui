@@ -38,7 +38,9 @@ new Vue({
         { label: '十堰公交', appId: '2017121100564627', cardType: 'T0420300', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '420300' },
         { label: '九江公交', appId: '2017112300118905', cardType: 'T0360400', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '360400' },
         { label: '廊坊公交', appId: '2018010301557353', cardType: 'T0131000', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '131000' },
-        { label: '临沂公交', appId: '2017110309695734', cardType: 'T0371300', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '371300' }
+        { label: '临沂公交', appId: '2017110309695734', cardType: 'T0371300', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '371300' },
+        { label: '烟台公交', appId: '2017121300671681', cardType: 'T0370600', sign: 'RSA2', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '370600' },
+        { label: '长安通', appId: '2018020802164031', cardType: 'T0610100', sign: 'RSA2', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '610100' }
       ],
       ruleForm: {
         appId: '2017072107839707',

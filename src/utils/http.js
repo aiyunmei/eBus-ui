@@ -227,6 +227,25 @@ export async function getChangAnEnjoyCardComponentMiddleware ({ middleWareData, 
 }
 
 /*
+* 烟台的中间服务开通先享后付卡
+* @params cardNo 烟台给的卡号
+* */
+export async function getYanTaiEnjoyCardComponentMiddleware({ cardNo, cb }) {
+  Spinner.open()
+  const { msg, data } = await request.apiGet(api.yanTaiEnjoyCardComponentMiddleware, {
+    appId: appId,
+    sign: sign,
+    cardType: cardType,
+    cityCode: cityCode,
+    templateId: templateId,
+    bizType: bizType,
+    userId: sessionStorage.getItem('userId'),
+    cardNo: cardNo
+  })
+  cb(msg, data)
+}
+
+/*
 * 查询当前卡信息
 * @params cb
 * */

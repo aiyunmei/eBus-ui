@@ -61,6 +61,7 @@ class Axios {
     })
   }
 
+
   checkResCode(res) {
     if (res.data.msg && res.data.msg.code === enums.SUCCESS_CODE) {
       logger.loggerInfo(res)

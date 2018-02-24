@@ -17,12 +17,17 @@
   import {
     getCardComponentUid,
     getEnjoyCardComponent,
+
     getCardComponentUidNewService,
     getEnjoyCardComponentNewService,
+
     getCardComponentUidMore,
+
     changAnApplyCardMiddleware,
     getChangAnEnjoyCardComponentMiddleware,
-    yanTaiApplyCardMiddleware
+
+    yanTaiApplyCardMiddleware,
+    getYanTaiEnjoyCardComponentMiddleware
   } from '../../utils/http'
   import { alipayExitApp } from '../../utils/alipayJsApi'
 
@@ -50,17 +55,17 @@
           this.$router.replace('/openCard')
           return false
         }
-        const { auth_code, request_id } = JSON.parse(localStorage.getItem('userInfo'))
+        const { auth_code, request_id } = JSON.parse(localStorage.getItem('userInfo'));
         // 判断商户是否是正常领卡还是定制化领卡
         switch (appId) {
           case enums.TIAN_JIN_APPID: // 天津
             this.getAlipayUidNewService(auth_code, request_id);
             break;
           case enums.CHANG_AN_APPID: // 长安通
-            this.changAnGetAlipayUid(auth_code, request_id)
+            this.changAnGetAlipayUid(auth_code, request_id);
             break;
           case enums.YAN_TAI_APPID: // 烟台
-            this.yanTaiGetAlipayUid(auth_code, request_id)
+            this.yanTaiGetAlipayUid(auth_code, request_id);
             break;
           default: // 默认流程
             this.getAlipayUid(auth_code, request_id)
@@ -117,14 +122,13 @@
         getCardComponentUidMore({ auth_code: auth_code, request_id: request_id, Vue: this, cb: data => this.yanTaiGetApplyCardMiddleware(data) })
       },
       yanTaiGetApplyCardMiddleware ({ mobilePhone, certNo, userName, userId }) { // 中间数据转换服务
-        yanTaiApplyCardMiddleware({ mobilePhone, certNo, userName, userId, cb: data => this.yanTaiGetCardMiddlewareOpenCard(data) })
+        yanTaiApplyCardMiddleware({ mobilePhone, certNo, userName, userId, cb: data => this.yanTaiGetCardMiddlewareOpenCard(typeof data === 'object' ? data : JSON.parse(data)) })
       },
-      yanTaiGetCardMiddlewareOpenCard (item) { // 中间数据服务的烟台开卡
-        getEnjoyCardComponent({
-          userId: sessionStorage.getItem('userId'),
-          cardNo: item.alipayCardNo,
+      yanTaiGetCardMiddlewareOpenCard ({ alipayCardNo }) { // 中间数据服务的烟台开卡
+        getYanTaiEnjoyCardComponentMiddleware({
+          cardNo: alipayCardNo,
           cb: (msg, data) => {
-            if (msg && msg.code === enums.SUCCESS_CODE) this.successOpenCard(item.alipayCardNo)
+            if (msg && msg.code === enums.SUCCESS_CODE) this.successOpenCard(alipayCardNo)
             else this.visible = true
           }
         })
