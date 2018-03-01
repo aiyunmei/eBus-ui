@@ -6,6 +6,7 @@ new Vue({
       selectType: true, // true 开卡退卡 false 退款
       openCardDisabled: true, // 开卡按钮控制
       cardCloseDisabled: true, // 退卡按钮控制
+      isRefundUse: true, // 是否可以用退款
       selectOptions: [
         { label: '小码测试卡', appId: '2017072107839707', cardType: 'TESTXMLC', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '420100' },
         // 旧
@@ -40,7 +41,8 @@ new Vue({
         { label: '廊坊公交', appId: '2018010301557353', cardType: 'T0131000', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '131000' },
         { label: '临沂公交', appId: '2017110309695734', cardType: 'T0371300', sign: 'RSA', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '371300' },
         { label: '烟台公交', appId: '2017121300671681', cardType: 'T0370600', sign: 'RSA2', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '370600' },
-        { label: '长安通', appId: '2018020802164031', cardType: 'T0610100', sign: 'RSA2', url: 'https://bus.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '610100' }
+        { label: '长安通(压测)', appId: '2018020802164031', cardType: 'T0610100', sign: 'RSA2', url: 'https://changantong.i-xiaoma.com.cn/card-management-provider/virtual/card/alipay/status', cityCode: '610100' },
+        { label: '长安通(测试)', appId: '2018020802164031', cardType: 'T0610100', sign: 'RSA2', url: 'https://changantong.i-xiaoma.cn/card-management-provider/virtual/card/alipay/status', cityCode: '610100' }
       ],
       ruleForm: {
         appId: '2017072107839707',
@@ -66,6 +68,9 @@ new Vue({
         ]
       }
     }
+  },
+  mounted () {
+    this.checkDate()
   },
   methods: {
     submitOpenCardForm (formName) { // 开卡
@@ -112,6 +117,21 @@ new Vue({
       } else {
         this.cardCloseDisabled = true
         this.openCardDisabled = true
+      }
+    },
+    getCurrentMonthLast (num) {
+      var date=new Date();
+      var currentMonth=date.getMonth();
+      var nextMonth=++currentMonth;
+      var nextMonthFirstDay=new Date(date.getFullYear(),nextMonth,1);
+      var oneDay=(1000*60*60*24) * num;
+
+      return `${new Date(nextMonthFirstDay-oneDay).getMonth() + 1}-${new Date(nextMonthFirstDay-oneDay).getDate()}`;
+    },
+    checkDate () {
+      const nowDate = `${new Date().getMonth() + 1}-${new Date().getDate()}`
+      if (nowDate === this.getCurrentMonthLast(1) || nowDate === this.getCurrentMonthLast(2)) {
+        this.isRefundUse = false
       }
     },
     tianjinOpenCard (formName) { // 天津开卡

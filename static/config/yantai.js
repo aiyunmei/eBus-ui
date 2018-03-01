@@ -6,7 +6,7 @@ window.threeConfig = {
     "alipayMomUrl": "https://categoryservicetest.alipay-eco.com",
     "alipayUserUrl": "https://bus.i-xiaoma.com.cn/user-center-provider",
     "alipayCardManagementUrl": "https://bus.i-xiaoma.com.cn/card-management-provider",
-    "alipayCardPayProviderUrl": "https://bus.i-xiaoma.com.cn/card-pay-provider"
+    "alipayCardPayProviderUrl": "http://192.168.1.110:8082"
   },
   "alipayCardInfo": {
     "appId": "2017121300671681",
@@ -24,15 +24,15 @@ window.threeConfig = {
     "useCardSource": "YANTAI_BUS_USE",
     "busCode": "alipays://platformapi/startapp?appId=60000098&url=%2Fwww%2Fcard_entry.html%3Fscene%3DTRANSIT%26subScene%3D370600%26cardType%3DT0370600%26source%YANTAI_BUS_USE%26__webview_options__%3DcanPullDown%253DYES%2526pullRefresh%253DYES",
     "rechargeUnitName": "元",
-    "storeAppId": "",
-    "storeSign": ""
+    "storeAppId": "2017121300671681",
+    "storeSign": "RSA2"
   },
   "global": {
     "cardName": "烟台市民卡",
     "cityName": "烟台",
     "cityCode": "370600",
     "showUrl": true,
-    "onWhite": "enjoyProd",
+    "onWhite": "rechargeProd",
     "whiteList": [],
     "linkOldUrl": {
       "buscode": "https://zf.wuhanbus.com:8443/wuhan/index.html#user?url=buscode",
@@ -95,26 +95,23 @@ window.threeConfig = {
     "successAlertConfig": {
       "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_alert.png",
       "leftBtnVal": "查看卡片",
-      "rightBtnVal": "立即使用"
+      "rightBtnVal": "立即充值"
     },
     "menuOptions": [
       {
         "label": "余额查询",
         "link": "/balance",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png"
       },
       {
         "label": "卡片充值",
         "link": "/recharge",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_icon.png"
       },
       {
         "label": "自动充值",
         "link": "/rechargeAuto",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/rechargeAuto_icon.png",
-        "visible": true
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/rechargeAuto_icon.png"
       },
       {
         "label": "用户反馈",
@@ -131,7 +128,8 @@ window.threeConfig = {
       {
         "label": "开通线路",
         "link": "/openLine",
-        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openLine_icon.png"
+        "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/openLine_icon.png",
+        "visible": true
       },
       {
         "label": "使用帮助",
@@ -210,7 +208,7 @@ window.threeConfig = {
   "help": [
     {
       "question": "烟台市民卡是什么？",
-      "answer": "烟台市民卡是长安通、烟台公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“烟台市民卡”，乘车时只要打开支付宝的烟台市民卡公交刷码页面，即可刷码乘公交。"
+      "answer": "烟台市民卡是烟台公交、小码联城和支付宝共同推出的线上电子公交卡，乘客可在支付宝内领取“烟台市民卡”，乘车时只要打开支付宝的烟台市民卡公交刷码页面，即可刷码乘公交。"
     },
     {
       "question": "如何领取“烟台市民卡”？",

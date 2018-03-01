@@ -93,7 +93,7 @@
       "content": "退卡后您将不能再享受刷手机乘公交<br/>的便捷服务"
     },
     "successAlertConfig": {
-      "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_alert.png",
+      "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/card_detail_free_alert.png",
       "leftBtnVal": "查看卡片",
       "rightBtnVal": "立即使用"
     },

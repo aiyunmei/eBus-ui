@@ -272,26 +272,12 @@
       "nullImage": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/open_line_null.png"
     },
     "openLineOptions": [
-      {
-        "end": "川源机械",
-        "start": "平湖客运中心",
-        "txt": "6路"
-      },
-      {
-        "end": "关帝庙",
-        "start": "川源机械",
-        "txt": "6路(夜)"
-      },
-      {
-        "end": "新群公交首末站",
-        "start": "平湖客运中心",
-        "txt": "9路/9路(夜)"
-      },
-      {
-        "end": "新群公交首末站",
-        "start": "平湖客运中心",
-        "txt": "10路"
-      }
+      {"txt":"9路","start":"平湖客运中心","end":"新群公交首末站"},
+      {"txt":"9路夜","start":"平湖客运中心","end":"新群公交首末站"},
+      {"txt":"10路","start":"平湖客运中心","end":"新群公交首末站"},
+      {"txt":"6路","start":"平湖客运中心","end":"川源机械"},
+      {"txt":"6路夜","start":"川源机械","end":"关帝庙"},
+      {"txt":"166路","start":"东方路公交首末站","end":"嘉善南(高铁站)"}
     ]
   }
 }
