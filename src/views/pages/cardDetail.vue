@@ -150,15 +150,19 @@
             this.commonReady();
         }
       },
-      oldDevRechargeWhiteType () {
-        if (whiteList.indexOf(sessionStorage.getItem('userId')) === 0) this.commonReady() // 在白名单
-        else this.$route.query.buscode ? jsLink('replace', linkOldUrl.buscode) : jsLink('replace', linkOldUrl.other) // 不在白名单
+      oldDevRechargeWhiteType () { // 兼容老的储值灰度
+        if (whiteList.indexOf(sessionStorage.getItem('userId')) === -1) this.$route.query.buscode ? jsLink('replace', linkOldUrl.buscode) : jsLink('replace', linkOldUrl.other) // 不在白名单
+        else this.rechargeProdType()
       },
-      devRechargeWhiteType () {
-        if (whiteList.indexOf(sessionStorage.getItem('userId')) === 0) this.rechargeVisible = true // 在白名单开启储值功能
-        this.commonReady() // 不在白名单渲染先享后付
+      devRechargeWhiteType () { // 自己代码储值灰度
+        if (whiteList.indexOf(sessionStorage.getItem('userId')) === -1) { // 不在白名单渲染先享后付
+          this.commonReady()
+          return false
+        }
+
+        this.rechargeProdType() // 开启储值
       },
-      rechargeProdType () {
+      rechargeProdType () { // 储值生产
         this.rechargeVisible = true
         this.commonReady()
       },

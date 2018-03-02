@@ -41,8 +41,8 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" ref="ruleForm">
 
       <el-form-item prop="appId" v-if="selectType">
-        <el-select v-model="ruleForm.appId" placeholder="选择退卡商户" filterable style="width: 100%" @change="handleOptionChange">
-          <el-option v-for="(item, index) in selectOptions" :key="index" :label="`${item.label}_${item.appId}_${item.cardType}`" :value="item.appId"></el-option>
+        <el-select v-model="ruleForm.id" placeholder="选择退卡商户" filterable style="width: 100%" @change="handleOptionChange">
+          <el-option v-for="(item, index) in selectOptions" :key="index" :label="`${item.label}_${item.appId}_${item.cardType}`" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
 
@@ -74,7 +74,7 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
 <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/js/public/card-close.js?v=201802241614"></script>
+<script src="https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/js/public/card-close.js?v=201802241614213213231"></script>
 <!--<script src="./card-close.js" type="text/javascript"></script>-->
 
 </html>

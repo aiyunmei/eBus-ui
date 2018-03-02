@@ -64,6 +64,9 @@
           case enums.CHANG_AN_APPID: // 长安通
             this.changAnGetAlipayUid(auth_code, request_id);
             break;
+          case enums.XIAO_MA_APPID: // 小码给长安通测试使用 2018-03-02 23:17
+            this.changAnGetAlipayUid(auth_code, request_id);
+            break;
           case enums.YAN_TAI_APPID: // 烟台
             this.yanTaiGetAlipayUid(auth_code, request_id);
             break;

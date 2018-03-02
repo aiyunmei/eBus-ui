@@ -132,7 +132,7 @@ export async function changAnApplyCardMiddleware({ mobile, identityCardNo, alipa
     appId: appId,
     mobile: mobile,
     identityCardNo: identityCardNo,
-    alipayUserName: alipayUserName,
+    alipayUserName: encodeURIComponent(alipayUserName),
     alipayUserId: alipayUserId
   })
   if (msg && msg.code === enums.SUCCESS_CODE) {
