@@ -4,13 +4,13 @@
     <div class="z-message-hide" v-show="visible"></div>
 
     <transition name="z-message-box">
-      <div class="z-message-box" v-show="visible" :style="{ top: top }">
-        <img class="z-message-box-body-img" :src="imgUrl" v-if="imgUrl === '' ? false: true" />
+      <div class="z-message-box" :class="{ 'z-message-box-no-img': !imgUrl }" v-show="visible" :style="{ top: top }">
+        <img class="z-message-box-body-img" :src="imgUrl" v-if="imgUrl" />
         <div class="z-message-box-header">
           {{ title }}
         </div>
         <div class="z-message-box-body">
-          <div class="z-message-box-body-content" v-html="content" v-if="content === '' ? false : true"></div>
+          <div class="z-message-box-body-content" v-html="content" v-if="content"></div>
         </div>
         <div class="z-message-box-footer">
           <i class="z-message-box-btn-line"></i>
@@ -32,7 +32,7 @@
       },
       top: {
         type: String,
-        default: '25%'
+         default: '25%'
       },
       title: {
         type: String,
@@ -94,10 +94,15 @@
     margin-left: -40%;
     background: #fff;
     z-index: 2005;
-    transition: .3s;
+    transition: all 0.3s;
     box-sizing: border-box;
     border-radius: 4px;
   }
+  /* 无图片 */
+  .z-message-box-no-img .z-message-box-header{
+    padding-top: 10px;
+  }
+
   .z-message-box .z-message-box-body-img{
     width: 80%;
     display: block;
@@ -107,6 +112,7 @@
     width: 100%;
     text-align: center;
     font-size: 16px;
+    font-weight: 700;
   }
   .z-message-box-body{
     width: 100%;
@@ -117,9 +123,10 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: #aaa;
     line-height: 1.2;
+    padding: 6px 0;
   }
 
   .z-message-box-footer{

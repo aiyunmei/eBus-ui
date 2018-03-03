@@ -30,7 +30,12 @@
 
     <!--底部按钮-->
     <div class="footer">
-      <zButton :btnVal="applyRechargeLabel[btnType]" class="footer-btn" @click="applyRechargeAuto(btnType)"></zButton>
+      <div class="footer-item">
+        <zButton btnVal="确认开通" class="footer-btn" @click="handleFooterClick('apply')"></zButton>
+      </div>
+      <div class="footer-item">
+        <zButton btnVal="取消自动充值" type="gray" hollow class="footer-btn" @click="handleFooterClick('cancel')"></zButton>
+      </div>
     </div>
 
     <mt-popup position="bottom" v-model="thresholdPopupVisible" class="popup-item">
@@ -62,9 +67,9 @@
   import Card from '../../components/Card/Card'
   import zButton from '../../components/Button/Button'
   import Picker from '../../components/Picker/Picker'
-  import { MessageBox } from 'mint-ui'
   import {checkNull, showToast} from '../../utils/public'
   import { getCardInfo } from '../../utils/http'
+  import MessageBox from '../../components/MessageBox/index'
 
   export default {
     components: { Card, zButton, Picker },
@@ -78,18 +83,15 @@
         visible: false,
         thresholdAmount: null, // 阈值默认展示 金额
         rechargeAmount: null, // 充值金额默认展示 金额
-        btnType: 'apply',
-        applyRechargeLabel: { 'apply': '确认开通', 'cancel': '取消自动充值' },
-        thresholdPopupVisible: false, // 阈值
+        thresholdPopupVisible: false, // 阈值金额弹窗
         rechargePopupVisible: false, // 充值金额弹窗
         thresholdSlots: [{ // 阈值 pick 配置
           flex: 2,
           defaultIndex: 0,
           values: [
-            {label: '1元', value: 1},
-            {label: '20元', value: 20},
+            {label: '0.05元', value: 0.05},
+            {label: '10元', value: 10},
             {label: '30元', value: 30},
-            {label: '40元', value: 40},
             {label: '50元', value: 50},
             {label: '100元', value: 100}
           ],
@@ -100,10 +102,9 @@
           flex: 2,
           defaultIndex: 0,
           values: [
-            {label: '0.05元', value: 0.05},
-            {label: '20元', value: 20},
+            {label: '0.03元', value: 0.03},
+            {label: '10元', value: 10},
             {label: '30元', value: 30},
-            {label: '40元', value: 40},
             {label: '50元', value: 50},
             {label: '100元', value: 100}
           ],
@@ -126,7 +127,10 @@
         // 外部进入先缓存uid
         if (userId) sessionStorage.setItem('userId', userId)
         // 获取卡信息
-        getCardInfo({ Vue: this, cb: data => this.visible = true })
+        getCardInfo({
+          Vue: this,
+          cb: data => this.visible = true
+        })
       },
       rechargeSlotValueChange (picker, values) { //  充值变化
         this.rechargeAmount = values[0].value
@@ -134,25 +138,25 @@
       thresholdSlotValueChange (picker, values) { // 阈值变化
         this.thresholdAmount = values[0].value
       },
-      setThresholdAmount () { // 设置 金额阈值
-      },
-      setRechargeAmount () { // 设置 充值金额
-      },
-      applyRechargeAuto (type) { // apply update cancel 申请 编辑 取消
+      handleFooterClick (type) { // apply update cancel 申请 编辑 取消
         if (type === 'apply') this.doRechargeAutoApply()
         else if (type === 'cancel') this.doCancelRechargeAuto()
       },
       doRechargeAutoApply () { // 执行 自动充值
-        MessageBox.confirm('确定执行此操作?').then(action => {
-          showToast('开通成功')
-          this.btnType = 'cancel'
-        }).catch(() => {})
+        MessageBox({
+          type: 'confirm',
+          top: '40%',
+          content: '确认开通吗?',
+          callback: (action) => {
+          }})
       },
       doCancelRechargeAuto () { // 执行 取消自动充值
-        MessageBox.confirm('确定执行此操作?').then(action => {
-          showToast('取消成功')
-          this.btnType = 'apply'
-        }).catch(() => {})
+        MessageBox({
+          type: 'confirm',
+          top: '40%',
+          content: '取消自动充值吗?',
+          callback: (action) => {
+          }})
       }
     }
   }
