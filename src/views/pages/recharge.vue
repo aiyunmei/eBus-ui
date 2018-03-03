@@ -17,7 +17,7 @@
           <div class="item-main" @click="goRecharge(item, index)" :class="[ index === rechargeListIndex ? 'on' : '' ]">
             <div class="label">{{ item.label }}</div>
             <div class="value">售价:{{ item.value + rechargeUnitName }}</div>
-            <div class="tips" v-if="item.tipItem.visible" :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
+            <div class="tips" v-if="item.tipItem.label" :style="{ backgroundImage: `url(${item.tipItem.imgUrl})` }">
               <span class="tips-wrapper">{{ item.tipItem.label }}</span>
             </div>
           </div>

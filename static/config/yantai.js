@@ -128,7 +128,8 @@ window.threeConfig = {
     }, {
       "label": "退卡申请",
       "link": "/cardClose",
-      "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/cardClose_icon.png"
+      "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/cardClose_icon.png",
+      "visible": true
     }]
   },
   "cardClose": {
@@ -143,8 +144,9 @@ window.threeConfig = {
       "value": 0.01,
       "tipItem": {
         "imgUrl": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/recharge_list_body_tip.png",
-        "label": "12312321321",
-        "width": "1.6rem"
+        "label": "哈哈哈",
+        "width": "1.6rem",
+        "visible": true
       }
     }, {
       "label": "0.05元",
