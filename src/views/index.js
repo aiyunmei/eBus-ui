@@ -13,6 +13,11 @@ import help from './pages/help.vue'
 import protocol from './pages/protocol.vue'
 import lineInfo from './pages/lineInfo.vue'
 
+/*
+* 烟台定制
+* */
+import yanTaiBalance from './pages/yantai/balance'
+
 export {
   Auth,
   openCard,
@@ -27,5 +32,7 @@ export {
   openLine,
   help,
   protocol,
-  lineInfo
+  lineInfo,
+
+  yanTaiBalance
 }

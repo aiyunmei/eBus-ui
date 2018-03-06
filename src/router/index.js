@@ -15,7 +15,9 @@ import {
   openLine,
   help,
   protocol,
-  lineInfo
+  lineInfo,
+
+  yanTaiBalance
 } from '../views'
 
 Vue.use(Router)
@@ -36,6 +38,8 @@ export default new Router({
     { path: '/openLine', component: openLine }, // 已开通线路
     { path: '/help', component: help }, // 使用帮助
     { path: '/protocol', component: protocol }, // 协议
-    { path: '/lineInfo', component: lineInfo } // 线路详情
+    { path: '/lineInfo', component: lineInfo }, // 线路详情
+
+    { path: '/yanTaiBalance', component: yanTaiBalance } // 烟台余额
   ]
 })

@@ -195,12 +195,12 @@
         /*
         * 充值如果是在退卡申请中拦截
         * */
-        if (link === '/recharge') {
-          if (checkCardStatus(alipayCardStatus) === 'no') {
-            showToast('您已申请退卡，暂时无法使用!')
-            return false
-          }
-        }
+        // if (link === '/recharge') {
+        //   if (checkCardStatus(alipayCardStatus) === 'no') {
+        //     showToast('您已申请退卡，暂时无法使用!')
+        //     return false
+        //   }
+        // }
         /*
         * 退卡如果是退卡申请中不进行确认弹窗
         * */

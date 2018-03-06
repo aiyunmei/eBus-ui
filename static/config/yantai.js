@@ -96,7 +96,7 @@ window.threeConfig = {
     },
     "menuOptions": [{
       "label": "余额查询",
-      "link": "/balance",
+      "link": "/yanTaiBalance",
       "icon": "https://xm-cdn.oss-cn-hangzhou.aliyuncs.com/img/traffic_card/balance_icon.png"
     }, {
       "label": "卡片充值",

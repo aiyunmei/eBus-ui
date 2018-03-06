@@ -55,7 +55,7 @@
           this.$router.replace('/openCard')
           return false
         }
-        const { auth_code, request_id } = JSON.parse(localStorage.getItem('userInfo'));
+        const { auth_code, request_id } = JSON.parse(localStorage.getItem('userInfo'))
         // 判断商户是否是正常领卡还是定制化领卡
         switch (appId) {
           case enums.TIAN_JIN_APPID: // 天津
@@ -69,6 +69,9 @@
             break;
           case enums.YAN_TAI_APPID: // 烟台
             this.yanTaiGetAlipayUid(auth_code, request_id);
+            // this.yanTaiGetApplyCardMiddleware({
+            //   mobilePhone: '15071366709', certNo: '420112199011282737', userName: '你爸爸', userId: '2088302427608644'
+            // })
             break;
           default: // 默认流程
             this.getAlipayUid(auth_code, request_id)

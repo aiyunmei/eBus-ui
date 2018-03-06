@@ -5,7 +5,6 @@ import Spinner from '../components/Spinner/index'
 import Logger from './log'
 import enums from './enums'
 
-const async_timestamp = new Date().getTime()
 const { appId } = global.threeConfig.alipayCardInfo
 const logger = new Logger()
 
@@ -13,7 +12,8 @@ class Axios {
   constructor() {
     // 公共参数
     request.defaults.params = {
-      isStressTest: false
+      isStressTest: false,
+      async_timestamp: new Date().getTime()
     }
     // 设置请求最大时间
     request.defaults.timeout = 30 * 1000
@@ -29,7 +29,7 @@ class Axios {
     logger.initLog()
 
     return new Promise((resolve, reject) => {
-      this.instance.get(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, { params }).then(res => {
+      this.instance.get(`${url}?APPID=${appId}`, { params }).then(res => {
         Spinner.close()
         resolve(res.data)
 
@@ -46,7 +46,7 @@ class Axios {
 
   apiPost (url, params) {
     return new Promise((resolve, reject) => {
-      this.instance.post(`${url}?async_timestamp=${async_timestamp}&APPID=${appId}`, qs.stringify(params)).then(res => {
+      this.instance.post(`${url}?APPID=${appId}`, qs.stringify(params)).then(res => {
         Spinner.close()
         resolve(res.data)
 

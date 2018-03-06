@@ -210,7 +210,9 @@ export function formatRMBYuan (fen) {
  * @params ${fen} 当前金额 单位分
 * */
 export function formatRMBYuanDecimal (fen) {
-  return (fen / 100).toFixed(2)
+  const reFen = (fen / 100).toFixed(2)
+
+  return reFen === 'NaN' ? '0.00' : reFen
 }
 
 /**

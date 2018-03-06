@@ -93,7 +93,7 @@
         this.rechargeListIndex = index
         const { cashBalance } = this.cardInfo
         // 超过金额不让充值
-        if (cashBalance >= this.recharge.RMBThreshold ) {
+        if (cashBalance >= (this.recharge.RMBThreshold / 100) ) {
           showToast(`您的余额已达上限,暂不能充值`)
           return false
         }

@@ -156,7 +156,7 @@ export async function yanTaiApplyCardMiddleware({ userId, certNo, mobilePhone, u
     userId,
     certNo,
     mobilePhone,
-    userName,
+    userName: encodeURIComponent(userName),
     appId: appId
   })
   if (msg && msg.code === enums.SUCCESS_CODE) {
@@ -243,6 +243,22 @@ export async function getYanTaiEnjoyCardComponentMiddleware({ cardNo, cb }) {
     cardNo: cardNo
   })
   cb(msg, data)
+}
+
+/*
+* 烟台查询余额
+* @params alipayCardNo
+* */
+export async function getYanTaiCardBalance ({ alipayCardNo, cb }) {
+  const { message, data } = await request.apiGet(api.yanTaiCardBalance, { alipayCardNo })
+  if (message && message.code === enums.SUCCESS_CODE) {
+    const { cardBalance } = data
+    const dispatch = $Vue.$store.dispatch
+    dispatch('setAlipayCardInfo', { item: 'cashBalance', data: checkNull(cardBalance) === 0 ? '0.00' : formatRMBYuanDecimal(cardBalance) })
+    cb()
+  } else {
+    codeError()
+  }
 }
 
 /*
@@ -415,3 +431,4 @@ export async function getAlipayMon ({ adPid, cb }) {
   const { clickThroughUrl, imgUrl } = content.seat.ad
   cb(clickThroughUrl, imgUrl)
 }
+
