@@ -2,12 +2,12 @@
 
   <div class="protocol-layout">
     <p align="left">
-      本协议是{{protocol.company}}公司（以下简称“{{protocol.companyShort}}”）、支付宝（中国）网络技术有限公司（以下简称“支付宝”）与您就使用{{ cardName }}电子公交{{ cardUnitName }}服务的相关事项所订立的有效合约。请您仔细阅读本协议（<strong>特别是以粗体下划线标注的内容</strong>），如果您不同意本协议的任意内容，或者无法准确理解{{protocol.companyShort}}和支付宝对条款的解释，请不要进行后续操作。您通过支付宝相关页面点击立即领{{ cardUnitName }}或以其他方式选择接受本协议，即表示您同意接受本协议的全部内容。
+      本协议是{{protocol.company}}公司（以下简称“{{protocol.companyShort}}”）、支付宝（中国）网络技术有限公司（以下简称“支付宝”）与您就使用{{ cardName }}服务的相关事项所订立的有效合约。请您仔细阅读本协议（<strong>特别是以粗体下划线标注的内容</strong>），如果您不同意本协议的任意内容，或者无法准确理解{{protocol.companyShort}}和支付宝对条款的解释，请不要进行后续操作。您通过支付宝相关页面点击立即领{{ cardUnitName }}或以其他方式选择接受本协议，即表示您同意接受本协议的全部内容。
     </p>
     <p align="left"><strong>您同意，为持续为您提供良好的用户体验，{{protocol.companyShort}}或支付宝可能对本协议进行变更或修改，若您在本协议内容公告变更生效后继续使用本服务的，表示您已充分阅读、理解并接受变更后的协议内容，也将遵循变更后的协议内容使用本服务。</strong>
     </p>
     <p align="left"><br/><strong>一、电子公交{{ cardUnitName }}服务内容</strong></p>
-    <p align="left"><strong>1</strong><strong>、{{cardName}}电子公交{{ cardUnitName }}服务是{{protocol.companyShort}}和支付宝（以下简称“服务提供方”）联合发行的为用户提供的一种电子公交{{ cardUnitName }}服务。用户通过领取电子公交{{ cardUnitName }}并在乘车时刷支付宝客户端电子公交{{ cardUnitName }}乘车二维码（以下简称“乘车码”），即可享有在装备了电子公交{{ cardUnitName }}刷{{ cardUnitName }}机具的公交车上乘坐的权利。</strong>
+    <p align="left"><strong>1</strong><strong>、{{cardName}}服务是{{protocol.companyShort}}和支付宝（以下简称“服务提供方”）联合发行的为用户提供的一种电子公交{{ cardUnitName }}服务。用户通过领取电子公交{{ cardUnitName }}并在乘车时刷支付宝客户端电子公交{{ cardUnitName }}乘车二维码（以下简称“乘车码”），即可享有在装备了电子公交{{ cardUnitName }}刷{{ cardUnitName }}机具的公交车上乘坐的权利。</strong>
     </p>
     <p>
       <strong>2</strong><strong>、您通过支付宝APP申领、使用和管理您的电子公交{{ cardUnitName }}，您可以查询公交{{ cardUnitName }}状态、交易记录、{{ cardUnitName }}服务，同时享有{{protocol.companyShort}}和支付宝为您提供的互联网增值服务等权利。</strong>
